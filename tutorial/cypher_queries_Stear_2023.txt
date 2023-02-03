@@ -1,0 +1,105 @@
+
+# File for storing cypher queries related to tables, figures or general graph statistics for the Petagraph publication 
+
+
+####### Return # of nodes by SAB #########
+####### need to double this b/c of Concept nodes, dont forget to include Terms if they exist ########
+######## maybe just say SAB_ABC makes up N% of all Code nodes?
+match (n:Code) return distinct n.SAB as SAB, count(n) as total_sab_nodes order by total_sab_nodes desc
+
+
+##############################
+### Stats for base UMLS-KG ###
+##############################
+
+Nodes: 19,894,444
+Edges: 52,087,930
+Relationship Types: 1102
+Property Keys: 11
+Node Label Types: 5 (Concepts, Codes, Terms, Definitions, Semantic)
+CUI-CUI edges:
+#### match (n) return distinct labels(n) as node_labels, count(n) as total_nodes
+Node Count by Label:  
+- Concepts: 4,612,422
+- Codes: 5,453,973
+- Terms: 9,803,663 
+- Defs: 24,259
+- Semantic: 127
+
+
+####################################
+### Stats for the full Petagraph ###
+####################################
+
+Nodes: 49,624,263
+Edges: 209,878,717
+Relationship Types: 1911
+Property Keys: 13 (the 2 extra properties are upperbound and lowerbound on the code nodes of the bins )
+Node Label Types: 5 (Concepts, Codes, Terms, Definitions, Semantic)
+CUI-CUI edges:
+#### match (n) return distinct labels(n) as node_labels, count(n) as total_nodes
+Node Count by Label:  
+- Concepts: 19,000,094
+- Codes: 19,889,354
+- Terms:  10,565,175
+- Defs: 169,513
+- Semantic: 127
+
+
+##########################################################
+############ Queries for the publication #################
+##########################################################
+
+QUERY 1.
+########### Return gene expression data from GTEx genes associated with an UBERON code that have a TPM above some threshold ##############
+MATCH (gtex_cui:Concept)-[r0:CODE]-(gtex_code:Code {SAB:'GTEX_EXP'})
+MATCH (gtex_cui)-[r01]-(tpm_cui:Concept)-[:CODE]-(tpm_code:Code {SAB:'EXP_BINS'})
+MATCH (gtex_cui)-[r1]-(hgnc_concept:Concept)-[r2]-(hgnc_code:Code {SAB:'HGNC'})
+MATCH (gtex_cui)-[r3]-(ub_concept:Concept)-[r4]-(ub_code:Code {SAB:'UBERON'}) 
+WHERE ub_code.CODE = '0002106'  AND tpm_code.upperbound > .1 
+RETURN hgnc_code.CODE AS gene, tpm_code.name AS TPM_bin
+
+QUERY 2a. #shouldn't this be "all genes in OMIM or ..." (Deanne)
+########## Return intersection of all genes associated with multiple HPO codes ############         INCORRECT QUERY
+WITH  ["HP:0011567","HP:0001684","HP:0011643","HP:0010445","HP:0011994"] as phenos
+MATCH (hpoCode:Code {SAB:'HPO'})-[r1:CODE]-(hpo_concept:Concept)
+WHERE hpoCode.CODE in phenos
+WITH collect(hpoCode) as persons, hpo_concept
+MATCH (hgnc_concept:Concept)-[r3:CODE]-(hgnc_code:Code {SAB:'HGNC'})
+WHERE ALL(hpoCode in persons WHERE (hpoCode)-[:CODE]-(hpo_concept)-[:associated_with]-(hgnc_concept)-[:CODE]-(hgnc_code))
+RETURN DISTINCT hgnc_code.CODE
+
+QUERY 2b.
+########### Same as above but also return the expression levels from single-cell datasets (HuBMAP/Developmental data) ###############
+
+
+
+
+QUERY 3.
+################### Return all genes that are highly expressed in the brain and that are affected by a group of drugs
+MATCH (ChEBITerm:Term {name:'piroxicamum'})-[r0]-(ChEBICode:Code {SAB:'CHEBI'})-[r1:CODE]-(ChEBI_concept:Concept)-[:positively_correlated_with_chemical_or_drug]-(hgnc_concept:Concept)-[:CODE]-(hgnc_code:Code {SAB:'HGNC'})-[:PT]-(hgnc_term:Term)
+WITH hgnc_concept //  hgnc_code,hgnc_term   (hgnc_code)-[:CODE]-
+MATCH (hgnc_concept)-[`RO:0002206`]-(gtex_concept:Concept)-[:CODE]-(gtex_code:Code {SAB:'GTEX_EXP'}), (gtex_concept)-[:has_expression]-(exp_concept:Concept)-[:CODE]-(exp_code:Code {SAB:'EXP_BINS'})-[r2]-(exp_term:Term)
+RETURN distinct exp_term.upperbound 
+
+# find chemicals
+MATCH (ChEBI_concept:Concept)-[r0:CODE]-(ChEBICode:Code {SAB:'CHEBI'})-[r1]-(ChEBITerm:Term )
+WHERE (NOT (ChEBITerm.name CONTAINS '(') ) AND (NOT (ChEBITerm.name CONTAINS '-') )
+RETURN distinct ChEBITerm.name as chemical, ChEBICode.CODE 
+
+# find anatomy terms
+MATCH (hpoTerm:Term)-[:PT]-(hpoCode:Code {SAB:'UBERON'})-[r1:CODE]-(hpo_concept)
+WHERE hpoTerm.name contains 'brain'
+RETURN distinct hpoCode.CODE as code , hpoTerm.name order by code
+
+QUERY 4.
+
+########  Return genes/eqtls that are associated with the same human and mouse phenotype
+
+
+
+
+
+
+
+
