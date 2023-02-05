@@ -1,6 +1,14 @@
-# Data Source Descriptions and Schema Reference
+# Petagraph Data Source Descriptions and Schema Reference
 
 ### ****Genotype-Tissue Expression (GTEx) Portal****
+
+- We begin with the UBKG release:
+-  [https://github.com/dbmi-pitt/UBKG/](https://github.com/dbmi-pitt/UBKG/)
+
+- Below we show some of the the data models in Petgraph. This is an evolving model. Check back for updates.
+
+
+* GTEx gene expression models.
 
 - We ingested two datasets from ****[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
     - GTEx_Analysis_v8_eQTL (all files in this directory)
