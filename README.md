@@ -3,12 +3,6 @@ A repository for the Petagraph project
 
 The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf
 
-.
-
-.
-
-.
-
 # Petagraph build instructions
 
 **There are 2 entry points for recreating Petagraph:**
@@ -28,6 +22,67 @@ If you wish to start from entry point 2 you will need
 - Neo4j Desktop Application
 
 ### Instrustions starting from DATASET INGESTION (entry point 1)
-##### Step 1. Obtain the UBKG CSV files and the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
-##### Step 2. Run the OWLNETS-UMLS-GRAPH-12.py script
+##### Step 1.
+##### Step 2. Obtain the UBKG CSV files and the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
+##### Step 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
+You will need to change 2 directory paths 
+This script should take a little over an hour to run.
+
+Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
+
+
+
+# Instructions on how to build/load the Petagraph CSVs into a Neo4j graph database
+
+This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into the graph.
+
+### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) if you havent already done so.
+
+### Step 2. Obtain the Petagraph CSVs or create them using the ingest guide [here](https://github.com/TaylorResearchLab/Petagraph/tree/main/build_process/ingest).
+
+
+### Download the build_petagraph.sh script [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_process/build/build_petagraph.sh) and place it in the top level of a new database on the Neo4j Desktop App
+
+### Run the following commands from the Neo4j Desktop Terminal of the new database you've just created.
+`chmod 777 build_petagraph.sh; ./build_petagraph.sh`
+
+The build time will vary but shouldnt take more than 20 min.
+
+
+After the database build is finished, open the Browser and execute this block of Cypher:
+```cypher
+MATCH (n:Term) WHERE size((n)--())=0 DELETE (n);
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.TUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.STN IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.DEF IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.name IS UNIQUE;
+CREATE CONSTRAINT ON (n:Concept) ASSERT n.CUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:Code) ASSERT n.CodeID IS UNIQUE;
+CREATE INDEX FOR (n:Code) ON (n.SAB);
+CREATE INDEX FOR (n:Code) ON (n.CODE);
+CREATE CONSTRAINT ON (n:Term) ASSERT n.SUI IS UNIQUE;
+CREATE INDEX FOR (n:Term) ON (n.name);
+CREATE INDEX FOR (n:Definition) ON (n.SAB);
+CREATE INDEX FOR (n:Definition) ON (n.DEF);
+CREATE CONSTRAINT ON (n:NDC) ASSERT n.ATUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:NDC) ASSERT n.NDC IS UNIQUE;
+CALL db.index.fulltext.createNodeIndex("Term_name",["Term"],["name"]);
+
+MATCH (log2_node:Code {SAB:"LOG2FCBINS"}) WITH log2_node ,split(log2_node.CODE,",") as bin 
+SET log2_node.lowerbound = toFloat(bin[0]) 
+SET  log2_node.upperbound = toFloat(bin[1]);
+
+MATCH (expbins_code:Code {SAB:'EXPBINS'})-[:CODE]-(expbins_cui:Concept)
+WITH expbins_code ,split(expbins_code.CODE,'.') as bin 
+set expbins_code.lowerbound = toFloat(bin[0]+'.'+bin[1])
+set expbins_code.upperbound = toFloat(bin[2]+'.'+bin[3]);
+
+MATCH (pval_node:Code {SAB:'PVALUEBINS'}) WITH pval_node, split(pval_node.CODE,'.') AS bin
+SET pval_node.lowerbound = toFloat(bin[0]) 
+SET  pval_node.upperbound = toFloat(bin[1]);
+```
+
+
+
+
 
