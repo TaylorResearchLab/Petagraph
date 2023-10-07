@@ -12,11 +12,12 @@ git clone https://github.com/x-atlas-consortia/ubkg-etl.git
 
 cd ubkg-etl/generation_framework
 
-# 
-BASE_CSV_DIR="base_csvs/basecontext10Sep2023/"
-MAPPING_DATA_DIR="/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/mapping_files"
-ADDITIONAL_DATASETS_DIR="/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/additional_datasets"
-NON_MAPPING_DATA_DIR='/Users/stearb/Desktop/DESKTOP_TRANSFER/DataDistilleryFiles'
+# Change to directory where the base UBKG CSVs are located.
+BASE_CSV_DIR=""
+
+# Change to the directory where the node/edge files for Petagraphs datasets are located
+PETA_DATA_DIR=""
+
 # ^ For GTEX, LINCS, GLYGEN, AZIMUTH, STRING, and SCHEART
 
 ######################################
@@ -44,10 +45,8 @@ NON_MAPPING_DATA_DIR='/Users/stearb/Desktop/DESKTOP_TRANSFER/DataDistilleryFiles
 # SCHEART
 # KF
 # 4DN
-
 ######################################
 
-: '
 printf "\n\nIngesting CLINVAR...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/CLINVAR    $BASE_CSV_DIR CLINVAR;
 
@@ -115,7 +114,7 @@ python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/LIN
 
 printf "\n\nIngesting GLYGEN...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/GLYGEN_TAHA_BEN   $BASE_CSV_DIR  GLYGEN
-'
+
 #####################################
 
 printf "\n\nIngesting GTEXCOEXP (reduced dataset)...\n\n"; sleep 3;
@@ -177,8 +176,6 @@ MATCH (log2_node:Code {SAB:"LOG2FCBINS"})
 WITH log2_node ,split(log2_node.CODE,",") as bin
 SET log2_node.lowerbound = toFloat(bin[0])
 SET log2_node.upperbound = toFloat(bin[1]);
-
-
 '
 
 
