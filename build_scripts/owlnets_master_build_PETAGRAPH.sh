@@ -16,11 +16,10 @@ cd ubkg-etl/generation_framework
 BASE_CSV_DIR=""
 
 # Change to the directory where the node/edge files for Petagraphs datasets are located
-PETA_DATA_DIR=""
+PETAGRAPH_DATA_DIR=""
 
-# ^ For GTEX, LINCS, GLYGEN, AZIMUTH, STRING, and SCHEART
 
-######################################
+########### Petagraph Datasets ###########
 
 ### Mapping Datasets:
 # CLINVAR		NCBI ClinVar	
@@ -34,7 +33,7 @@ PETA_DATA_DIR=""
 # HSCLO		    Chromosome Location Ontology
 # GENCODEHSCLO GENCODE-HSCLO mappings
 
-### Additional Datasets:
+### Non-mapping Datasets:
 # GTEXEXP
 # GTEXEQTL
 # GTEXCOEXP
@@ -48,77 +47,80 @@ PETA_DATA_DIR=""
 ######################################
 
 printf "\n\nIngesting CLINVAR...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/CLINVAR    $BASE_CSV_DIR CLINVAR;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/CLINVAR    $BASE_CSV_DIR CLINVAR;
 
 printf '\n\nIngesting CMAP...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/CMAP     $BASE_CSV_DIR CMAP;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/CMAP     $BASE_CSV_DIR CMAP;
 
 printf '\n\nIngesting GENCODEHSCLO...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/GENCODE_HSCLO   $BASE_CSV_DIR GENCODEHSCLO ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/GENCODE_HSCLO   $BASE_CSV_DIR GENCODEHSCLO ;
 
 printf '\n\nIngesting HPOMP...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/HPO_MP     $BASE_CSV_DIR HPOMP ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/HPO_MP     $BASE_CSV_DIR HPOMP ;
 
 printf '\n\nIngesting HSCLO...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/HSCLO     $BASE_CSV_DIR HSCLO ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/HSCLO     $BASE_CSV_DIR HSCLO ;
 
 printf '\n\nIngesting HGNCHPO...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/human_genotype_phenotype   $BASE_CSV_DIR HGNCHPO ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/human_genotype_phenotype   $BASE_CSV_DIR HGNCHPO ;
 
 printf '\n\nIngesting HGNCHCOP...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/human_mouse_orthologs    $BASE_CSV_DIR HGNCHCOP ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/human_mouse_orthologs    $BASE_CSV_DIR HGNCHCOP ;
 
 printf '\n\nIngesting RATHCOP...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/human_rat_ensembl_orthologs  $BASE_CSV_DIR RATHCOP ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/human_rat_ensembl_orthologs  $BASE_CSV_DIR RATHCOP ;
 
 printf '\n\nIngesting MSIGDB...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/MSigDB     $BASE_CSV_DIR MSIGDB ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/MSigDB     $BASE_CSV_DIR MSIGDB ;
 
 printf "\n\nIngesting CLINVAR...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/CLINVAR    $BASE_CSV_DIR CLINVAR;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/CLINVAR    $BASE_CSV_DIR CLINVAR;
 
 printf '\n\nIngesting HCOPMP...\n\n'; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $MAPPING_DATA_DIR/mouse_genotype_phenotype    $BASE_CSV_DIR HCOPMP ;
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py   $PETAGRAPH_DATA_DIR/mouse_genotype_phenotype    $BASE_CSV_DIR HCOPMP ;
 
 
-########################################################
-######### ADDITIONAL (NON-MAPPING) DATASETS  ############
-########################################################
+############################################
+######### NON-MAPPING DATASETS  ############
+############################################
 
 printf "\n\nIngesting GTEXEQTL...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $NON_MAPPING_DATA_DIR/gtex/gtex_eqtl  $BASE_CSV_DIR GTEXEQTL
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/gtex/gtex_eqtl  $BASE_CSV_DIR GTEXEQTL
 
 printf "\n\nIngesting GTEXEXP...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $NON_MAPPING_DATA_DIR/gtex/gtex_exp   $BASE_CSV_DIR  GTEXEXP
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/gtex/gtex_exp   $BASE_CSV_DIR  GTEXEXP
 
 printf "\n\nIngesting KF...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $NON_MAPPING_DATA_DIR/KidsFirst/combined_files $BASE_CSV_DIR KF
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/KidsFirst/combined_files $BASE_CSV_DIR KF
 
 printf "\n\nIngesting HUBMAP-AZIMUTH...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $NON_MAPPING_DATA_DIR/HUBMAP_AZ  $BASE_CSV_DIR HMAZ 
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/HUBMAP_AZ  $BASE_CSV_DIR HMAZ 
 
 printf "\n\nIngesting SCHEART...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $NON_MAPPING_DATA_DIR/scHeart  $BASE_CSV_DIR SCHEART 
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/scHeart  $BASE_CSV_DIR SCHEART 
 
 printf "\n\nIngesting STRING...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/STRING   $BASE_CSV_DIR  STRING
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/STRING   $BASE_CSV_DIR  STRING
 
 printf "\n\nIngesting GLYGEN (combined)...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/GLYGEN   $BASE_CSV_DIR  GLYGEN
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/GLYGEN   $BASE_CSV_DIR  GLYGEN
 
 printf "\n\nIngesting 4DN...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/4DN   $BASE_CSV_DIR  4DN
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/4DN   $BASE_CSV_DIR  4DN
 
 printf "\n\nIngesting LINCS...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/LINCS   $BASE_CSV_DIR  LINCS
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/LINCS   $BASE_CSV_DIR  LINCS
 
 printf "\n\nIngesting GLYGEN...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $ADDITIONAL_DATASETS_DIR/GLYGEN_TAHA_BEN   $BASE_CSV_DIR  GLYGEN
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/GLYGEN_TAHA_BEN   $BASE_CSV_DIR  GLYGEN
 
 #####################################
 
 printf "\n\nIngesting GTEXCOEXP (reduced dataset)...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $NON_MAPPING_DATA_DIR/gtex/gtex_coexp_reduced   $BASE_CSV_DIR  GTEXCOEXP
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/gtex/gtex_coexp_reduced   $BASE_CSV_DIR  GTEXCOEXP
+
+
+
 
 : '
 # After the database has been built, execute these Cypher queries:
@@ -141,8 +143,6 @@ CREATE CONSTRAINT FOR (n:NDC) REQUIRE n.ATUI IS UNIQUE;
 CREATE CONSTRAINT FOR (n:NDC) REQUIRE n.NDC IS UNIQUE;
 CREATE FULLTEXT INDEX Term_name FOR (n:Term) ON EACH [n.name];
 
-
-
 v4 INDEXING
 MATCH (n:Term) WHERE size((n)--())=0 DELETE (n);
 CREATE CONSTRAINT ON (n:Semantic) ASSERT n.TUI IS UNIQUE;
@@ -161,7 +161,6 @@ CREATE CONSTRAINT ON (n:NDC) ASSERT n.ATUI IS UNIQUE;
 CREATE CONSTRAINT ON (n:NDC) ASSERT n.NDC IS UNIQUE;
 CALL db.index.fulltext.createNodeIndex("Term_name",["Term"],["name"]);
 
-
 MATCH (pval_node:Code {SAB:"PVALUEBINS"})
 WITH pval_node, split(pval_node.CODE,".") AS bin
 SET pval_node.lowerbound = toFloat(bin[0])
@@ -177,8 +176,3 @@ WITH log2_node ,split(log2_node.CODE,",") as bin
 SET log2_node.lowerbound = toFloat(bin[0])
 SET log2_node.upperbound = toFloat(bin[1]);
 '
-
-
-
-
-
