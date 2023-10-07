@@ -1,5 +1,6 @@
-# Instructions on how to load the Petagraph CSVs into the Neo4j Desktop Browser
+# Instructions on how to build Petagraph
 
+This build process uses Neo4j's bulk import tool to load Petagraph's set of 11 CSVs into the graph.
 
 ### Step 1. Download Neo4j Desktop: https://neo4j.com/download/
 
@@ -16,6 +17,23 @@ The build time will vary but shouldnt take more than 20 min.
 
 After the database build is finished, open the Browser and execute this block of Cypher:
 ```
+MATCH (n:Term) WHERE size((n)--())=0 DELETE (n);
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.TUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.STN IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.DEF IS UNIQUE;
+CREATE CONSTRAINT ON (n:Semantic) ASSERT n.name IS UNIQUE;
+CREATE CONSTRAINT ON (n:Concept) ASSERT n.CUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:Code) ASSERT n.CodeID IS UNIQUE;
+CREATE INDEX FOR (n:Code) ON (n.SAB);
+CREATE INDEX FOR (n:Code) ON (n.CODE);
+CREATE CONSTRAINT ON (n:Term) ASSERT n.SUI IS UNIQUE;
+CREATE INDEX FOR (n:Term) ON (n.name);
+CREATE INDEX FOR (n:Definition) ON (n.SAB);
+CREATE INDEX FOR (n:Definition) ON (n.DEF);
+CREATE CONSTRAINT ON (n:NDC) ASSERT n.ATUI IS UNIQUE;
+CREATE CONSTRAINT ON (n:NDC) ASSERT n.NDC IS UNIQUE;
+CALL db.index.fulltext.createNodeIndex("Term_name",["Term"],["name"]);
+
 MATCH (log2_node:Code {SAB:"LOG2FCBINS"}) WITH log2_node ,split(log2_node.CODE,",") as bin 
 SET log2_node.lowerbound = toFloat(bin[0]) 
 SET  log2_node.upperbound = toFloat(bin[1]);
