@@ -22,17 +22,12 @@ If you wish to start from entry point 2 you will need
 - Neo4j Desktop Application
 
 ### Instrustions starting from DATASET INGESTION (entry point 1)
-##### Step 1.
+##### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) , Python3 and git.
 ##### Step 2. Obtain the UBKG CSV files and the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
 ##### Step 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
-You will need to change 2 directory paths 
-This script should take a little over an hour to run.
+You will need to change 2 directory paths, one to the location of the UBKG CSVs andd the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
 
-Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
-
-
-
-# Instructions on how to build/load the Petagraph CSVs into a Neo4j graph database
+# Instructions on how to build/load the Petagraph CSVs into a Neo4j graph database (entry point 2)
 
 This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into the graph.
 
