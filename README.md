@@ -15,6 +15,8 @@ Start with the Unified Biomedical Knowledge Graph (UBKG) CSVs and run the script
 
 Start with the final, processed Petagraph CSVs and simply build the database using the Neoj Desktop Application.
 
+
+  
 If you wish to start from entry point 1 you will need:
 - Neo4j Desktop Application, Python3 and Git
   
