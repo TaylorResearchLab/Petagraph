@@ -3,22 +3,17 @@
 # Date: Sept 2023
 # Author: Ben Stear
 
-######################################
-#####  PETAGRAPH BUILD SCRIPT   ######
-######################################
+##########################################
+#####  PETAGRAPH INGESTION SCRIPT   ######
+##########################################
 
-# To run this code locally you must first download the github repo: https://github.com/x-atlas-consortia/ubkg-etl
-# This script must be run from this directory (I can just cd into it below actually): 
-# /Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/code/ubkg-etl-main/generation_framework
-# b/c the OWLNETS-UMLS-GRAPH-12.py script appends the helper module paths to $(PWD), which will result in module not
-# found error if its appended to a path that isnt this one.
+# Clone UBKG repo
+git clone https://github.com/x-atlas-consortia/ubkg-etl.git
 
+cd ubkg-etl/generation_framework
 
-
-
-cd /Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/code/ubkg-etl-main/generation_framework
-
-BASE_CSV_DIR="/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/base_csvs/basecontext10Sep2023/"
+# 
+BASE_CSV_DIR="base_csvs/basecontext10Sep2023/"
 MAPPING_DATA_DIR="/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/mapping_files"
 ADDITIONAL_DATASETS_DIR="/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/additional_datasets"
 NON_MAPPING_DATA_DIR='/Users/stearb/Desktop/DESKTOP_TRANSFER/DataDistilleryFiles'
