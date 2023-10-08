@@ -91,7 +91,7 @@ printf "\n\nIngesting GTEXEXP...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/gtex/gtex_exp   $BASE_CSV_DIR  GTEXEXP
 
 printf "\n\nIngesting KF...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/KidsFirst/combined_files $BASE_CSV_DIR KF
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/KidsFirst $BASE_CSV_DIR KF
 
 printf "\n\nIngesting HUBMAP-AZIMUTH...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/HUBMAP_AZ  $BASE_CSV_DIR HMAZ 
