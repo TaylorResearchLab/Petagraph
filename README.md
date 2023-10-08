@@ -35,10 +35,11 @@ This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into t
 
 
 #### Step 4. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
-
-rm -rf data/databases/*; rm -rf data/transactions/*;
+```
+rm -rf data/databases/*
+rm -rf data/transactions/*
 bin/neo4j-admin import --verbose  --nodes=Semantic="import/TUIs.csv" --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv" --nodes=Term="import/SUIs.csv" --nodes=Definition="import/DEFs.csv"  --relationships=ISA_STY="import/TUIrel.csv" --relationships=STY="import/CUI-TUIs.csv" --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv" --relationships="import/CODE-SUIs.csv" --relationships=PREF_TERM="import/CUI-SUIs.csv" --relationships=DEF="import/DEFrel.csv"  --skip-bad-relationships --skip-duplicate-nodes
-
+```
 
 The build time will vary but shouldnt take more than 20 min.
 
