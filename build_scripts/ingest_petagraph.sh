@@ -102,9 +102,6 @@ python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py  $PETAGRAPH_DATA_DIR/scHeart
 printf "\n\nIngesting STRING...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/STRING   $BASE_CSV_DIR  STRING
 
-printf "\n\nIngesting GLYGEN (combined)...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/GLYGEN   $BASE_CSV_DIR  GLYGEN
-
 printf "\n\nIngesting 4DN...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/4DN   $BASE_CSV_DIR  4DN
 
@@ -112,9 +109,8 @@ printf "\n\nIngesting LINCS...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/LINCS   $BASE_CSV_DIR  LINCS
 
 printf "\n\nIngesting GLYGEN...\n\n"; sleep 3;
-python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/GLYGEN_TAHA_BEN   $BASE_CSV_DIR  GLYGEN
+python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/GLYGEN   $BASE_CSV_DIR  GLYGEN
 
-#####################################
 
 printf "\n\nIngesting GTEXCOEXP (reduced dataset)...\n\n"; sleep 3;
 python3 owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py $PETAGRAPH_DATA_DIR/gtex/gtex_coexp_reduced   $BASE_CSV_DIR  GTEXCOEXP
