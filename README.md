@@ -7,11 +7,14 @@ The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/ea
 
 ## Petagraph build instructions
 
-#### Petagraph is built on top of the Unified Medical Knowledge Graph (UBKG) so the first step is to generate the UBKG CSVs. Please follow instructions here: [UBKG-Build-Instructions](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
+#### Petagraph is built on top of the Unified Medical Knowledge Graph (UBKG) so the first step is to generate the UBKG CSVs. Please follow instructions here:
 
+Generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
+Generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
+# Next
 #### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) , Python3 and git.
-#### Step 2. Obtain the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
+#### Step 2. Obtain the 20 sets of node and edge files (that represent the 20 additional datasets that differentiate Petagraph from UBKG.
 #### Step 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 You will need to change 2 directory paths, one to the location of the UBKG CSVs andd the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
  
@@ -19,7 +22,6 @@ You will need to change 2 directory paths, one to the location of the UBKG CSVs 
 This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into the graph.
 
 #### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) if you haven't already done so, and create a new, empty database.
-
 #### Step 2. CSVs you've just produced. Place the Petagraph CSVs in the import directory of your new database.
 
 
