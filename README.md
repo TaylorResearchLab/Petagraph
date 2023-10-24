@@ -3,35 +3,26 @@ A repository for the Petagraph project
 
 The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf
 
+## Put summary, and important links here.
+
 ## Petagraph build instructions
 
-**There are 2 entry points for recreating Petagraph:**
+#### Petagraph is built on top of the Unified Medical Knowledge Graph (UBKG) so the first step is to CSVs
 
-**Dataset Ingestion** (entry point 1):
+(UBKG-Build-Instructions)[https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework]
 
-Start with the Unified Biomedical Knowledge Graph (UBKG) CSVs and run the scripts to process and append the 20 new datasets to create the final, processed Petagraph CSVs, and then complete the database build step below or,
 
-**Database Build** (entry point 2):
-
-Start with the final, processed Petagraph CSVs and simply build the database using the Neoj Desktop Application.
-
-If you wish to start from entry point 1 you will need Neo4j Desktop Application, Python3 and Git.
-
-If you wish to start from entry point 2 you will need Neo4j Desktop Application.
-
-### Instrustions for **Dataset Ingestion** (entry point 1)
 #### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) , Python3 and git.
-#### Step 2. Obtain the UBKG CSV files and the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
+#### Step 2. Obtain the 20 sets of node and edge files representing the 20 additional datasets make up Petagraph.
 #### Step 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 You will need to change 2 directory paths, one to the location of the UBKG CSVs andd the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
-
-### Instructions for **Database Build** (entry point 2)
+ 
 
 This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into the graph.
 
-#### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) if you havent already done so, and create a new, empty database.
+#### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) if you haven't already done so, and create a new, empty database.
 
-#### Step 2. If you skipped the ingestion step you'll need to obtain the Petagraph CSVs, otherwise you can use the CSVs you've just produced. Place the Petagraph CSVs in the import directory of your new database.
+#### Step 2. CSVs you've just produced. Place the Petagraph CSVs in the import directory of your new database.
 
 
 #### Step 4. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
