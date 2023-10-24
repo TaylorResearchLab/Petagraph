@@ -8,7 +8,7 @@ The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/ea
 ## Petagraph build instructions
 
 #### Petagraph is built on top of the Unified Medical Knowledge Graph (UBKG) so the first step is to generate the UBKG CSVs. Please follow instructions here:
-(UBKG-Build-Instructions)[https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework]
+[UBKG-Build-Instructions](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
 
 
 #### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) , Python3 and git.
