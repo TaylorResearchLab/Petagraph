@@ -31,6 +31,8 @@ To create a new database, click the Add menu in the upper right hand corner of t
 
 Then open up the database drop down menu again and open up the Neo4j terminal to run the code in step 5.
 
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/import_folder.png" alt="drawing" width="500"/>
+
 #### 5. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
 ```bash
 $ rm -rf data/databases/*;
