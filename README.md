@@ -3,28 +3,24 @@ A repository for the Petagraph project
 
 The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf
 
-## Put summary, and important links here.
+## (Put summary, and important links here, like the data distillery readme)
 
 ## Petagraph build instructions
 
 #### Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
-
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 ## Installing Petagraph
-1. Download software and data:
-    Software you'll need:
+#### 1. Download software:
    - Neo4j Desktop (https://neo4j.com/download/) 
    - Python3
    - git
-  
-
-
-
-Download the zipped folder containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets that differentiate Petagraph from UBKG.  
-Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
+#### 2. Download data:
+   - the zipped folder containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets that differentiate Petagraph from UBKG.
+      
+#### 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
  
 
