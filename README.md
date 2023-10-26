@@ -13,14 +13,13 @@ Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-cons
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 ## Installing Petagraph
-### Option 1. Download Petagraph dump and load into Neo4j instance
-- yes or no?
+This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6
 
 ### Option 2. Build from source
 #### 1. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`
 #### 2. Download data:
-   - Download the Datasets.zip file (250 MB) containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
+   - Download the Datasets.zip file (250 MB zipped and 2.7GB unzipped) containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
 
      <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png" alt="drawing" width="500"/>
 
