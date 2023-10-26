@@ -13,6 +13,10 @@ Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-cons
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 ## Installing Petagraph
+### Option 1. Download Petagraph dump and load into Neo4j instance
+
+
+### Option 2. Build from source
 #### 1. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`
 #### 2. Download data:
