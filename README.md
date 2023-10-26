@@ -14,7 +14,7 @@ Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-cons
 
 ## Installing Petagraph
 ### Option 1. Download Petagraph dump and load into Neo4j instance
-
+- yes or no?
 
 ### Option 2. Build from source
 #### 1. Download software: 
