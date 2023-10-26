@@ -12,7 +12,7 @@ Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-cons
 ## Installing Petagraph
 This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6 
 
-Software Versions used for testing: Neo4j Desktop 1.5.7, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
+Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
 
 #### 1. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`.
