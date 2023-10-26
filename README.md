@@ -18,6 +18,9 @@ Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-cons
 #### 2. Download data:
    - Download the zip file containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
       
+
+     ![](https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png)
+
 #### 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
  
