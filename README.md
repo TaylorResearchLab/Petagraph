@@ -13,12 +13,10 @@ Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-cons
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 ## Installing Petagraph
-#### 1. Download software:
-   - Neo4j Desktop (https://neo4j.com/download/) 
-   - Python3
-   - git
+#### 1. Download software: 
+- Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3`,`git`
 #### 2. Download data:
-   - the zipped folder containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets that differentiate Petagraph from UBKG.
+   - Download the zip file containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
       
 #### 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
