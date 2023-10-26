@@ -7,16 +7,25 @@ The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/ea
 
 ## Petagraph build instructions
 
-#### Petagraph is built on top of the Unified Medical Knowledge Graph (UBKG) so the first step is to generate the UBKG CSVs. Please follow instructions here:
+#### Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
-Generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
-Generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
-# Next
-#### Step 1. Download Neo4j Desktop (https://neo4j.com/download/) , Python3 and git.
-#### Step 2. Obtain the 20 sets of node and edge files (that represent the 20 additional datasets that differentiate Petagraph from UBKG.
-#### Step 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
-You will need to change 2 directory paths, one to the location of the UBKG CSVs andd the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
+Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework)
+Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
+
+## Installing Petagraph
+1. Download software and data:
+    Software you'll need:
+   - Neo4j Desktop (https://neo4j.com/download/) 
+   - Python3
+   - git
+  
+
+
+
+Download the zipped folder containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets that differentiate Petagraph from UBKG.  
+Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
+You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
  
 
 This build process uses Neo4j's bulk import tool to load Petagraph's CSVs into the graph.
