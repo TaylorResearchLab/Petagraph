@@ -24,7 +24,10 @@ Software Versions used for testing: Neo4j Desktop 1.5.7, Neo4j 4.3.23, Python3.x
 The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh)
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.sh` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
  
-#### 4. Create a new, empty database in  Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database.
+#### 4. Create a new, empty database in Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database. 
+To create a new database, click the Add menu in the upper right hand corner of the Neo4j Desktop Application home screen and select local DBMS. Once the new database has been created, click the 3 little dots to the right of the new database name to bring up the drop down menu, select folders -> import, and place the Petagraph CSVs in the import folder.
+
+Then open up the database drop down menu again and open up the Neo4j terminal to run the code in step 5.
 
 #### 5. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
 ```bash
