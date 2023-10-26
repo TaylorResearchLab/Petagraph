@@ -20,21 +20,21 @@ Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-cons
 
      <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png" alt="drawing" width="500"/>
 
-#### 3. Run the `ingest_petagraph.sh` script to ingest the 20 datasets.
-You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended. Now you can build the database...
+#### 3. Download and run the `ingest_petagraph.sh` script to ingest the 20 datasets.
+The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh)
+You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
  
 #### 4. Create a new, empty database in  Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database.
 
 #### 5. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
 ```
-rm -rf data/databases/*
-rm -rf data/transactions/*
+rm -rf data/databases/*;
+rm -rf data/transactions/*;
 bin/neo4j-admin import --verbose  --nodes=Semantic="import/TUIs.csv" --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv" --nodes=Term="import/SUIs.csv" --nodes=Definition="import/DEFs.csv"  --relationships=ISA_STY="import/TUIrel.csv" --relationships=STY="import/CUI-TUIs.csv" --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv" --relationships="import/CODE-SUIs.csv" --relationships=PREF_TERM="import/CUI-SUIs.csv" --relationships=DEF="import/DEFrel.csv"  --skip-bad-relationships --skip-duplicate-nodes
 ```
-
 The build time will vary but shouldnt take more than 20 min.
 
-### Step 5. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
+### Step 6. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
 This sets contraints and indices on Node types to speed up query execution time. The last three queries create properties on numerical Code nodes.
 
 ```cypher
