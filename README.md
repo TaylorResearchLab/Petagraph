@@ -11,10 +11,10 @@ Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-cons
 
 ## Installing Petagraph
 This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6
+Software Versions used for testing: Neo4j Desktop 1.5.7, Neo4j 4.3.23, Python3.x, git 2.39.3
 
-### Option 2. Build from source
 #### 1. Download software: 
-- Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`
+- Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`.
 #### 2. Download data:
    - Download the Datasets.zip file (250 MB zipped and 2.7GB unzipped) containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
 
@@ -22,7 +22,7 @@ This installation process was tested on an Apple MacBook Pro 2023 16GB Memory ru
 
 #### 3. Download and run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh)
-You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.py` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
+You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.sh` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
  
 #### 4. Create a new, empty database in  Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database.
 
