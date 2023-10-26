@@ -27,6 +27,8 @@ You will need to change 2 directory paths within the `ingest_petagraph.sh` scrip
 #### 4. Create a new, empty database in Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database. 
 To create a new database, click the Add menu in the upper right hand corner of the Neo4j Desktop Application home screen and select local DBMS. Once the new database has been created, click the 3 little dots to the right of the new database name to bring up the drop down menu, select folders -> import, and place the Petagraph CSVs in the import folder.
 
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/create_new_dbms.png" alt="drawing" width="500"/>
+
 Then open up the database drop down menu again and open up the Neo4j terminal to run the code in step 5.
 
 #### 5. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
