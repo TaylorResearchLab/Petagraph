@@ -4,16 +4,14 @@ Over the past decade, there has been substantial growth in both the quantity and
 
 The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf
 
+## Installing Petagraph
+This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
+
 ### Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
-
-## Installing Petagraph
-This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6.
-
-Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
 
 #### 1. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`.
