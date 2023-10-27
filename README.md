@@ -10,7 +10,7 @@ Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-cons
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 ## Installing Petagraph
-This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6 
+This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6.
 
 Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
 
@@ -22,7 +22,7 @@ Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Pyth
      <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png" alt="drawing" width="500"/>
 
 #### 3. Download and run the `ingest_petagraph.sh` script to ingest the 20 datasets.
-The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh)
+The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh).
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.sh` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
  
 #### 4. Create a new, empty database in Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database. 
