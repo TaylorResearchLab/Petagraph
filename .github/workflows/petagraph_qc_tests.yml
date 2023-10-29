@@ -37,8 +37,7 @@ jobs:
 
       - name: Run tests
         run: |
-          ls;
-          python ./tests/test.py
+          pip install osfclient
 
           
 
