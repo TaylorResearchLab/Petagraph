@@ -1,4 +1,3 @@
 import os
 import sys
-
-print('python script!!!')
+import osfclient
