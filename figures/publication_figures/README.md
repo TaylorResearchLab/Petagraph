@@ -1,6 +1,14 @@
 
 
-
+## figure 7a
+```cypher
+match (asd:Concept)-[:CODE]-(asd_code:Code{SAB:'MP'} ) // {CodeID:'MP:0010403'}
+match (asd)-[:involved_in]-(hcop:Concept)-[:CODE]-(hcop_code:Code {SAB:'HCOP'}) // {CodeID:'HCOP:Crebbp'}
+match (hcop)-[r]-(hgnc:Concept)-[:CODE]-(hgnc_code:Code {SAB:'HGNC'})
+match (hgnc)-[:located_in]-(gtexeqtl:Concept)-[:CODE]-(eqtl_code:Code {SAB:'GTEXEQTL'})
+match (gtexeqtl)-[:p_value]-(pvalue:Concept)-[:CODE]-(pval_code:Code {SAB:'PVALUEBINS'})
+RETURN * LIMIT 1
+```
 
 
 
