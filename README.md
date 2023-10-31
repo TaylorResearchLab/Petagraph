@@ -77,7 +77,6 @@ SET pval_node.lowerbound = toFloat(bin[0])
 SET  pval_node.upperbound = toFloat(bin[1]);
 ```
 
-# Step 6. Optionally go through the tutorial to learn how to query Petagraph!
 
 
 
