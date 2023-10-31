@@ -4,7 +4,7 @@
 We begin with the UBKG release:
 [https://github.com/dbmi-pitt/UBKG/](https://github.com/dbmi-pitt/UBKG/)
 
-Below we show some of the the data models in Petgraph. This is an evolving model. Check back for updates.
+Below we show some of the the data models in Petagraph.
 
 
 ### ****Genotype-Tissue Expression (GTEx) Portal****
