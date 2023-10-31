@@ -3,10 +3,9 @@
 
 Over the past decade, there has been substantial growth in both the quantity and complexity of available biomedical data. In order to harness this extensive data and alleviate the challenges associated with data integration, we developed Petagraph, a biomedical knowledge graph that encompasses over 30 million nodes and 160 million relationships. Petagraph provides a cohesive data environment that enables users to efficiently analyze, annotate, and discern relationships within and across complex multi-omics and other types of biomedical datasets. Constructed with the Unified Biomedical Knowledge Graph (UBKG), Petagraph leverages more than 180 ontologies and standards that support a diversity of genomics data types. We have curated and embedded millions of quantitative genomics data within Petagraph’s ontological scaffold and demonstrate  how  queries on Petagraph can generate meaningful results across various research contexts and use cases.
 
-[Tutorial](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/user_guide.md)
-[Dataset Schema Reference](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/dataset_schemas.md)
-
-The bioarxiv preprint can be found at https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf
+### [Tutorial](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/user_guide.md)  
+### [Dataset Schema Reference](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/dataset_schemas.md)  
+### [bioarxiv preprint](https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf)
 
 ## Installing Petagraph
 This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
