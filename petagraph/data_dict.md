@@ -36,3 +36,38 @@ where type(r1) starts with 'coexpressed_with'
 return * limit 1
 ```
 
+
+### Human-Mouse Orthologs (HGNCHCOP)
+```cypher
+match (hgnc1:Code {SAB:'HCOP'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HGNC'})
+return * limit 1
+```
+### Human gene-phenotype (HGNCHPO)
+```cypher
+match (hgnc1:Code {SAB:'HGNC'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HPO'})
+return * limit 1
+```
+
+### Mouse gene-phenotype (HCOPMP)
+
+```cypher
+match (hgnc1:Code {SAB:'HCOP'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'MP'})
+return * limit 1
+```
+
+### Human-Mouse Phenotype mappings (HPOMP)
+```cypher
+match (hgnc1:Code {SAB:'HPO'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'MP'})
+return * limit 1
+```
+
+
+### Human-Rat ENSEMBL orthology (RATHCOP)
+
+```cypher
+match (hgnc1:Code {SAB:'ENSEMBL'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'ENSEMBL'})
+where hgnc1.CODE contains 'ENSR'
+return * limit 1
+```
+
+
