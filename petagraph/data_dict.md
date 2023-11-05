@@ -22,8 +22,17 @@ return * limit 1
 ### GTEXEQTL
 ```cypher
 match (gtex_exp:Concept)-[r0]-(gtex_exp_code:Code) where gtex_exp_code.SAB = 'GTEXEQTL' 
-match (gtex_exp)-[r1:located_in]-(hgnc_concept:Concept)-[r2]-(hgnc_code:Code) where hgnc_code.SAB = 'HGNC'
+match (gtex_exp)-[r1]-(hgnc_concept:Concept)-[r2]-(hgnc_code:Code {CodeID:'HGNC:52402'}) where hgnc_code.SAB = 'HGNC'
 match (gtex_exp)-[r3:located_in]-(ub_concept:Concept)-[r4]-(ub_code:Code) where ub_code.SAB = 'UBERON'
 match (gtex_exp)-[r5:p_value]-(exp_concept:Concept)-[r6]-(exp_code:Code) where exp_code.SAB = 'PVALUEBINS'  
+match  (gtex_exp)-[r7]-(hsclo_concept:Concept)-[r8]-(hsclo_code:Code) where hsclo_code.SAB = 'HSCLO'  
 return * limit 1
 ```
+
+
+### GTEXCOEXP
+```cyphermatch (hgnc1:Code)-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HGNC'})
+where type(r1) starts with 'coexpressed_with'
+return * limit 1
+```
+
