@@ -70,4 +70,34 @@ where hgnc1.CODE contains 'ENSR'
 return * limit 1
 ```
 
+### GENCODE-HSCLO
+```cypher
+match (hgnc1:Code {SAB:'GENCODE'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HSCLO'})
+return * limit 1
+```
+
+### LINCS
+
+```cypher
+match (hgnc1:Code {SAB:'CHEBI'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1 {SAB:'LINCS'}]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HGNC'})
+return * limit 1
+```
+
+### CMAP
+```cypher
+match (hgnc1:Code {SAB:'CHEBI'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1 {SAB:'CMAP'}]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code {SAB:'HGNC'})
+return * limit 1
+```
+
+
+### HSCLO
+```cypher
+match (hgnc1:Code {SAB:'HSCLO'})-[r0:CODE]-(hgnc_concept1:Concept)-[r1]-(hgnc_concept2:Concept)-[r2:CODE]-(hgnc2:Code)
+MATCH (hgnc_concept1)-[r3]-(c:Concept)-[:CODE]-(co:Code {SAB:'4DNL'})
+MATCH  (hgnc_concept1)-[r4]-(c2:Concept)-[:CODE]-(co2:Code {SAB:'GTEXEQTL'})
+MATCH  (hgnc_concept1)-[r5]-(c3:Concept)-[:CODE]-(co3:Code {SAB:'ENSEMBL'})
+return * limit 1
+```
+
+
 
