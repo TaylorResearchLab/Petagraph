@@ -1,7 +1,6 @@
 
 
-
-
+# Data Dictionary
 
 ### GTEXEXP
 ```cypher
@@ -24,7 +23,8 @@ return * limit 1
 
 
 ### GTEXCOEXP
-```cyphermatch (a:Code)-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+```cypher
+match (a:Code)-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 where type(r1) starts with 'coexpressed_with'
 return * limit 1
 ```
