@@ -15,9 +15,9 @@ Each section contains the following information,
     - GTEx_Analysis_v8_eQTL (all files in this directory) -- only common eQTLs that were present in every tissue
     - GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
 
-**Preproccessing**:
-Code SABs: Gene (HGNC), Tissue (UBERON). The GTEx gene expression SABs are currently just [GTEx - Gene - Tissue - Expression] (SABs for GTEx gene expression names will be changed in the next version to just gene-tissue-GTEx_version)
-    
+**Preproccessing**: ...
+
+
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
 ```cypher
@@ -34,9 +34,11 @@ return * limit 1
 --- 
 ## GTEXEQTL
 
-**Source**:
+**Source**: ... 
+  
 
-**Preproccessing**:
+**Preproccessing**: ...
+  
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
 
