@@ -12,7 +12,7 @@ Each section contains the following information,
 
 ## Genotype-Tissue Expression (GTEx) Portal
 **Source**: We ingested two datasets from **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
-    - GTEx_Analysis_v8_eQTL (all files in this directory)
+    - GTEx_Analysis_v8_eQTL (all files in this directory) -- only common eQTLs that were present in every tissue
     - GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
 
 **Preproccessing**:
