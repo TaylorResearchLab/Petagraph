@@ -28,7 +28,9 @@ match (gtex_exp)-[r3:expressed_in {SAB:"GTEXEXP"}]-(ub_concept:Concept)-[r4:CODE
 match (gtex_exp)-[r5:has_expression]->(exp_concept:Concept)-[r6:CODE]-(exp_code:Code {SAB: 'EXPBINS' })
 return * limit 1
 ```
+  
 
+  
 --- 
 ## GTEXEQTL
 
