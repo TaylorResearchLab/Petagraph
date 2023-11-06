@@ -1,9 +1,15 @@
 
+# Petagraph Data Source Descriptions and Schema Reference
 
-# Data Dictionary
 
-### GTEXEXP
+### ****Genotype-Tissue Expression (GTEx) Portal****
 
+- We ingested two datasets from ****[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
+    - GTEx_Analysis_v8_eQTL (all files in this directory)
+    - GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
+    
+    Code SABs: Gene (HGNC), Tissue (UBERON). The GTEx gene expression SABs are currently just [GTEx - Gene - Tissue - Expression] (SABs for GTEx gene expression names will be changed in the next version to just gene-tissue-GTEx_version)
+    
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
 ```cypher
@@ -18,6 +24,9 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
 
+
+An UBERON Concept, Code and Term (top left), an HGNC Concept and preferred Term (top right) and GTEx eQTL Concept, Code and Terms (center). The GTEx Terms shown here represent a binned  p-value and variant ID for the eQTL.
+
 ```cypher
 match (gtex_eqtl:Concept)-[r0]-(gtex_eqtl_code:Code) where gtex_eqtl_code.SAB = 'GTEXEQTL' 
 match (gtex_eqtl)-[r1]-(hgnc_concept:Concept)-[r2]-(hgnc_code:Code {CodeID:'HGNC:52402'}) where hgnc_code.SAB = 'HGNC'
@@ -26,6 +35,8 @@ match (gtex_eqtl)-[r5:p_value]-(exp_concept:Concept)-[r6]-(exp_code:Code) where 
 match  (gtex_eqtl)-[r7]-(hsclo_concept:Concept)-[r8]-(hsclo_code:Code) where hsclo_code.SAB = 'HSCLO'  
 return * limit 1
 ```
+
+
 
 
 ### GTEXCOEXP
@@ -38,9 +49,17 @@ where type(r1) starts with 'coexpressed_with'
 return * limit 1
 ```
 
-### Human-Mouse Orthologs (HGNCHCOP)
+
+
+
+### **Human-Mouse Orthologs (HGNCHCOP)**
+
+- Orthologs from HGNC Comparisons of Orthology Predictions (**HCOP**) [https://www.genenames.org/tools/hcop/](https://www.genenames.org/tools/hcop/) (scroll to the bottom, under Bulk Downloads. Select Human - Mouse ortholog data)
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHCOP.png" alt="drawing" width="800"/>
+
+HGNC Concept (blue), Code (purple) and Term (green) from HGNC on the left and its corresponding Mouse gene Concept and code on the right  
+
 
 ```cypher
 match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
