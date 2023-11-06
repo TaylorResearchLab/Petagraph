@@ -18,6 +18,7 @@ Each section contains the following information,
 **Preproccessing**: ...
 
 Schema figure:
+
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
 ```cypher
