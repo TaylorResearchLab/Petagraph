@@ -4,8 +4,8 @@
 Each section contains the following information,
 
 - Title
-- Source of the data
-- Description of how the data was preprocessed
+- Source and Description of the dataset/ontology
+- Description of how the dataset/ontology was preprocessed
 - Schema figure
 - Schema figure description
 - Cypher query to produce the schema figure
@@ -17,7 +17,7 @@ Each section contains the following information,
 
 **Preproccessing**: ...
 
-
+Schema figure:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
 ```cypher
