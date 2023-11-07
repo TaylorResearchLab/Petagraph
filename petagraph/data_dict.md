@@ -42,9 +42,11 @@ For clarity, all schema figures in this document follow this color format:
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
 **Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
 
-**Preproccessing**: Very little preprocessing was down on the median TPM 
+**Preproccessing**: No preprocessing was done on the median TPM dataset. We only filtered for median TPM expression levels that corresponded to an ENSEMBL gene id that could be mapped back to an HGNC Code.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
+
+A tissue Concept and Code (SAB = `UBERON`) and a gene Concept and Code (SAB = `HGNC`) are connected via `expresses` relationships to a GTEx Expression Concept and Code (SAB = `GTEXEXP`). In this example, you can see that the ERCC6L gene has a median TPM between 1.0 and 2.0 in the venous blood. The `EXPBINS` Code node has `upperbound` and `lowerbound` properties which allow a user to filter genes based on the median TPM.
      
 ```cypher
 // Cypher query to reproduce the schema figure
