@@ -55,22 +55,19 @@ match (gtex_exp)-[r5:has_expression]->(exp_concept:Concept)-[r6:CODE]-(exp_code:
 return * limit 1
 ```
   
-
-  
 --- 
 ##  Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL) 
 
 **Source**: The GTEx eQTL data we ingested comes from the file `GTEx_Analysis_v8_eQTL.tar` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
 
-**Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid HGNC Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (HGNC), tissue (UBERON), genomic location ([HSCLO](),see section below) and p-value (PVALUEBINS) nodes.
+**Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid HGNC Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (HGNC), tissue (UBERON), genomic location ([HSCLO](),see section below) and p-value (PVALUEBINS) nodes. The following list of numbers was used to create the p-value bins: `[0,1e-12,1e-11,1e-10,1e-9,1e-8,1e-7,1e-6,1e-5,1e-4,1e-3,.005,.01,.02,.03,.04,.05,.06]`
   
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
 
 
-An tissue Concept, Code (SAB = `UBERON`) and Term (top left), a gene Concept, Code (SAB = `HGNC`) and preferred Term (bottom left), a chromosomal location Concept and Code (SAB = `HSCLO`) and a p-value (SAB = `PVALUEBINS`) all connect to a GTEx eQTL Concept and Code (SAB = `GTEXEQTL`) in the center.
+An tissue Concept, Code (SAB = `UBERON`) and Term (top left), a gene Concept, Code (SAB = `HGNC`) and preferred Term (bottom left), a chromosomal location Concept and Code (SAB = `HSCLO`) and a p-value (SAB = `PVALUEBINS`) all connect to a GTEx eQTL Concept and Code (SAB = `GTEXEQTL`) in the center. The `PVALUEBINS` Code has `upperbound` and `lowerbound` properties on it, which bin the eQTLs p-value between them.
 
-and GTEx eQTL Concept, Code and Terms (center). The GTEx Terms shown here represent a binned  and variant ID for the eQTL.
 
 ```cypher
 // Cypher query to reproduce the schema figure
