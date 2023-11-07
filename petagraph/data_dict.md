@@ -1,7 +1,7 @@
 
 # Petagraph Data Source Descriptions and Schema Reference
 
-Each section in this document represents a dataset/ontology that the Petagraph team has ingested into the graph. The title of each section are named in the following format: `Name` (`SAB`), were `Name` is the name of the dataset/ontology and `SAB` is the main Source Abbreviation of the dataset/ontology. SABs are properties on Code nodes and edges that allow a user to identify what dataset/ontology a Code or relationship came from.
+Each section in this document represents a dataset/ontology that the Petagraph team has ingested into the graph. The title of each section are named in the following format: `Name (SAB)`, were `Name` is the name of the dataset/ontology and `SAB` is the main Source Abbreviation of the dataset/ontology. SABs are properties on Code nodes and edges that allow a user to identify what dataset/ontology a Code or relationship came from.
 
 Each section contains the following information,
 
