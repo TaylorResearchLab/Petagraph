@@ -17,8 +17,6 @@ Each section contains the following information,
 
 **Preproccessing**: ...
 
-Schema figure:
-
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
 ```cypher
@@ -322,6 +320,7 @@ return * limit 1
 **Source**: 
 Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 2020)) were chosen based on their relevance to our preliminary use cases. The first two datasets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/GLY_000004) and mouse (https://data.glygen.org/GLY_000030). These datasets were modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (HGNC nodes) and mouse genes (HCOP nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. The next three datasets contain human O-linked and N-linked glycosylation information, namely O-GlcNac (human_proteoform_glycosylation_sites_o_glcnac_mcw.csv v1.12.3), Glyconnect (human_proteoform_glycosylation_sites_glyconnect.csv v1.12.3) and UniCarbKB (human_proteoform_glycosylation_sites_unicarbkb.csv v1.12.3) were obtained from GlyGen. These datasets contain information onof   human proteoforms, such asi.e. the exact residue on a protein isoform which is glycosylated, the type of glycosylation and the glycans found to bind that amino acid. To define relationships between human proteins from UniProtKB (UNIPROTKB concept nodes) (Boutet et al. 2016) and Glycans from the CHEBI resource (Hastings et al. 2016) (as included in CHEBI data) we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. In that process, we added 38,344 protein isoform relationships (type: “has_isoform”, target node SAB: “UNIPROTKB.ISOFROM”), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: “GLY.TYPE.SITE”), 38,344 gylcosylation_type_site relationships (type: “binds_site”, source node SAB: “GLYTOUCAN”), all with SAB: “GLYGEN”.
 **Preproccessing**: 
+
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN.png" alt="drawing" width="800"/>
 
 ```cypher
@@ -335,11 +334,19 @@ return * limit 1
 ## Gabriella Miller Kids First (KF) -- phenotypes and variants per gene
 **Source**: 
 Kids First phenotypes were added because we are specifically interested in evaluating patients in the Kids First database. We added phenotypes from 5,006 subjects, modeled as Concept nodes, and connected them to their respective HPO Concepts in the graph. As of 2022, we had access to phenotypes over 5,006 subject IDs. KFPheno_June2022_forKG.xlsx, represents 5,006 patient IDs
+
 Data containing mappings from human genes to human phenotypes (HGNC-HPO) were obtained from https://ci.monarchinitiative.org/view/hpo/job/hpo.annotations/lastSuccessfulBuild/artifact/rare-diseases/util/annotation/phenotype_to_genes.txt. These data contain 4,545 genes mapped to at least one phenotype and 10,896 phenotypes mapped to at least one gene
+
+Variant per Gene binning data
 
 **Preproccessing**:   DONT FORGET ABOUT HIGH RISK VARIANTS
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
+
+The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = KFPT). There are 5,329 KF Patient Concept and Code node pairs in  Petagraph. The KFPT Concept node is connected to one or more Human Phenotype Ontology (HPO) Concepts. The KFPT Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = KFGENEBIN) connect to the KFCOHORT Concept and an HGNC Concept. The KFGENEBIN Code node has a 'value' property which is the number of high risk and de novo variants for that gene for the patients in that cohort. 
+
+5329 KF Patients and 15 KF Cohorts
+
 
 ```cypher
 // Cypher query to reproduce the schema figure
