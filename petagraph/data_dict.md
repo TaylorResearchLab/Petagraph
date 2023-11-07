@@ -10,31 +10,31 @@ Each section contains the following information,
 - Schema figure description
 - Cypher query to produce the schema figure
 
-For clarity, all schema figures in this document follow this color format 
+    
+For clarity, all schema figures in this document follow this color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
-
+  
 
 [Genotype-Tissue Expression (GTEx) Portal]()
-
-
-
-Human-Mouse Orthologs (HGNCHCOP)
-Human gene-phenotype (HGNCHPO)
-Mouse gene-phenotype (HCOPMP)
-Human Phenotype Ontology (HPO) to Mouse Phenotype (MP) mappings (HPOMP)
-Human-Rat ENSEMBL orthology (RATHCOP)
-GENCODE-HSCLO mappings (GENCODEHSCLO)
-LINCS L1000 Gene-Perturbagen Associations (LINCS)
-Connectivity Map (CMAP)
-Homo Sapiens Chromosomal Ontology (HSCLO)
-Molecular Signatures Database (MSIGDB) 
-ClinVar (CLINVAR)
-Azimuth (AZ)
-Protein - Protein Interactions (STRING)
-Single Cell Fetal Heart expression data (ASP2019)
-GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)
-Gabriella Miller Kids First (KF) 
-4D Nucleome Program (4DN)
+[Human-Mouse Orthologs (HGNCHCOP)]()
+[Human gene-phenotype (HGNCHPO)]()
+[Mouse gene-phenotype (HCOPMP)]()
+[Human Phenotype Ontology (HPO) to Mouse Phenotype (MP) mappings (HPOMP)]()
+[Human-Rat ENSEMBL orthology (RATHCOP)]()
+[GENCODE-HSCLO mappings (GENCODEHSCLO)]()
+[LINCS L1000 Gene-Perturbagen Associations (LINCS)]()
+[Connectivity Map (CMAP)]()
+[Homo Sapiens Chromosomal Ontology (HSCLO)]()
+[Molecular Signatures Database (MSIGDB)]()
+[ClinVar (CLINVAR)]()
+[Azimuth (AZ)]()
+[Protein - Protein Interactions (STRING)]()
+[Single Cell Fetal Heart expression data (ASP2019)]()
+[GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)]()
+[Gabriella Miller Kids First (KF)]()
+[4D Nucleome Program (4DN)]()
+  
+  
 ## Genotype-Tissue Expression (GTEx) Portal
 **Source**: We ingested two datasets from **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
     - GTEx_Analysis_v8_eQTL (all files in this directory) -- only common eQTLs that were present in every tissue
