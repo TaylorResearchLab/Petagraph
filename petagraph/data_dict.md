@@ -64,12 +64,9 @@ return * limit 1
 
 **Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid HGNC Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (HGNC), tissue (UBERON), genomic location ([HSCLO](),see section below) and p-value (PVALUEBINS) nodes. The following list of numbers was used to create the p-value bins: `[0,1e-12,1e-11,1e-10,1e-9,1e-8,1e-7,1e-6,1e-5,1e-4,1e-3,.005,.01,.02,.03,.04,.05,.06]`
   
-
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
 
-
-An tissue Concept, Code (SAB = `UBERON`) and Term (top left), a gene Concept, Code (SAB = `HGNC`) and preferred Term (bottom left), a chromosomal location Concept and Code (SAB = `HSCLO`) and a p-value (SAB = `PVALUEBINS`) all connect to a GTEx eQTL Concept and Code (SAB = `GTEXEQTL`) in the center. The `PVALUEBINS` Code has `upperbound` and `lowerbound` properties on it, which bin the eQTLs p-value between them.
-
+A tissue Concept, Code (SAB = `UBERON`) and Term (top left), a gene Concept, Code (SAB = `HGNC`) and preferred Term (bottom left), a chromosomal location Concept and Code (SAB = `HSCLO`) and a p-value (SAB = `PVALUEBINS`) all connect to a GTEx eQTL Concept and Code (SAB = `GTEXEQTL`) in the center. The `PVALUEBINS` Code has `upperbound` and `lowerbound` properties on it, which bin the eQTLs p-value between them.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -84,15 +81,13 @@ return * limit 1
 ---
 ##  Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)
 **Source**:
-    The source of this data is 
-- Co-expression of genes were computed using Pearson’s correlation > 0.9 in 37 human tissues according to the GTEx expression data:
-- GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
-- Relationship Name: `coexpressed_with`
-- Tissue where the co-expression is detected is in the SAB of the relationship  “coexpressed_with”
+    The source of this data is the `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` from the GTEx Expression dataset above.
 
-**Preproccessing**:
+**Preproccessing**:  Co-expression of genes were computed using Pearson’s correlation. Gene pairs were included if the Pearson correlation coefficient was greater than 0.99. Computing co-expression pairs for all genes in all tissues resulted in many pairs even after filtering for pairs with a score above 0.99. To reduce the size of the data we included only gene co-expression pairs that are highly co-expressed in at least 5 tissues.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtexcoexp.png" alt="drawing" width="800"/>
+
+Two HGNC Concepts are shown along with their Codes and preferred Terms. They're connected by a `coexpressed_with` relationship. There is an `evidence_class` property on the relationship that specifies how many tissues the two genes are highly co-expressed in.
 
 ```cypher
 // Cypher query to reproduce the schema figure
