@@ -10,6 +10,31 @@ Each section contains the following information,
 - Schema figure description
 - Cypher query to produce the schema figure
 
+For clarity, all schema figures in this document follow this color format 
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
+
+
+[Genotype-Tissue Expression (GTEx) Portal]()
+
+
+
+Human-Mouse Orthologs (HGNCHCOP)
+Human gene-phenotype (HGNCHPO)
+Mouse gene-phenotype (HCOPMP)
+Human Phenotype Ontology (HPO) to Mouse Phenotype (MP) mappings (HPOMP)
+Human-Rat ENSEMBL orthology (RATHCOP)
+GENCODE-HSCLO mappings (GENCODEHSCLO)
+LINCS L1000 Gene-Perturbagen Associations (LINCS)
+Connectivity Map (CMAP)
+Homo Sapiens Chromosomal Ontology (HSCLO)
+Molecular Signatures Database (MSIGDB) 
+ClinVar (CLINVAR)
+Azimuth (AZ)
+Protein - Protein Interactions (STRING)
+Single Cell Fetal Heart expression data (ASP2019)
+GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)
+Gabriella Miller Kids First (KF) 
+4D Nucleome Program (4DN)
 ## Genotype-Tissue Expression (GTEx) Portal
 **Source**: We ingested two datasets from **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
     - GTEx_Analysis_v8_eQTL (all files in this directory) -- only common eQTLs that were present in every tissue
@@ -137,7 +162,8 @@ return * limit 1
 ```
 
 ---
-## Human Phenotype Ontology (HPO) - Mouse Phenotype (MP) mappings (HPOMP)
+## Human Phenotype Ontology (HPO) to Mouse Phenotype (MP) mappings (HPOMP)
+
 **Source**:  The PheKnowLator tool,  [https://github.com/callahantiff/PheKnowLator](https://github.com/callahantiff/PheKnowLator) was used to map HPO terms to MP terms using semantic matching.
 
 
@@ -156,6 +182,7 @@ return * limit 1
 
 ---
 ## Human-Rat ENSEMBL orthology (RATHCOP)
+
 **Source**:
 
 **Preproccessing**:
@@ -171,6 +198,7 @@ return * limit 1
 
 ---
 ## GENCODE-HSCLO mappings (GENCODEHSCLO)
+
 **Source**:
 **Preproccessing**:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GENCODEHSCLO.png" alt="drawing" width="800"/>
@@ -183,6 +211,7 @@ return * limit 1
 
 ---
 ### LINCS L1000 Gene-Perturbagen Associations (LINCS)
+
 **Source**:
 - LINCS L1000 Connectivity Map dataset was obtained from the Ma’ayan Lab Harmonizome portal:
 - [https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000](https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000)
@@ -202,6 +231,7 @@ return * limit 1
 
 ---
 ## Connectivity Map (CMAP)
+
 **Source**:
 - Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal:
 - [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
@@ -221,6 +251,7 @@ return * limit 1
 
 ---
 ## Homo Sapiens Chromosomal Ontology (HSCLO)
+
 **Source**: The HSCLO was created by Taha Ahooyi Mohseni.
 
 **Preproccessing**:  
@@ -237,6 +268,7 @@ return * limit 1
 
 ---
 ## Molecular Signatures Database (MSIGDB) 
+
 **Sourcee**: 
 - MSigDB v7.4 datasets C1, C2, C3, C8 and H were obtained and ingested from the MSigDB molecular signature database:
 - [https://www.gsea-msigdb.org/gsea/msigdb/](https://www.gsea-msigdb.org/gsea/msigdb/)
@@ -255,7 +287,8 @@ return * limit 1
 ```
 
 ---
-## CLINVAR
+## ClinVar (CLINVAR)
+
 **Source**:
 - ClinVar human genetic variant-disease associations were obtained from: [https://www.ncbi.nlm.nih.gov/clinvar/](https://www.ncbi.nlm.nih.gov/clinvar/)
 - Only associations with Pathogenic and/or Likely Pathogenic consequence which met assertion criteria were included in the graph.
@@ -288,7 +321,8 @@ return * limit 1
 ```
 
 ---
-## Search Tool for the Retrieval of Interacting Genes/Proteins (STRING)
+## Protein - Protein Interactions (STRING)
+
 **Source**: 
 We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
 **Preproccessing**: human only
@@ -301,7 +335,8 @@ return * limit 1
 ```
 
 ---
-## Single Cell Heart expression data (ASP2019)
+## Single Cell Fetal Heart expression data (ASP2019)
+
 **Source**: 
 Single cell Fetal heart data was obtained from Asp et al. 2019 https://pubmed.ncbi.nlm.nih.gov/31835037/ Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell fetal heart concept nodes were created and connections to cell type nodes (author defined cell types, as many Cell Ontology concepts defined in paper are not currently part of the Cell Ontology) and HGNC nodes connections were made
 **Preproccessing**: 
@@ -317,6 +352,7 @@ return * limit 1
 
 ---
 ## GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)
+
 **Source**: 
 Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 2020)) were chosen based on their relevance to our preliminary use cases. The first two datasets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/GLY_000004) and mouse (https://data.glygen.org/GLY_000030). These datasets were modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (HGNC nodes) and mouse genes (HCOP nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. The next three datasets contain human O-linked and N-linked glycosylation information, namely O-GlcNac (human_proteoform_glycosylation_sites_o_glcnac_mcw.csv v1.12.3), Glyconnect (human_proteoform_glycosylation_sites_glyconnect.csv v1.12.3) and UniCarbKB (human_proteoform_glycosylation_sites_unicarbkb.csv v1.12.3) were obtained from GlyGen. These datasets contain information onof   human proteoforms, such asi.e. the exact residue on a protein isoform which is glycosylated, the type of glycosylation and the glycans found to bind that amino acid. To define relationships between human proteins from UniProtKB (UNIPROTKB concept nodes) (Boutet et al. 2016) and Glycans from the CHEBI resource (Hastings et al. 2016) (as included in CHEBI data) we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. In that process, we added 38,344 protein isoform relationships (type: “has_isoform”, target node SAB: “UNIPROTKB.ISOFROM”), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: “GLY.TYPE.SITE”), 38,344 gylcosylation_type_site relationships (type: “binds_site”, source node SAB: “GLYTOUCAN”), all with SAB: “GLYGEN”.
 **Preproccessing**: 
@@ -332,6 +368,7 @@ return * limit 1
 
 ---
 ## Gabriella Miller Kids First (KF) -- phenotypes and variants per gene
+
 **Source**: 
 Kids First phenotypes were added because we are specifically interested in evaluating patients in the Kids First database. We added phenotypes from 5,006 subjects, modeled as Concept nodes, and connected them to their respective HPO Concepts in the graph. As of 2022, we had access to phenotypes over 5,006 subject IDs. KFPheno_June2022_forKG.xlsx, represents 5,006 patient IDs
 
@@ -345,9 +382,6 @@ Variant per Gene binning data
 
 The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = KFPT). There are 5,329 KF Patient Concept and Code node pairs in  Petagraph. The KFPT Concept node is connected to one or more Human Phenotype Ontology (HPO) Concepts. The KFPT Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = KFGENEBIN) connect to the KFCOHORT Concept and an HGNC Concept. The KFGENEBIN Code node has a 'value' property which is the number of high risk and de novo variants for that gene for the patients in that cohort. 
 
-5329 KF Patients and 15 KF Cohorts
-
-
 ```cypher
 // Cypher query to reproduce the schema figure
 match (c0:Code {SAB:'KFCOHORT'})-[r0:CODE]-(cui1:Concept)-[r1:belongs_to_cohort]-(cui2:Concept )-[r2:CODE]-(c1:Code {SAB:'KFPT'})
@@ -359,6 +393,7 @@ return * LIMIT 1
 
 ---
 ## 4D Nucleome Program (4DN)
+
 **Source**: 
 23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. The loop files were further processed for ingestion by first creating dataset nodes (SAB: “4DND”) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: “4DNF”) with the respective terms containing the file information, loop nodes (SAB: “4DNL”) attached to HSCLO nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: “4DNQ”) corresponding to donut q-value of the loops. 
 
@@ -378,6 +413,6 @@ return * limit 1
 
 
 
-# BACK TO TOP
+# [BACK TO TOP]()
 
 
