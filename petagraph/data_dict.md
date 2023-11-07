@@ -1,6 +1,8 @@
 
 # Petagraph Data Source Descriptions and Schema Reference
 
+Each section in this document represents a dataset/ontology that the Petagraph team has ingested into the graph. The title of each section are named in the following format: `Name` (`SAB`), were `Name` is the name of the dataset/ontology and `SAB` is the main Source Abbreviation of the dataset/ontology. SABs are properties on Code nodes and edges that allow a user to identify what dataset/ontology a Code or relationship came from.
+
 Each section contains the following information,
 
 - Title
@@ -14,8 +16,10 @@ Each section contains the following information,
 For clarity, all schema figures in this document follow this color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
   
-
 [Genotype-Tissue Expression (GTEx) Portal]()  
+[Genotype-Tissue Expression Portal, Expression data (GTEXEXP)]()
+[Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL)]()
+[Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)]()
 [Human-Mouse Orthologs (HGNCHCOP)]()  
 [Human gene-phenotype (HGNCHPO)]()  
 [Mouse gene-phenotype (HCOPMP)]()  
@@ -35,12 +39,10 @@ For clarity, all schema figures in this document follow this color format:
 [4D Nucleome Program (4DN)]()  
   
   
-## Genotype-Tissue Expression (GTEx) Portal
-**Source**: We ingested two datasets from **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets):**
-    - GTEx_Analysis_v8_eQTL (all files in this directory) -- only common eQTLs that were present in every tissue
-    - GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
+## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
+**Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
 
-**Preproccessing**: ...
+**Preproccessing**: Very little preprocessing was down on the median TPM 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
      
@@ -56,18 +58,19 @@ return * limit 1
 
   
 --- 
-## GTEXEQTL
+##  Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL) 
 
-**Source**: ... 
-  
+**Source**: The GTEx eQTL data we ingested comes from the file `GTEx_Analysis_v8_eQTL.tar` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
 
-**Preproccessing**: ...
+**Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid HGNC Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (HGNC), tissue (UBERON), genomic location ([HSCLO](),see section below) and p-value (PVALUEBINS) nodes.
   
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
 
 
-An UBERON Concept, Code and Term (top left), an HGNC Concept and preferred Term (top right) and GTEx eQTL Concept, Code and Terms (center). The GTEx Terms shown here represent a binned  p-value and variant ID for the eQTL.
+An tissue Concept, Code (SAB = `UBERON`) and Term (top left), a gene Concept, Code (SAB = `HGNC`) and preferred Term (bottom left), a chromosomal location Concept and Code (SAB = `HSCLO`) and a p-value (SAB = `PVALUEBINS`) all connect to a GTEx eQTL Concept and Code (SAB = `GTEXEQTL`) in the center.
+
+and GTEx eQTL Concept, Code and Terms (center). The GTEx Terms shown here represent a binned  and variant ID for the eQTL.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -80,8 +83,9 @@ return * limit 1
 ```
 
 ---
-## GTEXCOEXP
+##  Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)
 **Source**:
+    The source of this data is 
 - Co-expression of genes were computed using Pearson’s correlation > 0.9 in 37 human tissues according to the GTEx expression data:
 - GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct
 - Relationship Name: `coexpressed_with`
@@ -110,7 +114,7 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHCOP.png" alt="drawing" width="800"/>
 
-HGNC Concept (blue), Code (purple) and Term (green) from HGNC on the left and its corresponding Mouse gene Concept and code on the right  
+HGNC Concept (blue), Code (yellow) and Term (brown) from HGNC on the left and its corresponding Mouse gene Concept and code on the right. The SAB for this mapping dataset is `HGNCHCOP` and is located on the SAB property of the `in_1_to_1_relationship_with` and `inverse_in_1_to_1_relationship_with` relationships.
 
 
 ```cypher
@@ -129,9 +133,10 @@ These data are generated by the HP group to use OMIM disease-gene associations t
 
 **Preproccessing**:
 
+
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHPO.png" alt="drawing" width="800"/>
 
-A Concept (blue), Code (purple) and Term (green) node from HPO (left side) and HGNC (right side) and the bidirectional relationships between the two Concept nodes.
+HGNC Concept (blue), Code (yellow) and Term (brown) nodes are connected to an HPO Concept node through an `associated_with` relationship. The SAB for this mapping dataset is HGNCHPO and it is located on the SAB property of the `associated_with` and `inverse_associated_with` relationships.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -152,7 +157,7 @@ return * limit 1
     - MGI_Geno_DiseaseDO.rpt
 
 **Preproccessing**:
-Mouse genotype-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the genotype-phenotype-assertions-ALL.csv.gz and the statistical-results-ALL.csv.gz datasets from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the MGI_PhenoGenoMP.rpt (Table 5),  MGI_GenePheno.rpt (Table 9) and MGI_Geno_DiseaseDO.rpt (Table 10) datasets. All 3 datasets contain, among other data, phenotype-to-gene mappings. The datasets from IMPC and MGI were combined to create a master genotype-to-phenotype dataset. This master dataset contains 10,380 MP terms that are mapped to at least one gene and 17,936 genes that are mapped to at least one MP term.
+Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the genotype-phenotype-assertions-ALL.csv.gz and the statistical-results-ALL.csv.gz datasets from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the MGI_PhenoGenoMP.rpt (Table 5),  MGI_GenePheno.rpt (Table 9) and MGI_Geno_DiseaseDO.rpt (Table 10) datasets. All 3 datasets contain, among other data, phenotype-to-gene mappings. The datasets from IMPC and MGI were combined to create a master genotype-to-phenotype dataset. This master dataset contains 10,380 MP terms that are mapped to at least one gene and 17,936 genes that are mapped to at least one MP term.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HCOPMP.png" alt="drawing" width="800"/>
 
 ```cypher
