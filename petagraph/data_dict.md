@@ -138,21 +138,14 @@ return * limit 1
 ---
 ## Mouse gene-phenotype (HCOPMP)
 
-**Source**:
-- We ingested two datasets from the International Mouse Phenotype Consortium (**IMPC**) which contains data from the Knockout Mouse Phenotyping Program (**KOMP2**) at [http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/](http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/)
-    - genotype-phenotype-assertions-ALL.csv
-    - statistical-results-ALL.csv
-- And three datasets from Mouse Genome Informatics (**MGI**) at [http://www.informatics.jax.org/downloads/reports/index.html#pheno](http://www.informatics.jax.org/downloads/reports/index.html#pheno)
-    - MGI_PhenoGenoMP.rpt
-    - MGI_GenePheno.rpt
-    - MGI_Geno_DiseaseDO.rpt
+**Source**: Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
 
-**Preproccessing**:
-Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the genotype-phenotype-assertions-ALL.csv.gz and the statistical-results-ALL.csv.gz datasets from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the MGI_PhenoGenoMP.rpt (Table 5),  MGI_GenePheno.rpt (Table 9) and MGI_Geno_DiseaseDO.rpt (Table 10) datasets. All 3 datasets contain, among other data, phenotype-to-gene mappings. The datasets from IMPC and MGI were combined to create a master genotype-to-phenotype dataset. This master dataset contains 10,380 MP terms that are mapped to at least one gene and 17,936 genes that are mapped to at least one MP term.
+
+**Preproccessing**: The datasets from IMPC and MGI were combined to create a master gene-to-phenotype mapping dataset. This master dataset contains 10,380 mammalian phenotype (MP) terms that are mapped to at least one mouse gene and 17,936 mouse genes that are mapped to at least one MP term.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HCOPMP.png" alt="drawing" width="800"/>
 
-**Schema Description**: ...
+**Schema Description**: On the left hand side, an MP Concept (blue), Code (yellow) and Term (brown) nodes are connected to an HCOP Concept node through an `involved_in` relationship. The HCOP Code nodes represent mouse genes. The SAB for this mapping dataset is HCOPMP and it is located on the SAB property of the `involved_in` and `inverse_involved_in` relationships. 
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -163,11 +156,13 @@ return * limit 1
 ---
 ## Human Phenotype Ontology (HPO) to Mouse Phenotype (MP) mappings (HPOMP)
 
-**Source**:  The PheKnowLator tool,  [https://github.com/callahantiff/PheKnowLator](https://github.com/callahantiff/PheKnowLator) was used to map HPO terms to MP terms using semantic matching.
+**Source**:  Mappings between the HPO and MP were generated using the PheKnowLator tool,  [https://github.com/callahantiff/PheKnowLator](https://github.com/callahantiff/PheKnowLator) in December 2020.
+
+data that connects HPO Codes to MP Codes was generated using the PheKnowLator tool in December 2020 [PheKnowLator citation.] Here we only map mouse to human phenotypes that are present in the Gabriella Miller Kids First (GMKF) datasets in this instance of Petagraph, to support the use cases in this study, but other mappings could be included at a later date.
 
 
 **Preproccessing**:  Matches were then manually curated.
-data that connects HPO terms to MP terms was generated using the PheKnowLator tool in December 2020 [PheKnowLator citation.] Here we only map mouse to human phenotypes that are present in the Gabriella Miller Kids First (GMKF) datasets in this instance of Petagraph, to support the use cases in this study, but other mappings could be included at a later date. The mappings that PheKnowLator generated were then checked and edited manually for accuracy. We kept only the highest quality mappings which left us with ~1000 mappings. Mapping all HPO to MP terms is an ongoing project by the MONDO and uPheno projects [CITE]. 
+data that connects HPO terms to MP terms was generated using the PheKnowLator tool in December 2020 [PheKnowLator citation.] Here we only map mouse to human phenotypes that are present in the Gabriella Miller Kids First (KF) datasets in this instance of Petagraph, to support our use cases, but other mappings could be included at a later date. The mappings that PheKnowLator generated were then checked and edited manually for accuracy. We kept only the highest quality mappings which left us with ~1000 mappings. Mapping all HPO to MP terms is an ongoing project by the MONDO and uPheno projects [CITE]. 
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HPOMP.png" alt="drawing" width="800"/>
 
