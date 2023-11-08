@@ -1,0 +1,15 @@
+
+# This requirements file is for running the testing scripts
+
+
+# For database access
+neo4j
+
+# For computing tests
+numpy
+pandas
+polars
+
+# Testing suite
+pytest
+pytest-cov
