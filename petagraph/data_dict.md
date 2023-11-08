@@ -285,9 +285,12 @@ return * limit 1
 ## Protein - Protein Interactions (STRING)
 
 **Source**: 
-We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
+We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
 
-**Preproccessing**: human only
+**Preproccessing**: We converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
+
+
+mention human only data....
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
 
@@ -303,13 +306,13 @@ return * limit 1
 ## Single Cell Fetal Heart expression data (ASP2019)
 
 **Source**: 
-Single cell Fetal heart data was obtained from Asp et al. 2019 https://pubmed.ncbi.nlm.nih.gov/31835037/ Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell fetal heart concept nodes were created and connections to cell type nodes (author defined cell types, as many Cell Ontology concepts defined in paper are not currently part of the Cell Ontology) and HGNC nodes connections were made
+Single cell Fetal heart data was obtained from the Asp et al. 2019 publication "A Spatiotemporal Organ-Wide Gene Expression and Cell Atlas of the Developing Human Heart", which can be found at https://pubmed.ncbi.nlm.nih.gov/31835037/. 
 
-**Preproccessing**: ...
+**Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell heart concept nodes were created and connections to cell type nodes (author defined cell types, as many cell types  defined in the paper are not currently part of the Cell Ontology) and HGNC nodes connections were made. The Single cell heart Code nodes have an SAB of `ASP2019`  the cell types defined in the paper have an SAB of `ASP2019CLUSTER`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/SCHEART.png" alt="drawing" width="800"/>
 
-**Schema Description**: ...
+**Schema Description**: An `ASP2019CLUSTER` Code (yellow) and its Concept are shown in the upper left hand of the figure and an HGNC Concept node and its Code and Term nodes are shown on the upper right. Both of these Concepts are connected tp the `ASP2019` Concept in the center of the figure. The `ASP2019` Concept, which represents the expression of a gene in the fetal heart is connected to a `LOG2FCBINS` Concept node. The `LOG2FCBINS` Code node has `lowerbound` and `upperbound` properties which can be used to filter the log2 fold-change expression values of the genes as reported in the Asp study.
 
 ```cypher
 // Cypher query to reproduce the schema figure
