@@ -206,14 +206,9 @@ return * limit 1
 ---
 ### LINCS L1000 Gene-Perturbagen Associations (LINCS)
 
-**Source**:
-- LINCS L1000 Connectivity Map dataset was obtained from the Ma’ayan Lab Harmonizome portal:
-- [https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000](https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000)
-- Relationship SAB: `LINCS L1000`
-- Relationship Name: `positively_correlated_with_chemical_or_drug`, `positively_correlated_with_gene`, `negatively_correlated_with_chemical_or_drug`, `negatively_correlated_with_gene`
-    
-**Preproccessing**:
-We introduced gene-small molecule perturbagen relationships to the KG based on the LINCS L1000 [iii] edge list available on the Harmonizome database: https://maayanlab.cloud, (Duan et al. 2014; Rouillard et al. 2016) . These relationships were summarized from LINCS L1000 CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset. This was done by first finding the corresponding CHEBI Concept nodes for the L1000 small molecules and then establishing the relationship of such nodes to the KG HGNC nodes according to the edge list mentioned above. For that purpose, the relationships were collapsed to exclude the cell line, dosage, and treatment time information but the effect directions were retained in relationship types. This led to 3,198,094 relationships (bidirectional) with “LINCS” as the SAB and types of “negatively_correlated_with_gene”, “positively_correlated_with_gene”, “inverse_negatively_correlated_with_gene” and “inverse_positively_correlated_with_gene”.
+**Source**: The LINCS L1000 Connectivity Map dataset was obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000](https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000) (Duan et al. 2014; Rouillard et al. 2016). We introduced gene-small molecule perturbagen relationships to Petagraph based on the LINCS L1000 edge list.
+
+**Preproccessing**: These relationships were summarized from LINCS L1000 CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset. This was done by first finding the corresponding CHEBI Concept nodes for the L1000 small molecules and then establishing the relationship of such nodes to the Petagraph HGNC nodes according to the edge list mentioned above. For that purpose, the relationships were collapsed to exclude the cell line, dosage, and treatment time information but the effect directions were retained in relationship types. This led to 3,198,094 relationships (bidirectional) with `LINCS` as the SAB and the following relationship types: `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/LINCS.png" alt="drawing" width="800"/>
 
@@ -227,15 +222,9 @@ return * limit 1
 
 ---
 ## Connectivity Map (CMAP)
+**Source**: Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
 
-**Source**:
-- Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal:
-- [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
-- Relationship SAB: `CMAP`
-- Relationship Name: `positively_correlated_with_chemical_or_drug`, `positively_correlated_with_gene`, `negatively_correlated_with_chemical_or_drug`, `negatively_correlated_with_gene`
-  
-**Preproccessing**:  
-In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the KG CHEBI and HGNC nodes with types types of “negatively_correlated_with_gene”, “positively_correlated_with_gene”, “inverse_negatively_correlated_with_gene” and “inverse_positively_correlated_with_gene” and SAB of “CMAP”.
+**Preproccessing**:  In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the Petagraph `CHEBI` and `HGNC` nodes with types types of “negatively_correlated_with_gene”, “positively_correlated_with_gene”, “inverse_negatively_correlated_with_gene” and “inverse_positively_correlated_with_gene” and SAB of “CMAP”.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CMAP.png" alt="drawing" width="800"/>
 
@@ -254,7 +243,11 @@ return * limit 1
 
 **Preproccessing**: The dataset relationships as well as nodes use HSCLO as their SAB. HSCLO nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. "above_1Mbp_band", "above 1_kbp_band") and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. "precedes_10kbp_band"). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO.png" alt="drawing" width="800"/>
+
+### NEED BETTER HSCLO FIGURE
+<img src=
+
+"https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO.png" alt="drawing" width="800"/>
 
 **Schema Description**: 
 
