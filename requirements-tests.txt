@@ -5,6 +5,9 @@
 # For database access
 neo4j
 
+# For passing in Neo4j Password as a GITHUB_ACTIONS secret in the actions workflow env
+argparse
+
 # For computing tests
 numpy
 pandas
