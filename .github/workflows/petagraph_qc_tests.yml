@@ -28,7 +28,9 @@ jobs:
         with:
           lfs: true
       - name: Checkout LFS objects
-        run: git lfs checkout
+        run: |
+            git lfs checkout
+            ls data
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -40,9 +42,8 @@ jobs:
           pip install -r requirements-tests.txt
       - shell: bash
         env:
-          SUPER_SECRET: ${{ secrets.SuperSecret }}
-    run: |
-      example-command "$SUPER_SECRET"
+          NEO4J_PASSWORD: ${{ secrets.NEO4J_TAYLORLAB_PASSWORD }}
+        run: example-command tests --"$NEO4J_PASSWORD"
       - name: Test with pytest
         run: |
           cd tests;
