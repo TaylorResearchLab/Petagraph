@@ -224,7 +224,7 @@ return * limit 1
 ### NEED BETTER HSCLO FIGURE
 <img src=
 
-"https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO.png" alt="drawing" width="800"/>
+"https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
 
 **Schema Description**: 
 
@@ -335,7 +335,7 @@ Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 202
 
 **Preproccessing**: ...
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN_2.png" alt="drawing" width="800"/>
 
 **Schema Description**: ... 
 
@@ -374,7 +374,7 @@ return * LIMIT 1
 
 **Preproccessing**: ...
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN_2.png" alt="drawing" width="800"/>
 
 **Schema Description**: ...
 
