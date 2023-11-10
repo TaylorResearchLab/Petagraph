@@ -268,8 +268,13 @@ return * limit 1
 
 ---
 ## Azimuth (AZ)  
+
+
 **Source**:  ...
+
+
 **Preproccessing**: ...
+
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
 
@@ -344,18 +349,13 @@ return * limit 1
 ---
 ## Gabriella Miller Kids First (KF) -- phenotypes and variants per gene
 
-**Source**: 
-Kids First phenotypes were added because we are specifically interested in evaluating patients in the Kids First database. We added phenotypes from 5,006 subjects, modeled as Concept nodes, and connected them to their respective HPO Concepts in the graph. As of 2022, we had access to phenotypes over 5,006 subject IDs. KFPheno_June2022_forKG.xlsx, represents 5,006 patient IDs
+**Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts were also for the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First. 
 
-Data containing mappings from human genes to human phenotypes (HGNC-HPO) were obtained from https://ci.monarchinitiative.org/view/hpo/job/hpo.annotations/lastSuccessfulBuild/artifact/rare-diseases/util/annotation/phenotype_to_genes.txt. These data contain 4,545 genes mapped to at least one phenotype and 10,896 phenotypes mapped to at least one gene
-
-Variant per Gene binning data
-
-**Preproccessing**:   DONT FORGET ABOUT HIGH RISK VARIANTS
-
+**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of KFPT, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort.
+  
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
 
-**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = KFPT). There are 5,329 KF Patient Concept and Code node pairs in  Petagraph. The KFPT Concept node is connected to one or more Human Phenotype Ontology (HPO) Concepts. The KFPT Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = KFGENEBIN) connect to the KFCOHORT Concept and an HGNC Concept. The KFGENEBIN Code node has a 'value' property which is the number of high risk and de novo variants for that gene for the patients in that cohort. 
+**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = KFPT). There are 5,006 KF Patient Concept and Code node pairs in Petagraph. The KFPT Concept node is connected to one or more Human Phenotype Ontology (HPO) Concepts. The KFPT Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = KFGENEBIN) connect to the KFCOHORT Concept and an HGNC Concept. The KFGENEBIN Code node has a 'value' property which is the number of high risk and de novo variants for that gene for the patients in that cohort. 
 
 ```cypher
 // Cypher query to reproduce the schema figure
