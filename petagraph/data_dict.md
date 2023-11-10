@@ -253,12 +253,13 @@ return * limit 1
 
 ---
 ## ClinVar (CLINVAR)
-**Source**: Human genetic variant-disease associations were obtained from: [https://www.ncbi.nlm.nih.gov/clinvar/](https://www.ncbi.nlm.nih.gov/clinvar/). Only associations with Pathogenic or Likely Pathogenic consequence scores were included in the graph. We also did not include variants that affect a subset of genes (where there was no one-to-one relationship between a gene and phenotype/disease).
+**Source**: Human genetic variant-disease associations were obtained from: [https://www.ncbi.nlm.nih.gov/clinvar/](https://www.ncbi.nlm.nih.gov/clinvar/). Only associations with Pathogenic or Likely Pathogenic consequence scores were included in the graph. We also did not include variants that affect a subset of genes (where there was no one-to-one relationship between a gene and phenotype/disease).  
+
 **Preproccessing**: The ClinVar human genetic variants-phenotype submission summary dataset (2023-01-05) was utilized to define relationships between human genes and phenotypes (Landrum et al. 2018). To retrieve the target phenotype/disease we used MEDGEN IDs listed in the ClinVar dataset (also already present in Petagraph). The `CLINVAR` variant-disease mappings gave rise to 214,040 new relationships (with the following characteristics [Type: “gene_associated_with_disease_or_phenotype”, SAB: “CLINVAR”] and [type: inverse_gene_associated_with_disease_or_phenotype, SAB: “CLINVAR”] connecting HGNC and MEDGEN, MONDO, HPO, EFO and MESH Concept nodes. 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CLINVAR.png" alt="drawing" width="800"/>
 
-**Schema Description**: ...
+**Schema Description**: 
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -270,7 +271,7 @@ return * limit 1
 ## Azimuth (AZ)  
 
 
-**Source**:  ...
+**Source**:  
 
 
 **Preproccessing**: ...
@@ -289,8 +290,7 @@ return * limit 1
 ---
 ## Protein - Protein Interactions (STRING)
 
-**Source**: 
-We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
+**Source**:  We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
 
 **Preproccessing**: We converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
 
