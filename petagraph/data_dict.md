@@ -256,7 +256,7 @@ RETURN * LIMIT 1
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/MSIGDB.png" alt="drawing" width="800"/>
 
-**Schema Description**: 
+**Schema Description**: An `HGNC` Concept, Code and Term node are connected to an `HGNC` Concept, Code and Term node on the right. The `MSIGDB` SAB is located on the SAB property for both sets of relationships
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -272,7 +272,7 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CLINVAR_2.png" alt="drawing" width="800"/>
 
-**Schema Description**: 
+**Schema Description**: An HGNC Concept, Code and Term node are shown on the left, connected to an HPO Concept, Code and Term node on the right through the `gene_associated_with_disease_or_phenotype` relationship. The SAB for this mapping dataset, `CLINVAR` is found on the SAB property of the relationship.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -302,11 +302,8 @@ return * limit 1
 match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
 
-
-
 match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 match (b)-[r3 {SAB:'AZ'}]-(e:Concept)-[:CODE]-(f:Code)
-
 return distinct f.SAB
 ```
 
@@ -317,12 +314,11 @@ return distinct f.SAB
 
 **Preproccessing**: We converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
 
-
-mention human only data....
+mention human only data was ingested....
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
 
-**Schema Description**: ... 
+**Schema Description**: A `UNIPROTKB` Concept, Code and Term node are connected to another set of `UNIPROTKB` Concept, Code and Term nodes on the right through an `interacts_with` relationship. The SAB property on the edge of this relationship is `STRING`.
 
 ```cypher
 // Cypher query to reproduce the schema figure
