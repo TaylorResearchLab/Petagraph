@@ -233,19 +233,19 @@ return * limit 1
 **Preproccessing**: The dataset relationships as well as nodes use HSCLO as their SAB. HSCLO nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. "above_1Mbp_band", "above 1_kbp_band") and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. "precedes_10kbp_band"). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
 
 
-### NEED BETTER HSCLO FIGURE
-<img src=
-
-"https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
 
 **Schema Description**: 
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'HSCLO'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code)
-MATCH (b)-[r3:loop_ds_end]-(c:Concept)-[:CODE]-(e:Code {SAB:'4DNL'})
-MATCH  (b)-[r4:located_in]-(c2:Concept)-[:CODE]-(f:Code {SAB:'GTEXEQTL'})
-return * limit 1
+MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mbp_band {SAB:'HSCLO'}]->(c3:Concept)-[:above_100kbp_band {SAB:'HSCLO'}]->(c4:Concept)-[:above_10kbp_band {SAB:'HSCLO'}]->(c5:Concept)-[:above_1kbp_band {SAB:'HSCLO'}]->(c6:Concept),
+(c3:Concept)-[:precedes_1Mbp_band {SAB:'HSCLO'}]->(c7:Concept),
+(c4:Concept)-[:precedes_100kbp_band {SAB:'HSCLO'}]->(c8:Concept),
+(c5:Concept)-[:precedes_10kbp_band {SAB:'HSCLO'}]->(c9:Concept),
+(c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
+(c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
+RETURN * LIMIT 1
 ```
 
 ---
@@ -276,7 +276,10 @@ return * limit 1
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'UBERON'})-[r0:CODE]-(b:Concept)-[r1 {SAB:'CLINVAR'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+match (a:Code {SAB:'HPO'})<-[r0:CODE]-(b:Concept)-[r1 {SAB:'CLINVAR'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+where id(r1) = 29001875
+match (a:Code {SAB:'HPO'})-[r0:CODE]-(b:Concept)-[r3 {SAB:'CLINVAR'}]->(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+where id(r3) = 52494094
 return * limit 1
 ```
 
@@ -298,6 +301,13 @@ return * limit 1
 // Cypher query to reproduce the schema figure
 match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
+
+
+
+match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+match (b)-[r3 {SAB:'AZ'}]-(e:Concept)-[:CODE]-(f:Code)
+
+return distinct f.SAB
 ```
 
 ---
@@ -353,9 +363,7 @@ return * limit 1
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'GLY.TYPE.SITE'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'GLYTOUCAN'})
-match (b)-[r3]-(e:Concept)-[:CODE]-(f:Code {SAB:'UNIPROTKB.ISOFORM'})
-return * limit 1
+MATCH (o0)<-[:CODE]-(g:Concept)-[:has_gene_product]->(u:Concept)-[:has_isoform]-(i:Concept)-[:has_type_site]-(s:Concept)<-[:binds_site]-(l:Concept),(g)-[:PREF_TERM]->(t1:Term),(u)-[:CODE]->(o2:Code),(u)-[PREF_TERM]->(t2:Term),(s)-[:CODE]->(o3:Code), (l)-[:CODE]->(o4:Code),(i)-[:CODE]->(o5:Code) RETURN * LIMIT 1
 ```
 
 ---
@@ -392,12 +400,15 @@ return * LIMIT 1
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'4DNF'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'4DNL'})
-match (b)-[r3]-(e:Concept)-[:CODE]-(f:Code {SAB:'4DND'})
-match (c)-[:loop_ds_end]-(g:Concept)-[:CODE]-(h:Code {SAB:'HSCLO'})
-match (c)-[r4]-(i:Concept)-[:CODE]-(j:Code {SAB:'4DNQ'})
-//match (j)-[r5]-(k:Concept)-[:CODE]-(l:Code {SAB:'UBERON'})
-return * limit 1
+MATCH (loop_concept:Concept)-[r2:loop_us_end {SAB:'4DN'}]->(us_end_concept:Concept)-[:CODE]->(us_end_code:Code)
+MATCH (loop_concept:Concept)-[r3:loop_ds_start {SAB:'4DN'}]->(ds_start_concept:Concept)-[:CODE]->(ds_start_code:Code)
+MATCH (loop_concept:Concept)-[r4:loop_ds_end {SAB:'4DN'}]->(ds_end_concept:Concept)-[:CODE]->(ds_end_code:Code)
+MATCH (loop_code:Code {SAB:'4DNL'})<-[:CODE]-(loop_concept:Concept)-[r5:loop_has_qvalue_bin {SAB:'4DN'}
+]->(qvalue_bin_concept:Concept)-[:CODE]->(qvalue_bin_code:Code {SAB:'4DNQ'})
+MATCH (file_code:Code {SAB:'4DNF'})<-[:CODE]-(file_concept:Concept)-[r6:file_has_loop {SAB:'4DN'}]->(loop_concept:Concept)
+MATCH (dataset_code:Code {SAB:'4DND'})<-[:CODE]-(dataset_concept:Concept)-[r7:dataset_has_file {SAB:'4DN'}]->(file_concept:Concept)
+MATCH (dataset_concept:Concept)-[r8:dataset_involves_cell_type {SAB:'4DN'}]->(cell_type_concept:Concept)-[:PREF_TERM]->(cell_type_term:Term )
+RETURN * LIMIT 1
 ```
 
 
