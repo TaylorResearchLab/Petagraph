@@ -39,7 +39,8 @@ For clarity, all schema figures in this document follow this color format:
   
   
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
-**Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
+**Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.  
+
 **Preproccessing**: No preprocessing was done on the median TPM dataset. We only filtered for median TPM expression levels that corresponded to an ENSEMBL gene id that could be mapped back to an HGNC Code.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_exp.png" alt="drawing" width="800"/>
@@ -57,7 +58,8 @@ return * limit 1
   
 --- 
 ##  Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL) 
-**Source**: The GTEx eQTL data we ingested comes from the file `GTEx_Analysis_v8_eQTL.tar` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.
+**Source**: The GTEx eQTL data we ingested comes from the file `GTEx_Analysis_v8_eQTL.tar` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.  
+
 **Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid HGNC Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (HGNC), tissue (UBERON), genomic location ([HSCLO](),see section below) and p-value (PVALUEBINS) nodes. The following list of numbers was used to create the p-value bins: `[0,1e-12,1e-11,1e-10,1e-9,1e-8,1e-7,1e-6,1e-5,1e-4,1e-3,.005,.01,.02,.03,.04,.05,.06]`
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtex_eqtl.png" alt="drawing" width="800"/>
@@ -77,6 +79,7 @@ return * limit 1
 ---
 ##  Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)
 **Source**: The source of this data is the `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` from the GTEx Expression dataset above.
+
 **Preproccessing**:  Co-expression of genes was computed using Pearson’s correlation. Gene pairs were included if the Pearson correlation coefficient was greater than 0.99. Computing co-expression pairs for all genes in all tissues resulted in many pairs even after filtering for pairs with a score above 0.99. To reduce the size of the data we included only gene co-expression pairs that are highly co-expressed in at least 5 tissues.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtexcoexp.png" alt="drawing" width="800"/>
