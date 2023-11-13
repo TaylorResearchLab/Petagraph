@@ -178,6 +178,29 @@ where a.CODE contains 'ENSR'
 return * limit 1
 ```
 
+
+---
+## Homo Sapiens Chromosomal Location Ontology (HSCLO)
+**Source**: The Homo Sapiens Chromosomal Location Ontology (HSCLO)  was created by Taha Ahooyi Mohseni of the Petagraph team. HSCLO was primarily created to connect 4DN loop coordinates to the rest of the graph through the mapping between HSCLO and GENCODE. HSCLO was later utilized to connect GTEXEQTL locations in the graph as searchable nodes at 1kbp resolution. 
+
+**Preproccessing**: The dataset relationships as well as nodes use HSCLO as their SAB. HSCLO nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. "above_1Mbp_band", "above 1_kbp_band") and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. "precedes_10kbp_band"). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
+
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
+
+**Schema Description**: 
+
+```cypher
+// Cypher query to reproduce the schema figure
+MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mbp_band {SAB:'HSCLO'}]->(c3:Concept)-[:above_100kbp_band {SAB:'HSCLO'}]->(c4:Concept)-[:above_10kbp_band {SAB:'HSCLO'}]->(c5:Concept)-[:above_1kbp_band {SAB:'HSCLO'}]->(c6:Concept),
+(c3:Concept)-[:precedes_1Mbp_band {SAB:'HSCLO'}]->(c7:Concept),
+(c4:Concept)-[:precedes_100kbp_band {SAB:'HSCLO'}]->(c8:Concept),
+(c5:Concept)-[:precedes_10kbp_band {SAB:'HSCLO'}]->(c9:Concept),
+(c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
+(c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
+RETURN * LIMIT 1
+```
+
 ---
 ## GENCODE-HSCLO mappings (GENCODEHSCLO)
 **Source**: ... 
@@ -223,28 +246,6 @@ return * limit 1
 // Cypher query to reproduce the schema figure
 match (a:Code {SAB:'CHEBI'})-[r0:CODE]-(b:Concept)-[r1 {SAB:'CMAP'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
-```
-
----
-## Homo Sapiens Chromosomal Ontology (HSCLO)
-**Source**: The Homo Sapiens Chromosomal Location Ontology (HSCLO)  was created by Taha Ahooyi Mohseni of the Petagraph team. HSCLO was primarily created to connect 4DN loop coordinates to the rest of the graph through the mapping between HSCLO and GENCODE. HSCLO was later utilized to connect GTEXEQTL locations in the graph as searchable nodes at 1kbp resolution. 
-
-**Preproccessing**: The dataset relationships as well as nodes use HSCLO as their SAB. HSCLO nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. "above_1Mbp_band", "above 1_kbp_band") and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. "precedes_10kbp_band"). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
-
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
-
-**Schema Description**: 
-
-```cypher
-// Cypher query to reproduce the schema figure
-MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mbp_band {SAB:'HSCLO'}]->(c3:Concept)-[:above_100kbp_band {SAB:'HSCLO'}]->(c4:Concept)-[:above_10kbp_band {SAB:'HSCLO'}]->(c5:Concept)-[:above_1kbp_band {SAB:'HSCLO'}]->(c6:Concept),
-(c3:Concept)-[:precedes_1Mbp_band {SAB:'HSCLO'}]->(c7:Concept),
-(c4:Concept)-[:precedes_100kbp_band {SAB:'HSCLO'}]->(c8:Concept),
-(c5:Concept)-[:precedes_10kbp_band {SAB:'HSCLO'}]->(c9:Concept),
-(c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
-(c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
-RETURN * LIMIT 1
 ```
 
 ---
@@ -311,7 +312,7 @@ return distinct f.SAB
 
 **Source**:  We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
 
-**Preproccessing**: We converted ENSP entries to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
+**Preproccessing**: We converted ENSEMBL protein IDs to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
 
 mention human only data was ingested....
 
