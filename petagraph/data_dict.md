@@ -240,7 +240,7 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CMAP.png" alt="drawing" width="800"/>
 
-**Schema Description**: ...
+**Schema Description**: A `CHEBI` Concept, Code node are shown on the left and an `HGNC` Concept and Code pair are shown on the right. The two Concepts are connected through a `positively_correlated_with_chemical_or_drug` relationship. There also exists a `negatively_correlated_with_chemical_or_drug` relationship.  The `CMAP` SAB can be found on the SAB property of the Concept-Concept relationships.
 
 ```cypher
 // Cypher query to reproduce the schema figure
