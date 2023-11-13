@@ -84,12 +84,11 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/gtexcoexp.png" alt="drawing" width="800"/>
 
-**Schema Description**: Two HGNC Concepts are shown along with their Codes and preferred Terms. They're connected by a `coexpressed_with` relationship. There is an `evidence_class` property on the relationship that specifies how many tissues the two genes are highly co-expressed in.
+**Schema Description**: Two HGNC Concepts are shown along with their Codes and preferred Terms. They're connected by a `coexpressed_with` relationship. There is an `evidence_class` property on the relationship that specifies how many tissues the two genes are highly co-expressed in. The SAB for this dataset `GTEXCOEXP` is located on the `coexpressed_with` and the `inverse_coexpressed_with` 
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code)-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-where type(r1) starts with 'coexpressed_with'
+match (a:Code)-[r0:CODE]-(b:Concept)-[r1:coexpressed_with {SAB:'GTEXCOEXP'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
 ```
 
