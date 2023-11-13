@@ -313,9 +313,7 @@ return distinct f.SAB
 
 **Source**:  We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
 
-**Preproccessing**: We converted ENSEMBL protein IDs to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship type: “interacts_with” and “inverse_interacts_with”, SAB: “STRING” and evidence_class denotes the combined score for the relationship.
-
-mention human only data was ingested....
+**Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB: `STRING` and `evidence_class` which denotes the combined score for the relationship, found on both these Concept-Concept relationships.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
 
@@ -332,11 +330,11 @@ return * limit 1
 
 **Source**: Single cell Fetal heart data was obtained from the Asp et al. 2019 publication "A Spatiotemporal Organ-Wide Gene Expression and Cell Atlas of the Developing Human Heart", which can be found at https://pubmed.ncbi.nlm.nih.gov/31835037/. 
 
-**Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell heart concept nodes were created and connections to cell type nodes (author defined cell types, as many cell types  defined in the paper are not currently part of the Cell Ontology) and HGNC nodes connections were made. The Single cell heart Code nodes have an SAB of `ASP2019`  the cell types defined in the paper have an SAB of `ASP2019CLUSTER`.
+**Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell heart concept nodes were created and connections to cell type nodes (author defined cell types, as many cell types  defined in the paper are not currently part of the Cell Ontology) and `HGNC` nodes connections were made. The Single cell heart Code nodes have an SAB of `ASP2019`  the cell types defined in the paper have an SAB of `ASP2019CLUSTER`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/SCHEART.png" alt="drawing" width="800"/>
 
-**Schema Description**: An `ASP2019CLUSTER` Code (yellow) and its Concept are shown in the upper left hand of the figure and an HGNC Concept node and its Code and Term nodes are shown on the upper right. Both of these Concepts are connected tp the `ASP2019` Concept in the center of the figure. The `ASP2019` Concept, which represents the expression of a gene in the fetal heart is connected to a `LOG2FCBINS` Concept node. The `LOG2FCBINS` Code node has `lowerbound` and `upperbound` properties which can be used to filter the log2 fold-change expression values of the genes as reported in the Asp study.
+**Schema Description**: An `ASP2019CLUSTER` Code (yellow) and its Concept are shown in the upper left hand of the figure and an `HGNC` Concept node and its Code and Term nodes are shown on the upper right. Both of these Concepts are connected tp the `ASP2019` Concept in the center of the figure. The `ASP2019` Concept, which represents the expression of a gene in the fetal heart is connected to a `LOG2FCBINS` Concept node. The `LOG2FCBINS` Code node has `lowerbound` and `upperbound` properties which can be used to filter the log2 fold-change expression values of the genes as reported in the Asp study.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -352,7 +350,7 @@ return * limit 1
 **Source**: Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 2020)) were chosen based on their relevance to our preliminary use cases. The first two datasets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/GLY_000004) and mouse (https://data.glygen.org/GLY_000030). The other three datasets contain information on human proteoforms, such as the exact residue on a protein isoform which is glycosylated, the type of glycosylation and the glycans found to bind that amino acid. 
  
 
-**Preproccessing**: The first two datasets which contain the names of genes that code for glycosyltransferase proteins  modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (HGNC nodes) and mouse genes (HCOP nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. To model the next three datasets, which contain data on protein isoform glycosylation, we created relationships between human proteins from UniProtKB (UNIPROTKB Concept nodes) (Boutet et al. 2016) and Glycans from the CHEBI resource (Hastings et al. 2016). More specifically, we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. In that process, we added 38,344 protein isoform relationships (type: “has_isoform”, target node SAB: “UNIPROTKB.ISOFROM”), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: “GLY.TYPE.SITE”), 38,344 gylcosylation_type_site relationships (type: “binds_site”, source node SAB: “GLYTOUCAN”), all with SAB: “GLYGEN”.
+**Preproccessing**: The first two datasets which contain the names of genes that code for glycosyltransferase proteins  modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (`HGNC` nodes) and mouse genes (`HCOP` nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. To model the next three datasets, which contain data on protein isoform glycosylation, we created relationships between human proteins from UniProtKB (`UNIPROTKB` Concept nodes) (Boutet et al. 2016) and Glycans from the `CHEBI` resource (Hastings et al. 2016). More specifically, we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. This data added 38,344 protein isoform relationships (type: `has_isoform`, target node SAB: `UNIPROTKB.ISOFROM`), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: `GLY.TYPE.SITE`), 38,344 gylcosylation_type_site relationships (type: `binds_site`, source node SAB: `GLYTOUCAN`), all with SAB: `GLYGEN`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN_2.png" alt="drawing" width="800"/>
 
@@ -368,11 +366,11 @@ MATCH (o0)<-[:CODE]-(g:Concept)-[:has_gene_product]->(u:Concept)-[:has_isoform]-
 
 **Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts were also for the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First. 
 
-**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of KFPT, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort.
+**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort.
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
 
-**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = KFPT). There are 5,006 KF Patient Concept and Code node pairs in Petagraph. The KFPT Concept node is connected to one or more Human Phenotype Ontology (HPO) Concepts. The KFPT Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = KFGENEBIN) connect to the KFCOHORT Concept and an HGNC Concept. The KFGENEBIN Code node has a 'value' property which is the number of high risk and de novo variants for that gene for all the patients in that cohort. 
+**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = `KFPT`). There are 5,006 KF Patient Concept and Code node pairs in Petagraph. The `KFPT` Concept node is connected to one or more Human Phenotype Ontology (`HPO`) Concepts. The `KFPT` Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = `KFGENEBIN`) connect to the `KFCOHORT` Concept and an HGNC Concept. The `KFGENEBIN` Code node has a 'value' property which is the number of high risk and de novo variants for that gene for all the patients in that cohort. 
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -386,10 +384,10 @@ return * LIMIT 1
 ---
 ## 4D Nucleome Program (4DN)
 
-**Source**: 
-23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. The loop files were further processed for ingestion by first creating dataset nodes (SAB: “4DND”) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: “4DNF”) with the respective terms containing the file information, loop nodes (SAB: “4DNL”) attached to HSCLO nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: “4DNQ”) corresponding to donut q-value of the loops. 
+**Source**: 23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. 
 
-**Preproccessing**: ...
+**Preproccessing**: The loop files were processed for ingestion by first creating dataset nodes (SAB: `4DND`) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: `4DNF`) with the respective terms containing the file information, loop nodes (SAB: `4DNL`) attached to `HSCLO` nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: `4DNQ`) corresponding to donut q-value of the loops. 
+
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN_2.png" alt="drawing" width="800"/>
 
