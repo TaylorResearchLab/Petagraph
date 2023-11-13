@@ -13,29 +13,29 @@ Each section contains the following information,
 - Cypher query to produce the schema figure
 
     
-For clarity, all schema figures in this document follow this color format:
+For clarity, all schema figures in this document follow this node color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
   
-[Genotype-Tissue Expression Portal, Expression data (GTEXEXP)]()  
-[Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL)]()  
-[Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)]()  
-[Human-Mouse Orthologs (HGNCHCOP)]()  
-[Human gene-phenotype (HGNCHPO)]()  
-[Mouse gene-phenotype (HCOPMP)]()  
-[Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)]()  
-[Human-Rat ENSEMBL orthology (RATHCOP)]()  
-[GENCODE-HSCLO mappings (GENCODEHSCLO)]()  
-[LINCS L1000 Gene-Perturbagen Associations (LINCS)]()  
-[Connectivity Map (CMAP)]()  
-[Homo Sapiens Chromosomal Ontology (HSCLO)]()  
-[Molecular Signatures Database (MSIGDB)]()  
-[ClinVar (CLINVAR)]()  
-[Azimuth (AZ)]()  
-[Protein - Protein Interactions (STRING)]()  
-[Single Cell Fetal Heart expression data (ASP2019)]()  
-[GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)]()  
-[Gabriella Miller Kids First (KF)]()  
-[4D Nucleome Program (4DN)]()  
+[GTEx Expression data (GTEXEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-expression-data-gtexexp)  
+[GTEx eQTL data (GTEXEQTL)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-eqtl-data-gtexeqtl)  
+[GTEx Coexpression data (GTEXCOEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-coexpression-data-gtexcoexp)  
+[Human-Mouse Orthologs (HGNCHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-mouse-orthologs-hgnchcop)  
+[Human gene-phenotype (HGNCHPO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-gene-phenotype-hgnchpo)  
+[Mouse gene-phenotype (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
+[Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-phenotype-ontology-to-mouse-phenotype-mappings-hpomp)  
+[Human-Rat ENSEMBL orthologs (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
+[GENCODE-HSCLO mappings (GENCODEHSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gencode-hsclo-mappings-gencodehsclo)  
+[LINCS L1000 Gene-Perturbagen Associations (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-gene-perturbagen-associations-lincs)  
+[Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
+[Homo Sapiens Chromosomal Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-ontology-hsclo)  
+[Molecular Signatures Database (MSIGDB)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#molecular-signatures-database-msigdb)  
+[ClinVar (CLINVAR)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#clinvar-clinvar)  
+[Azimuth (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
+[Protein - Protein Interactions (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#protein---protein-interactions-string)  
+[Single Cell Fetal Heart expression data (ASP2019)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#single-cell-fetal-heart-expression-data-asp2019)  
+[GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
+[Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
+[4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
   
   
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
@@ -162,7 +162,7 @@ return * limit 1
 ```
 
 ---
-## Human-Rat ENSEMBL orthology (RATHCOP)
+## Human-Rat ENSEMBL orthologs (RATHCOP)
 **Source**: The source of the human ENSEMBL to rat ENSEMBL orthologs is the HGNC Comparisons of Orthology Predictions tool. Go to https://www.genenames.org/tools/hcop/, scroll to the Bulk Downloads section at bottom of the page, select `Rat` in the first drop down menu and `15 columns` and download the data.
 
 **Preproccessing**: No preprocessing was needed on these mappings, we simply selected the `human_ensembl_gene` and `rat_ensembl_gene` columns.
@@ -408,6 +408,6 @@ RETURN * LIMIT 1
 
 
 
-# [BACK TO TOP]()
+# [BACK TO TOP](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#petagraph-data-source-descriptions-and-schema-reference)
 
 
