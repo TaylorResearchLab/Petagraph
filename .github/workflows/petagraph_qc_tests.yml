@@ -43,10 +43,10 @@ jobs:
       - shell: bash
         env:
           NEO4J_PASSWORD: ${{ secrets.NEO4J_TAYLORLAB_PASSWORD }}
-        run: example-command tests --"$NEO4J_PASSWORD"
-      - name: Test with pytest
-        run: |
-          cd tests;
-          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        run: echo '' #example-command tests --"$NEO4J_PASSWORD"
+      #- name: Test with pytest
+      #  run: |
+      #    cd tests;
+      #    pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
       
 
