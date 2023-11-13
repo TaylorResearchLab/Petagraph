@@ -24,7 +24,7 @@ For clarity, all schema figures in this document follow this node color format:
 [Mouse gene-phenotype (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
 [Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-phenotype-ontology-to-mouse-phenotype-mappings-hpomp)  
 [Human-Rat ENSEMBL orthologs (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
-[Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo) 
+[Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo)  
 [GENCODE-HSCLO mappings (GENCODEHSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gencode-hsclo-mappings-gencodehsclo)  
 [LINCS L1000 Gene-Perturbagen Associations (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-gene-perturbagen-associations-lincs)  
 [Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
