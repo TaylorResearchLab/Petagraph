@@ -188,7 +188,7 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
 
-**Schema Description**: 
+**Schema Description**: there are two types of connections (layers) between the HSCLO nodes; hierarchical which relates nodes at different levels of resolution to their children nodes in a tree format, e.g. 1 Mbp nodes to 100 kbp nodes, and adjacency where nodes at the same level of resoltion are linked together in a chain format. The layers of resolution include human genome, human chromosomes, 1 Mbp bands, 100 kbp bands, 10 kbp bands and 1 kbp bands.
 
 ```cypher
 // Cypher query to reproduce the schema figure
