@@ -296,7 +296,7 @@ return * limit 1
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
 
-**Schema Description**: ...
+**Schema Description**: An `AZ` Concept and Code are shown on the left and an `HGNC` Concept and Code are shown on the right. The two Concepts are connected through a `has_marker_gene_{TISSUE}` relationship, in this example, it is `has_marker_gene_kidney`.
 
 ```cypher
 // Cypher query to reproduce the schema figure
