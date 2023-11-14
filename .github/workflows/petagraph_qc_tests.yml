@@ -40,6 +40,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-tests.txt
+          echo 'Downloading OSF data...';
+          osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip;
+          echo 'Finished Download....';
+          ls;
+          echo 'Unzipping...';
+          unzip Datasets.zip;
+          echo '--------------------'
+          ls Datasets
       - shell: bash
         env:
           NEO4J_PASSWORD: ${{ secrets.NEO4J_TAYLORLAB_PASSWORD }}
