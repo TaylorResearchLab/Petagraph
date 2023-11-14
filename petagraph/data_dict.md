@@ -35,8 +35,7 @@ For clarity, all schema figures in this document follow this node color format:
 [GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
 [Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
 [4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
-# "[GENCODE-HSCLO mappings (GENCODEHSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gencode-hsclo-mappings-gencodehsclo) "
-  
+
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
 **Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.  
 
@@ -198,22 +197,6 @@ MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mb
 (c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
 (c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
 RETURN * LIMIT 1
-```
-
----
-## GENCODE-HSCLO mappings (GENCODEHSCLO)
-**Source**: ... 
-
-**Preproccessing**: ... 
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GENCODEHSCLO.png" alt="drawing" width="800"/>
-
-**Schema Description**: ...
-
-```cypher
-// Cypher query to reproduce the schema figure
-match (a:Code {SAB:'GENCODE'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HSCLO'})
-return * limit 1
 ```
 
 ---
