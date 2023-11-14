@@ -12,7 +12,7 @@ argparse
 numpy
 pandas
 polars
-
+osfclient
 # Testing suite
 pytest
 pytest-cov
