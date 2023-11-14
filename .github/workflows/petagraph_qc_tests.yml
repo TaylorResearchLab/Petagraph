@@ -47,7 +47,7 @@ jobs:
           echo 'Unzipping...';
           unzip Datasets.zip;
           echo '--------------------'
-          ls Datasets
+          ls PetagraphData
       - shell: bash
         env:
           NEO4J_PASSWORD: ${{ secrets.NEO4J_TAYLORLAB_PASSWORD }}
