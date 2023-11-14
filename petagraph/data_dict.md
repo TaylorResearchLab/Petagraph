@@ -288,15 +288,15 @@ return * limit 1
 ## Azimuth (AZ)  
 
 
-**Source**:  
+**Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
 
 
-**Preproccessing**: ...
+**Preproccessing**: 
 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
 
-**Schema Description**: An `AZ` Concept and Code are shown on the left and an `HGNC` Concept and Code are shown on the right. The two Concepts are connected through a `has_marker_gene_{TISSUE}` relationship, in this example, it is `has_marker_gene_kidney`.
+**Schema Description**: An `AZ` Concept and Code are shown on the left and an `HGNC` Concept and Code are shown on the right. The two Concepts are connected through a `has_marker_gene_{TISSUE}` relationship, in this example, it is `has_marker_gene_kidney`. Currently, there are marker gene to cell type mappings from kidney, heart and liver.
 
 ```cypher
 // Cypher query to reproduce the schema figure
@@ -311,9 +311,9 @@ return distinct f.SAB
 ---
 ## Protein - Protein Interactions (STRING)
 
-**Source**:  We used 9606.protein.links.full.v12.0 assertions obtained from STRING database and ...
+**Source**:  We ingested human protein to protein interaction data from the STRING website.  assertions obtained from STRING database. To download this file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
 
-**Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connects UNIPROTKB nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB: `STRING` and `evidence_class` which denotes the combined score for the relationship, found on both these Concept-Concept relationships.
+**Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB IDs and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connect `UNIPROTKB` nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB `STRING`  and `evidence_class` which denotes the combined score for the relationship, are both found on these Concept-Concept relationships.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
 
