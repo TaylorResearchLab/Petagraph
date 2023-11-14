@@ -291,7 +291,7 @@ return * limit 1
 **Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
 
 
-**Preproccessing**: 
+**Preproccessing**: The data for human heart (evidence class: I2), kidney (evidence class: I2) and liver (evidence class: I2) were processed to establish relationships between AZ nodes and HGNC genes.
 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
