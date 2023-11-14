@@ -25,7 +25,6 @@ For clarity, all schema figures in this document follow this node color format:
 [Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-phenotype-ontology-to-mouse-phenotype-mappings-hpomp)  
 [Human-Rat ENSEMBL orthologs (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
 [Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo)  
-[GENCODE-HSCLO mappings (GENCODEHSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gencode-hsclo-mappings-gencodehsclo)  
 [LINCS L1000 Gene-Perturbagen Associations (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-gene-perturbagen-associations-lincs)  
 [Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
 [Molecular Signatures Database (MSIGDB)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#molecular-signatures-database-msigdb)  
@@ -36,7 +35,7 @@ For clarity, all schema figures in this document follow this node color format:
 [GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
 [Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
 [4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
-  
+# "[GENCODE-HSCLO mappings (GENCODEHSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gencode-hsclo-mappings-gencodehsclo) "
   
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
 **Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**.  
