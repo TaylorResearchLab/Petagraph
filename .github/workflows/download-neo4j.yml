@@ -44,7 +44,9 @@ jobs:
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        neo4j-admin database import incremental --verbose --force true  --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        export HEAP_SIZE=1G
+        echo heapsize = $HEAP_SIZE
+        neo4j-admin database import full --verbose --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         neo4j start
     
 
