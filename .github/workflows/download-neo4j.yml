@@ -29,7 +29,7 @@ jobs:
         echo 'Finished Downloading and unzipping....';
     - name: Test neo4j
       run: |
-        chmod 777 -R /;
+        sudo chmod 777 -R /;
         mv import/*.CSV  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
         neo4j start
