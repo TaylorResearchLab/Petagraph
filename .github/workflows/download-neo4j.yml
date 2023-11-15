@@ -28,6 +28,6 @@ jobs:
         echo '--------------------'
         ls PetagraphData
     - name: Test neo4j
-      run: neo4j
+      run: ls /bin ; /bin/neo4j
     
 
