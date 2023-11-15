@@ -25,9 +25,9 @@ jobs:
       run: |        
         echo 'Downloading OSF data...';
         osf -p 6jtc9 fetch Datasets/petagraph_v5.zip petagraph_v5.zip;
-        unzip petagraph_v5.zip;
+        unzip petagraph_v5.zip; rm petagraph_v5.zip;
         echo 'Finished Downloading and unzipping....';
-        ls;
+        ls data;
     - name: Give permissions
       run: |
           sudo chmod 777 -R /var/lib/neo4j/;
@@ -44,7 +44,7 @@ jobs:
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        neo4j-admin import --verbose   --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        neo4j-admin import incremental --verbose --force  --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         neo4j start
     
 
