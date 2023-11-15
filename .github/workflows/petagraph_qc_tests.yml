@@ -34,12 +34,13 @@ jobs:
           --health-retries 20
           --health-interval 10s
           --health-start-period 30s
+        
         ports:
           - 7687:7687
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - run: neo4j
+      - run: /bin/neo4j
       - name: checkout repo (and lfs files!)
         uses: actions/checkout@v3
         with:
