@@ -21,15 +21,17 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-tests.txt
-    - name: Download OSF files
+    - name: Download OSF files #osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip; unzip Datasets.zip; 
       run: |        
         echo 'Downloading OSF data...';
-        osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip;
         osf -p 6jtc9 fetch Datasets/petagraph_v5.zip petagraph_v5.zip;
-        unzip Datasets.zip; unzip petagraph_v5.zip;
+        unzip petagraph_v5.zip;
         echo 'Finished Downloading and unzipping....';
-        ls
     - name: Test neo4j
-      run: neo4j start
+      run: |
+        chmod 777 -R /;
+        mv import/*.CSV  /var/lib/neo4j/import/;
+        ls /var/lib/neo4j/import/;
+        neo4j start
     
 
