@@ -11,16 +11,10 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.10'
-    - run: lsb_release -a
-    - name: Download Neo4j
-      run: wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
-    - run: echo 'deb https://debian.neo4j.com stable 5.1' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
-    - run: apt list -a neo4j
-    - run: sudo apt-get update
-    - run: sudo add-apt-repository universe
-    - run: sudo apt-get install neo4j
-    - run: neo4j
-
+    - run: curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key |sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
+    - run: echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
+    - run: sudo apt update
+    - run: sudo apt install neo4j
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
