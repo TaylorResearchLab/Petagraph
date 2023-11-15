@@ -27,4 +27,7 @@ jobs:
         unzip Datasets.zip;
         echo '--------------------'
         ls PetagraphData
+    - name: Test neo4j
+      run: neo4j
+    
 
