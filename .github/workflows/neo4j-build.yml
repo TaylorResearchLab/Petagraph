@@ -2,9 +2,7 @@
 name: Set up a Neo4j Database
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "fork" ]
 jobs:
   build_neo4j:
     runs-on: ubuntu-latest
