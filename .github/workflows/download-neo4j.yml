@@ -28,8 +28,9 @@ jobs:
         unzip petagraph_v5.zip;
         echo 'Finished Downloading and unzipping....';
     - name: Test neo4j
+      run: sudo chmod 777 -R /var/lib/neo4j/;
+    - name: test mv
       run: |
-        sudo chmod 777 -R /;
         mv import/*.CSV  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
         neo4j start
