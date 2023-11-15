@@ -27,11 +27,12 @@ jobs:
         osf -p 6jtc9 fetch Datasets/petagraph_v5.zip petagraph_v5.zip;
         unzip petagraph_v5.zip;
         echo 'Finished Downloading and unzipping....';
+        ls;
     - name: Test neo4j
       run: sudo chmod 777 -R /var/lib/neo4j/;
     - name: test mv
       run: |
-        mv import/*.CSV  /var/lib/neo4j/import/;
+        mv import/*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
         neo4j start
     
