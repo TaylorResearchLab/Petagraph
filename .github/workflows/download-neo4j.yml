@@ -15,8 +15,9 @@ jobs:
       run: wget -O - https://debian.neo4j.com/neotechnology.gpg.key | sudo apt-key add -
            echo 'deb https://debian.neo4j.com stable 5' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
            apt list -a neo4j; sudo apt-get update
-           sudo apt-get install neo4j=1:5.13.0
-           neo4j
+    - run: sudo apt-get install neo4j=1:5.13.0
+    - run: neo4j
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
