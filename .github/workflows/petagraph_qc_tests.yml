@@ -1,25 +1,41 @@
 # This is a basic workflow to help you get started with Actions
 
 name: petagraph_qc_tests
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "run_qc"
   run_qc:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    services:
+      # Label used to access the service container
+      neo4j_build:
+        image: neo4j:4.2.0-enterprise
+        env:
+          NEO4J_dbms_security_procedures_unrestricted: apoc.*
+          NEO4J_dbms_connector_bolt_enabled: "true"
+          NEO4J_apoc_import_file_enabled: "true"
+          NEO4J_apoc_export_file_enabled: "true"
+          NEO4J_apoc_import_file_use__neo4j__config: "true"
+          NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+          NEO4J_dbms_security_auth__enabled: "false"
+          NEO4J_dbms_connector_bolt_advertised__address: localhost:7687
+          NEO4JLABS_PLUGINS: '["apoc"]'
+        options: >-
+          --health-cmd "cypher-shell 'match (n) return count(n)'"
+          --health-timeout 10s
+          --health-retries 20
+          --health-interval 10s
+          --health-start-period 30s
+        ports:
+          - 7687:7687
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
