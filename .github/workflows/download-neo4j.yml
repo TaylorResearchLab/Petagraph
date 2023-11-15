@@ -18,7 +18,7 @@ jobs:
     - run: apt list -a neo4j
     - run: sudo apt-get update
     - run: sudo add-apt-repository universe
-    - run: sudo apt-get install neo4j=1:5.1
+    - run: sudo apt-get install neo4j
     - run: neo4j
 
     - name: Install dependencies
