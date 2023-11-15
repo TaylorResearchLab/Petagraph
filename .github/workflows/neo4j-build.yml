@@ -1,0 +1,27 @@
+
+name: Set up a Neo4j Database
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build_neo4j:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: baptouuuu/setup-neo4j@v1.2.0
+      with:
+        tag: '3.4' # optional neo4j version
+    - name: look
+      run: pwd; ls
+    #- uses: actions/checkout@v3
+    #- name: Set up Python 3
+    #  uses: actions/setup-python@v3
+    #  with:
+    #    python-version: '3.11'
+    #- name: Install dependencies
+    #  run: |
+    #    python -m pip install --upgrade pip
+    #    python -m pip install flake8 pytest
+    #    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
