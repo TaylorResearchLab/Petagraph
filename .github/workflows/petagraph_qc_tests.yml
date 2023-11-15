@@ -2,8 +2,8 @@
 
 name: petagraph_qc_tests
 on:
-  #push:
-  #  branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
@@ -36,9 +36,10 @@ jobs:
           --health-start-period 30s
         ports:
           - 7687:7687
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - run: neo4j
       - name: checkout repo (and lfs files!)
         uses: actions/checkout@v3
         with:
