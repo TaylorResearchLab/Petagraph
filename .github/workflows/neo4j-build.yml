@@ -13,9 +13,9 @@ jobs:
       with:
         tag: '3.4' # optional neo4j version
     - name: look
-      run: cd /; pwd; ls
-    - name: look2
-      run: cd /home; pwd; ls
+      run: cd /bin; pwd; ls
+    #- name: look2
+    #  run: cd /home; pwd; ls
     #- uses: actions/checkout@v3
     #- name: Set up Python 3
     #  uses: actions/setup-python@v3
