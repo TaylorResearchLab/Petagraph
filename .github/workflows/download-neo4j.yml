@@ -36,14 +36,15 @@ jobs:
           sudo chmod 777 -R /var/run/neo4j
     - name: test mv
       run: |
-        mv import/*.csv  /var/lib/neo4j/import/;
+        rm import/CUI-TUIs.csv; rm import/CUI-SUIs.csv; rm import/CODE-SUIs.csv
+        mv import/C*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
     - name: Build Petagraph # rm -rf data/databases/*; rm -rf data/transactions/*
       run: |
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        neo4j-admin import --verbose  --nodes=Semantic="import/TUIs.csv" --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv" --nodes=Term="import/SUIs.csv" --nodes=Definition="import/DEFs.csv"  --relationships=ISA_STY="import/TUIrel.csv" --relationships=STY="import/CUI-TUIs.csv" --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv" --relationships="import/CODE-SUIs.csv" --relationships=PREF_TERM="import/CUI-SUIs.csv" --relationships=DEF="import/DEFrel.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        neo4j-admin import --verbose   --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         neo4j start
     
 
