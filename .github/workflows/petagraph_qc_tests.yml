@@ -2,8 +2,8 @@
 
 name: petagraph_qc_tests
 on:
-  push:
-    branches: [ "main" ]
+  #push:
+  #  branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
