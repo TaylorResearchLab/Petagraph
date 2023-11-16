@@ -60,10 +60,7 @@ cuicodes_reduced.to_csv('/var/lib/neo4j/import/CUI-CODEs.csv',index=False)
 
 del cuicodes
 
-
-# In[7]:
-
-
+print('HEREEEEEEEE')
 codes = pd.read_csv(path+'CODEs.csv')
 codes_reduced = codes[codes['SAB'].isin(cuicodes_reduced['sabs'].values)]
 
