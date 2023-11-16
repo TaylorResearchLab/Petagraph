@@ -70,14 +70,14 @@ codes_reduced = codes[codes['SAB'].isin(cuicodes_reduced['sabs'].values)]
 print('CODEs.csv reduced by '+str(np.round(100*(len(codes_reduced)/len(codes))))+'%')
 
 del codes
-
+print('HEREEEEEEEE')
 codes_reduced.drop(['CODE','value:float','lowerbound:float','upperbound:float','unit'],axis=1,inplace=True)
 
 codes_reduced.to_csv('/var/lib/neo4j/import/CODEs.csv',index=False)
 
 del codes_reduced
 
-
+print('------------------------------')
 # ## Drop CUIs in the CUI-CODEs df from CUIs.csv and CUI-CUIs.csv file
 
 # In[8]:
