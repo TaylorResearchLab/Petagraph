@@ -11,16 +11,22 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.10'
+    - name: df check 1
+      run: df -h
     - name: Download Neo4j
       run: |
           curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key |sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
           echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
           sudo apt update 
           sudo apt install neo4j 
+    - name: df check 2
+      run: df -h
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-tests.txt
+    - name: df check 3
+      run: df -h  
     - name: Download OSF files #osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip; unzip Datasets.zip; 
       run: |        
         echo 'Downloading OSF data...';
@@ -39,6 +45,8 @@ jobs:
         rm import/CUI-TUIs.csv; rm import/CUI-SUIs.csv; rm import/CODE-SUIs.csv
         mv import/C*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
+    - name: df check 4
+      run: df -h
     - name: Build Petagraph # rm -rf data/databases/*; rm -rf data/transactions/*
       run: |
         rm -rf /var/lib/neo4j/data/databases/*
