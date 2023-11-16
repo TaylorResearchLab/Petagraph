@@ -38,13 +38,13 @@ jobs:
           sudo chmod 777 -R /etc/neo4j;
           sudo chmod 777 -R /var/log/neo4j/;
           sudo chmod 777 -R /var/run/neo4j
-    - name: reduce csv sizes
-      run: python3 tests/reduce_petagraph_csv_size_github_actions.py
     - name: mv
       run: |
         rm import/CUI-TUIs.csv; rm import/CUI-SUIs.csv; rm import/CODE-SUIs.csv
         mv import/C*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
+    - name: reduce csv sizes
+      run: python3 tests/reduce_petagraph_csv_size_github_actions.py
     - name: df check 4
       run: df -h
     - name: Build Petagraph # rm -rf data/databases/*; rm -rf data/transactions/*
