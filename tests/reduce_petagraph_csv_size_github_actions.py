@@ -11,7 +11,7 @@ import pandas as pd
 #from collections import Counter
 #import matplotlib.pyplot as plt
 
-
+import sys
 import warnings
 warnings.filterwarnings('ignore')
 # In[2]:
@@ -29,8 +29,6 @@ dropsabs = ['HSCLO','MSH','MEDCIN','LNC','MTH','NDC','ICD10PCS','MTHSPL','REFSEQ
 
 # ## Reduce CUICODEs.csv 
 
-# In[6]:
-
 
 cuicodes['sabs'] = [i.split(':')[0] for i in cuicodes[':END_ID']]
 cuicodes_reduced = cuicodes[~cuicodes['sabs'].isin(dropsabs)].reset_index(drop=True)
@@ -39,6 +37,8 @@ print('CUI-CODEs.csv reduced by '+str(np.round(100*(len(cuicodes_reduced)/len(cu
 cuicodes_reduced.to_csv('/var/lib/neo4j/import/CUI-CODEs.csv',index=False)
 
 del cuicodes
+
+sys.exit()
 '''
 print('HEREEEEEEEE')
 codes = pd.read_csv(path+'CODEs.csv')
