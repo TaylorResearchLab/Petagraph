@@ -19,8 +19,6 @@ jobs:
           echo "deb [signed-by=/usr/share/keyrings/neo4j.gpg] https://debian.neo4j.com stable 4.1" | sudo tee -a /etc/apt/sources.list.d/neo4j.list
           sudo apt update 
           sudo apt install neo4j 
-    - name: df check 2
-      run: df -h
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
