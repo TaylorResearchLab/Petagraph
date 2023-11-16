@@ -20,28 +20,7 @@ warnings.filterwarnings('ignore')
 #path='/Users/stearb/Desktop/DESKTOP_TRANSFER/R03_local/Petagraph_Sept2023/data/base_csvs/basecontext10Sep2023/'
 path='/var/lib/neo4j/import/'
 
-
-# In[ ]:
-
-
-
-
-
-# In[3]:
-
-
 cuicodes = pd.read_csv(path+'CUI-CODEs.csv')
-
-
-# In[4]:
-
-
-#c=dict(Counter([i.split(':')[0] for i in cuicodes[':END_ID']]).most_common())
-#plt.bar(height=list(c.values()),x=range(len(list(c.values()))))
-
-
-# In[5]:
-
 
 dropsabs = ['HSCLO','MSH','MEDCIN','LNC','MTH','NDC','ICD10PCS','MTHSPL','REFSEQ','RXNORM','ICD10CM','ICPC2ICD10ENG','MDR',
 'MMSL','UWDA','CHV','CPT','SNOMEDCT_VET','GS','ORPHANET','NDDF','VANDF','UMD','MMX','ICD10AM','ICD9CM',
@@ -60,7 +39,7 @@ print('CUI-CODEs.csv reduced by '+str(np.round(100*(len(cuicodes_reduced)/len(cu
 cuicodes_reduced.to_csv('/var/lib/neo4j/import/CUI-CODEs.csv',index=False)
 
 del cuicodes
-
+'''
 print('HEREEEEEEEE')
 codes = pd.read_csv(path+'CODEs.csv')
 codes_reduced = codes[codes['SAB'].isin(cuicodes_reduced['sabs'].values)]
@@ -82,7 +61,7 @@ print('------------------------------')
 
 
 cuicodes_reduced.drop('sabs',axis=1,inplace=True)
-
+'''
 
 # In[9]:
 
@@ -101,9 +80,6 @@ del cuis_reduced
 
 
 # # CUI-CUIs
-
-# In[10]:
-
 
 cuicuis = pd.read_csv(path+'CUI-CUIs.csv')
 
