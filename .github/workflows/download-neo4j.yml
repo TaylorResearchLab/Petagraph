@@ -40,7 +40,6 @@ jobs:
           sudo chmod 777 -R /var/run/neo4j
     - name: mv
       run: |
-        rm reduced_csvs_github_actions/CUI-TUIs.csv; rm reduced_csvs_github_actions/CUI-SUIs.csv; rm reduced_csvs_github_actions/CODE-SUIs.csv
         mv reduced_csvs_github_actions/C*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
     - name: df check 4
