@@ -43,18 +43,16 @@ jobs:
         rm import/CUI-TUIs.csv; rm import/CUI-SUIs.csv; rm import/CODE-SUIs.csv
         mv import/C*.csv  /var/lib/neo4j/import/;
         ls /var/lib/neo4j/import/;
-    - name: reduce csv sizes
-      run: python3 tests/reduce_petagraph_csv_size_github_actions.py
     - name: df check 4
       run: df -h
-    - name: Build Petagraph # rm -rf data/databases/*; rm -rf data/transactions/*
+    - name: Build Petagraph # --relationships="import/CUI-CUIs.csv"
       run: |
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
         export HEAP_SIZE=1G
         echo heapsize = $HEAP_SIZE
-        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"   --relationships="import/CUI-CUIs.csv" --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         neo4j start
     
 
