@@ -11,8 +11,6 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.10'
-    - name: df check 1
-      run: df -h
     - name: Download Neo4j
       run: |
           curl -fsSL https://debian.neo4j.com/neotechnology.gpg.key |sudo gpg --dearmor -o /usr/share/keyrings/neo4j.gpg
@@ -23,8 +21,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-tests.txt
-    - name: df check 3
-      run: df -h  
     - name: Download OSF files #osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip; unzip Datasets.zip; 
       run: |        
         echo 'Downloading OSF data...';
@@ -47,7 +43,7 @@ jobs:
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        export HEAP_SIZE=1.2G
+        export HEAP_SIZE=1G
         echo heapsize = $HEAP_SIZE
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --relationships="import/CUI-CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         
