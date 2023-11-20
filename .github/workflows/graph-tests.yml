@@ -39,14 +39,15 @@ jobs:
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE
-        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --relationships="import/CUI-CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; # --relationships="import/CUI-CUIs.csv"
+        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         echo 'starting database...'
         neo4j start
     - name: Change password # cat /etc/neo4j/neo4j.conf , echo 'test string' > .github/graph_test_logs/logfile.txt
       run: |
         pwd;ls; echo '---------------------------------------'
-        echo  ALTER CURRENT USER SET PASSWORD FROM 'neo4j' TO 'neo4j2020' | /var/lib/neo4j/bin/cypher-shell
+        # echo  ALTER CURRENT USER SET PASSWORD FROM 'neo4j' TO 'neo4j2020' | /var/lib/neo4j/bin/cypher-shell
+        ls /var/lib/neo4j/
     - name: Run Tests
       run: python3 tests/Petagraph_ingestion_test_auto.py
 
