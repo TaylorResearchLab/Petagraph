@@ -47,9 +47,8 @@ jobs:
         echo heapsize = $HEAP_SIZE
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --relationships="import/CUI-CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         
-    - name: neo4j commands # cat /etc/neo4j/neo4j.conf
+    - name: neo4j commands # cat /etc/neo4j/neo4j.conf, neo4j-admin dbms set-initial-password neo4j2020
       run: |
-           neo4j-admin dbms set-initial-password neo4j2020
            neo4j start
            python3 test/connect_neo4j.py
            
