@@ -45,6 +45,13 @@ jobs:
     - name: neo4j commands # cat /etc/neo4j/neo4j.conf
       run: |
         python3 tests/connect_neo4j.py
+        echo 'test string' > .github/graph_test_logs/logfile.txt
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v3
+      with:
+        name: QC Report
+        path: .github/graph_test_logs/logfile.txt
+
            
            
            
