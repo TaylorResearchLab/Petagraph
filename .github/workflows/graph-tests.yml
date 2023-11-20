@@ -31,7 +31,7 @@ jobs:
         echo 'Finished Downloading and unzipping....';
         ls data;
 
-    - name: Build Petagraph # 
+    - name: Build Petagraph 
       run: |
         sudo chmod 777 -R /var/lib/neo4j/; sudo chmod 777 -R /etc/neo4j;
         sudo chmod 777 -R /var/log/neo4j/; sudo chmod 777 -R /var/run/neo4j
@@ -43,11 +43,11 @@ jobs:
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv" --relationships="import/CUI-CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         echo 'starting database...'
         neo4j start
-    - name: neo4j commands # cat /etc/neo4j/neo4j.conf
+    - name: Run tests # cat /etc/neo4j/neo4j.conf , echo 'test string' > .github/graph_test_logs/logfile.txt
       run: |
-        python3 tests/connect_neo4j.py
-        echo 'test string' > .github/graph_test_logs/logfile.txt
-    - name: Upload math result for job 1
+        python3 tests/Petagraph_ingestion_test_auto.py
+
+    - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: QC Report
