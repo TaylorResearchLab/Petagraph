@@ -39,13 +39,16 @@ jobs:
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
-        export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; # 
-        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --relationships="import/CUI-CUIs.csv" --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; #  --relationships="import/CUI-CUIs.csv"
+        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
         echo 'starting database...'
         neo4j start
 
     - name: Run Tests
-      run: python3 tests/Petagraph_ingestion_test_auto.py
+      run: |
+        python3 tests/reset_password.py
+        neo4j stop; neo4j start
+        python3 tests/Petagraph_ingestion_test_auto.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
