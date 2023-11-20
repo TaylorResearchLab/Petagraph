@@ -46,7 +46,7 @@ jobs:
 
     - name: Run Tests
       run: |
-        #python3 tests/reset_password.py
+        pwd; ls;
         neo4j-admin set-initial-password 'neo4j2020'
         neo4j start
         python3 tests/Petagraph_ingestion_test_auto.py
