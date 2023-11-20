@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+import neo4j
 from neo4j import GraphDatabase, basic_auth
 
 uri='bolt://localhost:7687'
