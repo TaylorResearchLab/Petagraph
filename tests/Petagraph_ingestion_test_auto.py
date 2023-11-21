@@ -36,7 +36,7 @@ password='neo4j2020'
 #password=args.NEO4J_PASSWORD
 
 
-driver = GraphDatabase.driver(uri, auth=(user, password))
+driver = GraphDatabase.driver(uri) #, auth=(user, password))
 
 #pw_query='''ALTER CURRENT USER SET PASSWORD FROM "neo4j" TO "neo4j2020"'''
 #with driver.session(default_access_mode=neo4j.WRITE_ACCESS) as session:
