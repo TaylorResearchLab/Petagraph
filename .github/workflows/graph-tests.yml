@@ -52,8 +52,8 @@ jobs:
         #sed -i '/dbms.connector.http.advertised_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
         echo '----------'
-        find / -name dbms
-        rm /var/lib/neo4j/data/dbms/aut*;
+        #find / -name dbms
+        sudo rm /var/lib/neo4j/data/dbms/aut*;
         ls /var/lib/neo4j/data/dbms
     - run: |
         echo ''
