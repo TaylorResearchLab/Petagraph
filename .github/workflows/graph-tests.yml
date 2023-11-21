@@ -53,7 +53,8 @@ jobs:
         cat /etc/neo4j/neo4j.conf
     - run: |
         neo4j start;
-        tests/reset_password.py;
+        sudo chmod 777 tests/reset_password.py;
+        python3 tests/reset_password.py
         neo4j stop;
     - name: Run Tests
       run: |
