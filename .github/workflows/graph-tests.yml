@@ -41,13 +41,15 @@ jobs:
         cd /var/lib/neo4j/
         export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; #  --relationships="import/CUI-CUIs.csv"
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
-        echo 'starting database...'
-        #neo4j start
 
+    - run: cat /etc/neo4j/neo4j.conf
     - name: Run Tests
       run: |
         pwd; ls;
+        neo4j start
         neo4j-admin set-initial-password 'neo4j2020'
+    - run: |
+        neo4j stop;
         neo4j start
         python3 tests/Petagraph_ingestion_test_auto.py
 
