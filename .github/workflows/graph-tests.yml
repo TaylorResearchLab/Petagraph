@@ -43,7 +43,7 @@ jobs:
         export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; #  --relationships="import/CUI-CUIs.csv"
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
 
-    - run: ls  /etc/neo4j/; cat /etc/neo4j/conf/neo4j.conf
+    - run: ls  /etc/neo4j/; cat /etc/neo4j/neo4j.conf
     - name: Run Tests
       run: |
         pwd; ls;
