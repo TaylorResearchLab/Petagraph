@@ -46,7 +46,11 @@ jobs:
       run: |
         #neo4j start; neo4j-admin set-initial-password 'neo4j2020'
         sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
+        sed -i '/dbms.connector.bolt.listen_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
+        sed -i '/dbms.connector.bolt.advertised_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
+    - name: find cypher-shell
+      run: which cypher-shell
     - name: Run Tests
       run: |
         #neo4j stop;
