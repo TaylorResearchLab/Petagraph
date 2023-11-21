@@ -64,7 +64,8 @@ jobs:
     - run:  /usr/bin/cypher-shell -v
     - name: Run Tests
       run: |
-        neo4j start; sleep 20;
+        neo4j-admin set-initial-password 'neo4j2020'
+        neo4j start; sleep 20; 
         echo '---------------'
         python tests/Petagraph_ingestion_test_auto.py
         
