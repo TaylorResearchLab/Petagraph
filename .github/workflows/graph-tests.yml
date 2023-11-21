@@ -30,11 +30,14 @@ jobs:
         unzip reduced_csvs_github_actions.zip; rm reduced_csvs_github_actions.zip;
         echo 'Finished Downloading and unzipping....';
         ls data;
-
-    - name: Build Petagraph 
+    - name: chmod
       run: |
         sudo chmod 777 -R /var/lib/neo4j/; sudo chmod 777 -R /etc/neo4j;
         sudo chmod 777 -R /var/log/neo4j/; sudo chmod 777 -R /var/run/neo4j
+        cat /etc/neo4j/conf/neo4j.conf
+        
+    - name: Build Petagraph 
+      run: |
         mv reduced_csvs_github_actions/C*.csv  /var/lib/neo4j/import/;
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
@@ -42,7 +45,7 @@ jobs:
         export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; #  --relationships="import/CUI-CUIs.csv"
         neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
 
-    - run: cat /etc/neo4j/neo4j.conf
+    
     - name: Run Tests
       run: |
         pwd; ls;
