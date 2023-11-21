@@ -53,7 +53,7 @@ jobs:
         cat /etc/neo4j/neo4j.conf
         echo '----------'
         #find / -name dbms
-        sudo rm /var/lib/neo4j/data/dbms/aut*;
+        #sudo rm /var/lib/neo4j/data/dbms/aut*;
         ls /var/lib/neo4j/data/dbms
     - run: |
         echo ''
@@ -61,13 +61,14 @@ jobs:
         #sudo chmod 777 tests/reset_password.py;
         #python tests/reset_password.py
         #neo4j stop;
+    - run:  /usr/bin/cypher-shell -v
     - name: Run Tests
       run: |
         neo4j start; sleep 20;
         echo '---------------'
         python tests/Petagraph_ingestion_test_auto.py
         
-    - run:  /usr/bin/cypher-shell -v
+    
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
