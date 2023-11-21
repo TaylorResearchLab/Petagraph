@@ -45,21 +45,20 @@ jobs:
     - name: sed Unauth
       run: |
         #neo4j start; neo4j-admin set-initial-password 'neo4j2020'
-        #sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
+        sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.bolt.listen_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.bolt.advertised_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.http.listen_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.http.advertised_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
-        #cat /etc/neo4j/neo4j.conf
-    - name: find cypher-shell
-      run: which cypher-shell
+        cat /etc/neo4j/neo4j.conf
     - name: Run Tests
       run: |
-        #neo4j stop;
-        neo4j start; sleep 20; /usr/bin/cypher-shell 
+        neo4j start; sleep 20;
         echo '---------------'
         python3 tests/Petagraph_ingestion_test_auto.py
-
+        
+    - run:  /usr/bin/cypher-shell -v
+    
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
