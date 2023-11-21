@@ -5,12 +5,10 @@
 
 # ### This is a copy of the umls_ingestion_test_queries-auto.ipynb notebook, which was written for the Data Distillery graph. I removed dataset tests if the dataset isnt in Petagraph.
 
-
 '''
 author: @benstear
 Date Created: 11/8/23
 '''
-
 
 import sys
 import neo4j
@@ -28,18 +26,24 @@ logging.getLogger("neo4j").setLevel(logging.WARNING)
 
 
 #uri='neo4j://example.com:7687'
-uri='bolt://localhost:7687'
+#uri='bolt://localhost:7687'
 #uri='http://localhost:7474/'
 user='neo4j'
 #password='neo4j2020'
-password='neo4j2020'
+password='neo4j'
 #password=args.NEO4J_PASSWORD
+
+
 driver = GraphDatabase.driver(uri, auth=(user, password))
 
 
 #pw_query='''ALTER CURRENT USER SET PASSWORD FROM "neo4j" TO "neo4j2020"'''
 #with driver.session(default_access_mode=neo4j.WRITE_ACCESS) as session:
 #        result = session.run(pw_query)
+
+with driver.session(default_access_mode=neo4j.READ_ACCESS) as session:
+        result = session.run('MATCH (n:Code) RETURN count(N); ')
+
 
 def get_nodes(path: str):
     nodes_df = pd.read_csv(path+'/OWLNETS_node_metadata.txt',sep='\t')
