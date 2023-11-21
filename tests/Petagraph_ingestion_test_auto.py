@@ -26,18 +26,17 @@ logging.getLogger("neo4j").setLevel(logging.WARNING)
 
 
 #uri='neo4j://example.com:7687'
-#uri='bolt://localhost:7687'
+uri='bolt://localhost:7687'
 #uri='http://localhost:7474/'
-uri='neo4j://localhost:7687'
+#uri='neo4j://localhost:7687'
 
 user='neo4j'
-#password='neo4j2020'
-password='neo4j'
+password='neo4j2020'
+#password='neo4j'
 #password=args.NEO4J_PASSWORD
 
 
 driver = GraphDatabase.driver(uri, auth=(user, password))
-
 
 #pw_query='''ALTER CURRENT USER SET PASSWORD FROM "neo4j" TO "neo4j2020"'''
 #with driver.session(default_access_mode=neo4j.WRITE_ACCESS) as session:
