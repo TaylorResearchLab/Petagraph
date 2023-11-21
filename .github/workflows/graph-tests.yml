@@ -54,7 +54,7 @@ jobs:
     - run: |
         neo4j start;
         sudo chmod 777 tests/reset_password.py;
-        python3 tests/reset_password.py
+        sudo python3 tests/reset_password.py
         neo4j stop;
     - name: Run Tests
       run: |
