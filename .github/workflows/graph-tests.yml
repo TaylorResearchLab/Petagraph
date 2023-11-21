@@ -45,7 +45,7 @@ jobs:
     - name: sed Unauth
       run: |
         #neo4j start; neo4j-admin set-initial-password 'neo4j2020'
-        sed -i '/dbms.security.auth_enabled=false/s/^#//g' file
+        sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
     - name: Run Tests
       run: |
