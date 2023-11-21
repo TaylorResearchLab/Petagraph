@@ -56,7 +56,7 @@ jobs:
     - name: Run Tests
       run: |
         #neo4j stop;
-        #neo4j start; /usr/bin/cypher-shell 
+        neo4j start; #/usr/bin/cypher-shell 
         python3 tests/Petagraph_ingestion_test_auto.py
 
     - name: Upload Artifact
