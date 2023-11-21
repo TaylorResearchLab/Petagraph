@@ -60,7 +60,7 @@ jobs:
       run: |
         neo4j start; sleep 20;
         echo '---------------'
-        python3 tests/Petagraph_ingestion_test_auto.py
+        python tests/Petagraph_ingestion_test_auto.py
         
     - run:  /usr/bin/cypher-shell -v
     
