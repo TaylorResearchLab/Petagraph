@@ -51,11 +51,16 @@ jobs:
         #sed -i '/dbms.connector.http.listen_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.http.advertised_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
+        echo '----------'
+        find / -name dbms
+        rm /var/lib/neo4j/data/dbms/aut*;
+        ls /var/lib/neo4j/data/dbms
     - run: |
-        neo4j start;
-        sudo chmod 777 tests/reset_password.py;
-        sudo python tests/reset_password.py
-        neo4j stop;
+        echo ''
+        #neo4j start;
+        #sudo chmod 777 tests/reset_password.py;
+        #python tests/reset_password.py
+        #neo4j stop;
     - name: Run Tests
       run: |
         neo4j start; sleep 20;
