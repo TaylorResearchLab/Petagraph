@@ -29,7 +29,7 @@ logging.getLogger("neo4j").setLevel(logging.WARNING)
 
 #uri='neo4j://example.com:7687'
 uri='bolt://localhost:7687'
-uri='http://localhost:7474/'
+#uri='http://localhost:7474/'
 user='neo4j'
 #password='neo4j2020'
 password='neo4j2020'
