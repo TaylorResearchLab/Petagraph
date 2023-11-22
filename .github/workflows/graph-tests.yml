@@ -47,6 +47,7 @@ jobs:
         sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
         sed -i '/dbms.connector.bolt.listen_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
         sed -i '/dbms.connector.bolt.advertised_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
+        sed -i '/dbms.default_listen_address=0.0.0.0/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.http.listen_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.connector.http.advertised_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
