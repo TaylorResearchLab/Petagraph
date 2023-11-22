@@ -68,10 +68,10 @@ jobs:
         sudo neo4j console; sleep 20; 
         
         echo '---------------'
-        sudo /usr/bin/cypher-shell  -a localhost -u neo4j -p neo4j;
         #/usr/bin/cypher-shell  -a bolt://localhost:7687 -u neo4j -p neo4j;
         #/usr/bin/cypher-shell "MATCH (n) RETURN COUNT(n)";
         #python tests/Petagraph_ingestion_test_auto.py
+    - run:  sudo /usr/bin/cypher-shell  -a localhost -u neo4j -p neo4j;
         
     
     
