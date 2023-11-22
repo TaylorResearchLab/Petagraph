@@ -62,10 +62,9 @@ jobs:
     - run: |
         echo ''
         #neo4j start; #sudo chmod 777 tests/reset_password.py; #python tests/reset_password.py #neo4j stop;
-    - run:  /usr/bin/cypher-shell -v
+    - run:  sudo netstat -tulpn | grep LISTEN
     - name: Run Tests
       run: |
-        neo4j stop
         #neo4j-admin set-initial-password neo4j2020
         sudo neo4j console; sleep 20; 
         
