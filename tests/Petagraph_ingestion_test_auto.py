@@ -29,8 +29,8 @@ logging.getLogger("neo4j").setLevel(logging.WARNING)
 uri='neo4j://localhost:7687'
 
 user='neo4j'
-password='neo4j2020'
-#password='neo4j'
+#password='neo4j2020'
+password='neo4j'
 #password=args.NEO4J_PASSWORD
 
 
