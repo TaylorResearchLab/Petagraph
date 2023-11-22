@@ -33,6 +33,7 @@ jobs:
     - name: chmod
       run: |
         sudo chmod 777 -R /var/lib/neo4j/; sudo chmod 777 -R /etc/neo4j;
+        sudo chmod 777 -R /var/lib/neo4j/data;
         sudo chmod 777 -R /var/log/neo4j/; sudo chmod 777 -R /var/run/neo4j
     - name: Build Petagraph 
       run: |
