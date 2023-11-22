@@ -65,6 +65,7 @@ jobs:
     - run:  /usr/bin/cypher-shell -v
     - name: Run Tests
       run: |
+        neo4j stop
         #neo4j-admin set-initial-password neo4j2020
         sudo neo4j console; sleep 20; 
         
