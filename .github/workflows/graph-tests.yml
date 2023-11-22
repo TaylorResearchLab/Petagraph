@@ -66,16 +66,14 @@ jobs:
     - name: Run Tests
       run: |
         #neo4j-admin set-initial-password neo4j2020
-        sudo neo4j console; sleep 20; 
+        sudo neo4j start; sleep 20; 
         
         echo '---------------'
         #/usr/bin/cypher-shell  -a bolt://localhost:7687 -u neo4j -p neo4j;
         #/usr/bin/cypher-shell "MATCH (n) RETURN COUNT(n)";
         #python tests/Petagraph_ingestion_test_auto.py
-    - run:  sudo /usr/bin/cypher-shell  -a localhost -u neo4j -p neo4j;
-        
-    
-    
+    - run: python tests/Petagraph_ingestion_test_auto.py  #sudo /usr/bin/cypher-shell  -a localhost -u neo4j -p neo4j;
+      
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
