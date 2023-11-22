@@ -65,7 +65,7 @@ jobs:
     - run:  sudo netstat -tulpn | grep LISTEN
     - name: Run Tests
       run: |
-        #neo4j-admin set-initial-password neo4j2020
+        neo4j-admin set-initial-password neo4j2020
         sudo neo4j start; sleep 20; 
         
         echo '---------------'
