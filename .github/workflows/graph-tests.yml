@@ -50,7 +50,8 @@ jobs:
         #sed -i '/dbms.connector.bolt.advertised_address=:7687/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.default_listen_address=0.0.0.0/s/^#//g' /etc/neo4j/neo4j.conf
         #sed -i '/dbms.default_advertised_address=localhost/s/^#//g' /etc/neo4j/neo4j.conf
-        
+        dbms.connector.bolt.enabled=true
+        sed -i '/TEXT_TO_BE_REPLACED/c\This line is removed by the admin.'
         sed -i '/dbms.connector.http.listen_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         sed -i '/dbms.connector.http.advertised_address=:7474/s/^#//g' /etc/neo4j/neo4j.conf
         cat /etc/neo4j/neo4j.conf
