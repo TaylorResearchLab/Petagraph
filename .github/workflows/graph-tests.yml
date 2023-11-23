@@ -60,23 +60,18 @@ jobs:
         echo '----------'
         #sudo rm /var/lib/neo4j/data/dbms/aut*;
         ls /var/lib/neo4j/data/dbms
-    - run: |
-        echo ''
-        #neo4j start; #sudo chmod 777 tests/reset_password.py; #python tests/reset_password.py #neo4j stop;
     - run:  sudo ss -tulpn #sudo netstat -tulpn | grep LISTEN
     - run: hostname -i
     - name: Run Tests
       run: |
         neo4j-admin set-initial-password neo4j2020
         sudo neo4j start; sleep 20; 
+        sudo ss -tulpn #sudo netstat -tulpn | grep LISTEN;
         echo '---------------'
+    - run: |
         #/usr/bin/cypher-shell  -a bolt://localhost:7687 -u neo4j -p neo4j;
-        
         /usr/bin/cypher-shell  "ALTER CURRENT USER SET PASSWORD FROM neo4j2020 TO neo4j2021";
-        
         #/usr/bin/cypher-shell "MATCH (n) RETURN COUNT(n)";
-        #python tests/Petagraph_ingestion_test_auto.py
-    - run:  sudo ss -tulpn #sudo netstat -tulpn | grep LISTEN;
     - run: python tests/Petagraph_ingestion_test_auto.py  #sudo /usr/bin/cypher-shell  -a localhost -u neo4j -p neo4j;
       
     - name: Upload Artifact
