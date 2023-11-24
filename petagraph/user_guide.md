@@ -1,9 +1,8 @@
-# User Guide for Petagraph
 
-## Guide for exploring Petagraph using Cypher
----------
+# User Guide for exploring Petagraph with Cypher
+
 * This guide is meant to be an introduction for how to write Cypher queries to explore Petagraph. A basic understanding of Cypher is assumed. If you are unfamiliar with Cypher please refer to the [Neo4j docs](https://neo4j.com/developer/cypher/). 
---------
+
 ## Introduction
 
 ### The simplest way to find a Code in the graph is to search for it using it's source abbreviation (SAB).
