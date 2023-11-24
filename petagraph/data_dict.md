@@ -181,12 +181,12 @@ return * limit 1
 ## Homo Sapiens Chromosomal Location Ontology (HSCLO)
 **Source**: The Homo Sapiens Chromosomal Location Ontology (HSCLO)  was created by Taha Ahooyi Mohseni of the Petagraph team. HSCLO was primarily created to connect 4DN loop coordinates to the rest of the graph through the mapping between HSCLO and GENCODE. HSCLO was later utilized to connect `GTEXEQTL` locations in the graph as searchable nodes at 1kbp resolution. 
 
-**Preproccessing**: The dataset relationships as well as Code nodes use `HSCLO` as their SAB. `HSCLO` nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. `above_1Mbp_band`, `bove 1_kbp_band`) and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. `precedes_10kbp_band`). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
+**Preproccessing**: The dataset relationships as well as Code nodes use `HSCLO` as their SAB. `HSCLO` nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. `above_1Mbp_band`, `above 1_kbp_band`) and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. `precedes_10kbp_band`). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
 
-**Schema Description**: there are two types of connections (layers) between the HSCLO nodes; hierarchical which relates nodes at different levels of resolution to their children nodes in a tree format, e.g. 1 Mbp nodes to 100 kbp nodes, and adjacency where nodes at the same level of resoltion are linked together in a chain format. The layers of resolution include human genome, human chromosomes, 1 Mbp bands, 100 kbp bands, 10 kbp bands and 1 kbp bands.
+**Schema Description**: there are two types of connections (layers) between the `HSCLO` nodes; hierarchical, which relates nodes at different levels of resolution to their children nodes in a tree format, e.g. 1 Mbp nodes to 100 kbp nodes, and adjacency where nodes at the same level of resolution are linked together in a chain format. The layers of resolution include human genome, human chromosomes, 1 Mbp bands, 100 kbp bands, 10 kbp bands and 1 kbp bands.
 
 ```cypher
 // Cypher query to reproduce the schema figure
