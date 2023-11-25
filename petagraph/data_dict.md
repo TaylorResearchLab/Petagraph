@@ -17,25 +17,28 @@ For clarity, all schema figures in this document follow this node color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
 
 [4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
-[Azimuth (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
-
-[GTEx Expression data (GTEXEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-expression-data-gtexexp)  
-[GTEx eQTL data (GTEXEQTL)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-eqtl-data-gtexeqtl)  
+[Azimuth mappings (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
+[ClinVar (CLINVAR)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#clinvar-clinvar)  
+[Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
+[Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
+[GTEx, Expression data (GTEXEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-expression-data-gtexexp)  
+[GTEx, eQTL data (GTEXEQTL)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-eqtl-data-gtexeqtl)  
 [GTEx Coexpression data (GTEXCOEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-coexpression-data-gtexcoexp)  
+[GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
+[Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo)  
+[Human gene-phenotype mappings (HGNCHPO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-gene-phenotype-hgnchpo) 
 [Human-Mouse Orthologs (HGNCHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-mouse-orthologs-hgnchcop)  
-[Human gene-phenotype (HGNCHPO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-gene-phenotype-hgnchpo)  
 [Mouse gene-phenotype (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
 [Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-phenotype-ontology-to-mouse-phenotype-mappings-hpomp)  
 [Human-Rat ENSEMBL orthologs (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
-[Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo)  
+
 [LINCS L1000 Gene-Perturbagen Associations (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-gene-perturbagen-associations-lincs)  
-[Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
+
 [Molecular Signatures Database (MSIGDB)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#molecular-signatures-database-msigdb)  
-[ClinVar (CLINVAR)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#clinvar-clinvar)  
+
 [Protein - Protein Interactions (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#protein---protein-interactions-string)  
 [Single Cell Fetal Heart expression data (ASP2019)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#single-cell-fetal-heart-expression-data-asp2019)  
-[GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
-[Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
+
 
 
 ## 4D Nucleome Program (4DN)
@@ -43,7 +46,6 @@ For clarity, all schema figures in this document follow this node color format:
 **Source**: 23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. 
 
 **Preproccessing**: The loop files were processed for ingestion by first creating dataset nodes (SAB: `4DND`) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: `4DNF`) with the respective terms containing the file information, loop nodes (SAB: `4DNL`) attached to `HSCLO` nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: `4DNQ`) corresponding to donut q-value of the loops. 
-
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN_2.png" alt="drawing" width="800"/>
 
@@ -62,8 +64,83 @@ MATCH (dataset_concept:Concept)-[r8:dataset_involves_cell_type {SAB:'4DN'}]->(ce
 RETURN * LIMIT 1
 ```
 
+---
+## Azimuth mappings (AZ)  
 
-## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
+**Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) website which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
+
+**Preproccessing**: The data for human heart (evidence class: I2), kidney (evidence class: I2) and liver (evidence class: I2) were processed to establish relationships between AZ nodes and HGNC genes.
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
+
+**Schema Description**: An `AZ` Concept and Code are shown on the left and an `HGNC` Concept and Code are shown on the right. The two Concepts are connected through a `has_marker_gene_{TISSUE}` relationship, in this example, it is `has_marker_gene_kidney`. Currently, there are marker gene to cell type mappings from kidney, heart and liver.
+
+```cypher
+// Cypher query to reproduce the schema figure
+match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+return * limit 1
+
+match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+match (b)-[r3 {SAB:'AZ'}]-(e:Concept)-[:CODE]-(f:Code)
+return distinct f.SAB
+```
+
+## ClinVar (CLINVAR)
+**Source**: Human genetic variant-disease associations were obtained from: [https://www.ncbi.nlm.nih.gov/clinvar/](https://www.ncbi.nlm.nih.gov/clinvar/). Only associations with Pathogenic or Likely Pathogenic consequence scores were included in the graph. We also did not include variants that affect a subset of genes (where there was no one-to-one relationship between a gene and phenotype/disease).  
+
+**Preproccessing**: The ClinVar human genetic variants-phenotype submission summary dataset (2023-01-05) was utilized to define relationships between human genes and phenotypes (Landrum et al. 2018). To retrieve the target phenotype/disease we used MEDGEN IDs listed in the ClinVar dataset (also already present in Petagraph). The `CLINVAR` variant-disease mappings gave rise to 214,040 new relationships (with the following characteristics [Type: `gene_associated_with_disease_or_phenotype`, SAB: `CLINVAR`] and [type: `inverse_gene_associated_with_disease_or_phenotype`, SAB: `CLINVAR`] connecting `HGNC` and `MEDGEN`, `MONDO`, `HPO`, `EFO` and `MESH` Concept nodes. 
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CLINVAR_2.png" alt="drawing" width="800"/>
+
+**Schema Description**: An HGNC Concept, Code and Term node are shown on the left, connected to an HPO Concept, Code and Term node on the right through the `gene_associated_with_disease_or_phenotype` relationship. The SAB for this mapping dataset, `CLINVAR` is found on the SAB property of the relationship.
+
+```cypher
+// Cypher query to reproduce the schema figure
+match (a:Code {SAB:'HPO'})<-[r0:CODE]-(b:Concept)-[r1 {SAB:'CLINVAR'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+where id(r1) = 29001875
+match (a:Code {SAB:'HPO'})-[r0:CODE]-(b:Concept)-[r3 {SAB:'CLINVAR'}]->(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+where id(r3) = 52494094
+return * limit 1
+```
+
+---
+## Connectivity Map (CMAP)
+**Source**: Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
+
+**Preproccessing**:  In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the Petagraph `CHEBI` and `HGNC` nodes with types types of `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene` all with a relationship SAB of `CMAP`.
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CMAP.png" alt="drawing" width="800"/>
+
+**Schema Description**: A `CHEBI` Concept, Code node are shown on the left and an `HGNC` Concept and Code pair are shown on the right. The two Concepts are connected through a `positively_correlated_with_chemical_or_drug` relationship. There also exists a `negatively_correlated_with_chemical_or_drug` relationship.  The `CMAP` SAB can be found on the SAB property of the Concept-Concept relationships.
+
+```cypher
+// Cypher query to reproduce the schema figure
+match (a:Code {SAB:'CHEBI'})-[r0:CODE]-(b:Concept)-[r1 {SAB:'CMAP'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+return * limit 1
+```
+
+---
+## Gabriella Miller Kids First data (KF)
+
+**Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts from the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First were also introduced into the graph. 
+
+**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort. Only de novo variants and variants that received a VEP score of HIGH were included.
+  
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
+
+**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = `KFPT`). There are 5,006 KF Patient Concept and Code node pairs in Petagraph. The `KFPT` Concept node is connected to one or more Human Phenotype Ontology (`HPO`) Concepts. The `KFPT` Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = `KFGENEBIN`) connect to the `KFCOHORT` Concept and an HGNC Concept. The `KFGENEBIN` Code node has a 'value' property which is the number of high risk and de novo variants for that gene for all the patients in that cohort. 
+
+```cypher
+// Cypher query to reproduce the schema figure
+match (c0:Code {SAB:'KFCOHORT'})-[r0:CODE]-(cui1:Concept)-[r1:belongs_to_cohort]-(cui2:Concept )-[r2:CODE]-(c1:Code {SAB:'KFPT'})
+match (cui2)-[r3:has_phenotype]-(cui3:Concept)-[r4:CODE]-(c2:Code {SAB:'HPO'})
+match (cui1)-[r5:belongs_to_cohort]-(cui4:Concept)-[r6:CODE]-(c3:Code {SAB:'KFGENEBIN'})
+match (cui4)-[r7:gene_has_variants]-(cui5:Concept)-[r8:CODE]-(c4:Code {SAB:'HGNC'})
+return * LIMIT 1
+```
+___
+
+## GTEx, Expression data (GTEXEXP) 
 **Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**. This gene expression dataset contains expression profiles 54 tissues and 56,200 transcripts.
 
 **Preproccessing**: No preprocessing was done on the median TPM dataset. We only filtered for median TPM expression levels that corresponded to an ENSEMBL gene id that could be mapped back to an `HGNC` Code. The gene expression nodes are connected to their corresponding tissue node, gene node and expression bin node.
@@ -82,7 +159,7 @@ return * limit 1
 ```
   
 --- 
-##  Genotype-Tissue Expression Portal, eQTL data (GTEXEQTL) 
+##  GTEx, eQTL data (GTEXEQTL)
 **Source**: The GTEx eQTL data we ingested comes from the file `GTEx_Analysis_v8_eQTL.tar` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**. The eQTLs dataset contains over 71 million eQTLs from 49 tissues.
 
 **Preproccessing**: For this first ingestion of GTEx's eQTL data, we only included eQTLs that were present in every tissue. This reduced the number of eQTLs in the dataset from 71 million to 2.1 million. Furthermore, we did not include any eQTLs that were not mapped to genes with a valid `HGNC` Code. This criteria dropped about 14% of the eQTLs. We then created eQTL nodes and attached them to their respective gene (`HGNC`), tissue (`UBERON`), genomic location ([HSCLO]([Homo Sapiens Chromosomal Ontology (HSCLO)]([https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-ontology-hsclo](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo))  ),see section below) and p-value (`PVALUEBINS`) nodes. The following list of numbers was used to create the p-value bins: `[0,1e-12,1e-11,1e-10,1e-9,1e-8,1e-7,1e-6,1e-5,1e-4,1e-3,.005,.01,.02,.03,.04,.05,.06]`
@@ -117,22 +194,40 @@ match (a:Code)-[r0:CODE]-(b:Concept)-[r1:coexpressed_with {SAB:'GTEXCOEXP'}]-(c:
 return * limit 1
 ```
 
----
-## Human-Mouse Ortholog mappings (HGNCHCOP)
-**Source**: Mouse genes were downloaded from HGNC Comparisons of Orthology Predictions (HCOP) [https://www.genenames.org/tools/hcop/](https://www.genenames.org/tools/hcop/) (scroll to the bottom, under Bulk Downloads. Select Human - Mouse ortholog data)
-The human to mouse orthology mapping data were also obtained in April 2023 from the HGNC HCOP tool. 
+## GlyGen (GLYGEN)
 
-**Preproccessing**: We created new mouse gene Concepts and mapped them using the HCOP data to their corresponding human ortholog. Each orthologous pair share reciprocal relationships. Out of the 41,638 HGNC Codes in the UMLS, the HCOP tool found at least one mouse ortholog for 20,715 of them. 
+**Source**: Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 2020)) were chosen based on their relevance to our preliminary use cases. The first two datasets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/GLY_000004) and mouse (https://data.glygen.org/GLY_000030). The other three datasets contain information on human proteoforms, such as the exact residue on a protein isoform which is glycosylated, the type of glycosylation and the glycans found to bind that amino acid. 
+ 
+**Preproccessing**: The first two datasets which contain the names of genes that code for glycosyltransferase proteins  modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (`HGNC` nodes) and mouse genes (`HCOP` nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. To model the next three datasets, which contain data on protein isoform glycosylation, we created relationships between human proteins from UniProtKB (`UNIPROTKB` Concept nodes) (Boutet et al. 2016) and Glycans from the `CHEBI` resource (Hastings et al. 2016). More specifically, we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. This data added 38,344 protein isoform relationships (type: `has_isoform`, target node SAB: `UNIPROTKB.ISOFROM`), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: `GLY.TYPE.SITE`), 38,344 gylcosylation_type_site relationships (type: `binds_site`, source node SAB: `GLYTOUCAN`), all with SAB: `GLYGEN`.
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHCOP.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN_2.png" alt="drawing" width="800"/>
 
-**Schema Description**: An `HGNC` Concept (blue), Code (yellow) and Term (brown) on the left and its corresponding Mouse gene Concept and Code (SAB = `HCOP`) on the right. The SAB for this mapping dataset is `HGNCHCOP` and is located on the SAB property of the `in_1_to_1_relationship_with` and `inverse_in_1_to_1_relationship_with` relationships.
-
+**Schema Description**: ... 
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-return * limit 1
+MATCH (o0)<-[:CODE]-(g:Concept)-[:has_gene_product]->(u:Concept)-[:has_isoform]-(i:Concept)-[:has_type_site]-(s:Concept)<-[:binds_site]-(l:Concept),(g)-[:PREF_TERM]->(t1:Term),(u)-[:CODE]->(o2:Code),(u)-[PREF_TERM]->(t2:Term),(s)-[:CODE]->(o3:Code), (l)-[:CODE]->(o4:Code),(i)-[:CODE]->(o5:Code) RETURN * LIMIT 1
+```
+
+---
+## Homo Sapiens Chromosomal Location Ontology (HSCLO)
+**Source**: The Homo Sapiens Chromosomal Location Ontology (HSCLO)  was created by Taha Ahooyi Mohseni of the Petagraph team. HSCLO was primarily created to connect 4DN loop coordinates to the rest of the graph through the mapping between HSCLO and GENCODE. HSCLO was later utilized to connect `GTEXEQTL` locations in the graph as searchable nodes at 1kbp resolution. 
+
+**Preproccessing**: The dataset relationships as well as Code nodes use `HSCLO` as their SAB. `HSCLO` nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. `above_1Mbp_band`, `above 1_kbp_band`) and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. `precedes_10kbp_band`). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
+
+**Schema Description**: there are two types of connections (layers) between the `HSCLO` nodes; hierarchical, which relates nodes at different levels of resolution to their children nodes in a tree format, e.g. 1 Mbp nodes to 100 kbp nodes, and adjacency where nodes at the same level of resolution are linked together in a chain format. The layers of resolution include human genome, human chromosomes, 1 Mbp bands, 100 kbp bands, 10 kbp bands and 1 kbp bands.
+
+```cypher
+// Cypher query to reproduce the schema figure
+MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mbp_band {SAB:'HSCLO'}]->(c3:Concept)-[:above_100kbp_band {SAB:'HSCLO'}]->(c4:Concept)-[:above_10kbp_band {SAB:'HSCLO'}]->(c5:Concept)-[:above_1kbp_band {SAB:'HSCLO'}]->(c6:Concept),
+(c3:Concept)-[:precedes_1Mbp_band {SAB:'HSCLO'}]->(c7:Concept),
+(c4:Concept)-[:precedes_100kbp_band {SAB:'HSCLO'}]->(c8:Concept),
+(c5:Concept)-[:precedes_10kbp_band {SAB:'HSCLO'}]->(c9:Concept),
+(c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
+(c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
+RETURN * LIMIT 1
 ```
 
 ---
@@ -141,7 +236,6 @@ return * limit 1
 We use the Human Phenotype (HPO) Ontology mappings for `genes_to_phenotype.txt` and `phenotype_to_genes.txt`. The HPO annotations can be found here: [https://hpo.jax.org/app/data/annotations](https://hpo.jax.org/app/data/annotations). These data are generated by the HPO group using OMIM disease-gene associations to map HPO phenotypes to genes. These data contain 4,545 genes mapped to at least one phenotype and 10,896 phenotypes mapped to at least one gene
 
 **Preproccessing**: This data did not need any preprocessing.
-
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHPO.png" alt="drawing" width="800"/>
 
@@ -154,23 +248,24 @@ return * limit 1
 ```
 
 ---
-## Mouse gene-phenotype (HCOPMP)
-**Source**: Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
+## Human-Mouse Ortholog mappings (HGNCHCOP)
+**Source**: Mouse genes were downloaded from HGNC Comparisons of Orthology Predictions (HCOP) [https://www.genenames.org/tools/hcop/](https://www.genenames.org/tools/hcop/) (scroll to the bottom, under Bulk Downloads. Select Human - Mouse ortholog data)
+The human to mouse orthology mapping data were also obtained in April 2023 from the HGNC HCOP tool. 
 
-**Preproccessing**: The datasets from IMPC and MGI were combined to create a master gene-to-phenotype mapping dataset. This master dataset contains 10,380 mammalian phenotype (MP) terms that are mapped to at least one mouse gene and 17,936 mouse genes that are mapped to at least one MP term.
+**Preproccessing**: We created new mouse gene Concepts and mapped them using the HCOP data to their corresponding human ortholog. Each orthologous pair share reciprocal relationships. Out of the 41,638 HGNC Codes in the UMLS, the HCOP tool found at least one mouse ortholog for 20,715 of them. 
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HCOPMP.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHCOP.png" alt="drawing" width="800"/>
 
-**Schema Description**: On the left hand side, an `MP` Concept (blue), Code (yellow) and Term (brown) nodes are connected to an `HCOP` Concept node through an `involved_in` relationship. The `HCOP` Code nodes represent mouse genes. The SAB for this mapping dataset is HCOPMP and it is located on the SAB property of the `involved_in` and `inverse_involved_in` relationships. 
+**Schema Description**: An `HGNC` Concept (blue), Code (yellow) and Term (brown) on the left and its corresponding Mouse gene Concept and Code (SAB = `HCOP`) on the right. The SAB for this mapping dataset is `HGNCHCOP` and is located on the SAB property of the `in_1_to_1_relationship_with` and `inverse_in_1_to_1_relationship_with` relationships.
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'MP'})
+match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
 ```
 
 ---
-## Human Phenotype Ontology to Mouse Phenotype mappings (HPOMP)
+## Human-to-mouse phenotype mapping (HPOMP)
 **Source**:  Mappings between the HPO and MP were generated using the PheKnowLator tool,  [https://github.com/callahantiff/PheKnowLator](https://github.com/callahantiff/PheKnowLator) in December 2020.
 
 **Preproccessing**: The mappings that PheKnowLator generated were then checked and edited manually for accuracy. We kept only the highest quality mappings which left us with ~1000 mappings. No other preprocessing was done on this data.
@@ -202,29 +297,6 @@ where a.CODE contains 'ENSR'
 return * limit 1
 ```
 
-
----
-## Homo Sapiens Chromosomal Location Ontology (HSCLO)
-**Source**: The Homo Sapiens Chromosomal Location Ontology (HSCLO)  was created by Taha Ahooyi Mohseni of the Petagraph team. HSCLO was primarily created to connect 4DN loop coordinates to the rest of the graph through the mapping between HSCLO and GENCODE. HSCLO was later utilized to connect `GTEXEQTL` locations in the graph as searchable nodes at 1kbp resolution. 
-
-**Preproccessing**: The dataset relationships as well as Code nodes use `HSCLO` as their SAB. `HSCLO` nodes are defined at 5 resolution levels; chromosomes, 1 Mbp, 100 kbp, 10 kbp and 1kbp with each level connecting to lower levels with `above_(resolution level)_band` (e.g. `above_1Mbp_band`, `above 1_kbp_band`) and nodes at the same resolution level are connected through `precedes_(resolution level)_band` (e.g. `precedes_10kbp_band`). The dataset contains 3,431,155 nodes and 6,862,195 relationships.
-
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HSCLO_2.png" alt="drawing" width="800"/>
-
-**Schema Description**: there are two types of connections (layers) between the `HSCLO` nodes; hierarchical, which relates nodes at different levels of resolution to their children nodes in a tree format, e.g. 1 Mbp nodes to 100 kbp nodes, and adjacency where nodes at the same level of resolution are linked together in a chain format. The layers of resolution include human genome, human chromosomes, 1 Mbp bands, 100 kbp bands, 10 kbp bands and 1 kbp bands.
-
-```cypher
-// Cypher query to reproduce the schema figure
-MATCH (c1:Concept)-[:contains_chromosome{SAB:'HSCLO'}]->(c2:Concept)-[:above_1Mbp_band {SAB:'HSCLO'}]->(c3:Concept)-[:above_100kbp_band {SAB:'HSCLO'}]->(c4:Concept)-[:above_10kbp_band {SAB:'HSCLO'}]->(c5:Concept)-[:above_1kbp_band {SAB:'HSCLO'}]->(c6:Concept),
-(c3:Concept)-[:precedes_1Mbp_band {SAB:'HSCLO'}]->(c7:Concept),
-(c4:Concept)-[:precedes_100kbp_band {SAB:'HSCLO'}]->(c8:Concept),
-(c5:Concept)-[:precedes_10kbp_band {SAB:'HSCLO'}]->(c9:Concept),
-(c6:Concept)-[:precedes_1kbp_band {SAB:'HSCLO'}]->(c10:Concept),
-(c1)-[:CODE]->(o1:Code),(c2)-[:CODE]->(o2:Code),(c3)-[:CODE]->(o3:Code),(c4)-[:CODE]->(o4:Code),(c5)-[:CODE]->(o5:Code),(c6)-[:CODE]->(o6:Code),(c7)-[:CODE]->(o7:Code),(c8)-[:CODE]->(o8:Code),(c9)-[:CODE]->(o9:Code),(c10)-[:CODE]->(o10:Code)
-RETURN * LIMIT 1
-```
-
 ---
 ### LINCS L1000 Gene-Perturbagen Associations (LINCS)
 **Source**: The LINCS L1000 Connectivity Map dataset was obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000](https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000) (Duan et al. 2014; Rouillard et al. 2016). We introduced gene-small molecule perturbagen relationships to Petagraph based on the LINCS L1000 edge list.
@@ -238,22 +310,6 @@ RETURN * LIMIT 1
 ```cypher
 // Cypher query to reproduce the schema figure
 match (a:Code {SAB:'CHEBI'})-[r0:CODE]-(b:Concept)-[r1 {SAB:'LINCS'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-return * limit 1
-```
-
----
-## Connectivity Map (CMAP)
-**Source**: Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
-
-**Preproccessing**:  In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the Petagraph `CHEBI` and `HGNC` nodes with types types of `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene` all with a relationship SAB of `CMAP`.
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CMAP.png" alt="drawing" width="800"/>
-
-**Schema Description**: A `CHEBI` Concept, Code node are shown on the left and an `HGNC` Concept and Code pair are shown on the right. The two Concepts are connected through a `positively_correlated_with_chemical_or_drug` relationship. There also exists a `negatively_correlated_with_chemical_or_drug` relationship.  The `CMAP` SAB can be found on the SAB property of the Concept-Concept relationships.
-
-```cypher
-// Cypher query to reproduce the schema figure
-match (a:Code {SAB:'CHEBI'})-[r0:CODE]-(b:Concept)-[r1 {SAB:'CMAP'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
 ```
 
@@ -274,62 +330,18 @@ return * limit 1
 ```
 
 ---
-## ClinVar (CLINVAR)
-**Source**: Human genetic variant-disease associations were obtained from: [https://www.ncbi.nlm.nih.gov/clinvar/](https://www.ncbi.nlm.nih.gov/clinvar/). Only associations with Pathogenic or Likely Pathogenic consequence scores were included in the graph. We also did not include variants that affect a subset of genes (where there was no one-to-one relationship between a gene and phenotype/disease).  
+## Mouse gene-phenotype (HCOPMP)
+**Source**: Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
 
-**Preproccessing**: The ClinVar human genetic variants-phenotype submission summary dataset (2023-01-05) was utilized to define relationships between human genes and phenotypes (Landrum et al. 2018). To retrieve the target phenotype/disease we used MEDGEN IDs listed in the ClinVar dataset (also already present in Petagraph). The `CLINVAR` variant-disease mappings gave rise to 214,040 new relationships (with the following characteristics [Type: `gene_associated_with_disease_or_phenotype`, SAB: `CLINVAR`] and [type: `inverse_gene_associated_with_disease_or_phenotype`, SAB: `CLINVAR`] connecting `HGNC` and `MEDGEN`, `MONDO`, `HPO`, `EFO` and `MESH` Concept nodes. 
+**Preproccessing**: The datasets from IMPC and MGI were combined to create a master gene-to-phenotype mapping dataset. This master dataset contains 10,380 mammalian phenotype (MP) terms that are mapped to at least one mouse gene and 17,936 mouse genes that are mapped to at least one MP term.
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CLINVAR_2.png" alt="drawing" width="800"/>
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HCOPMP.png" alt="drawing" width="800"/>
 
-**Schema Description**: An HGNC Concept, Code and Term node are shown on the left, connected to an HPO Concept, Code and Term node on the right through the `gene_associated_with_disease_or_phenotype` relationship. The SAB for this mapping dataset, `CLINVAR` is found on the SAB property of the relationship.
-
-```cypher
-// Cypher query to reproduce the schema figure
-match (a:Code {SAB:'HPO'})<-[r0:CODE]-(b:Concept)-[r1 {SAB:'CLINVAR'}]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-where id(r1) = 29001875
-match (a:Code {SAB:'HPO'})-[r0:CODE]-(b:Concept)-[r3 {SAB:'CLINVAR'}]->(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-where id(r3) = 52494094
-return * limit 1
-```
-
----
-## Azimuth (AZ)  
-
-
-**Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) website which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
-
-
-**Preproccessing**: The data for human heart (evidence class: I2), kidney (evidence class: I2) and liver (evidence class: I2) were processed to establish relationships between AZ nodes and HGNC genes.
-
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/AZ.png" alt="drawing" width="800"/>
-
-**Schema Description**: An `AZ` Concept and Code are shown on the left and an `HGNC` Concept and Code are shown on the right. The two Concepts are connected through a `has_marker_gene_{TISSUE}` relationship, in this example, it is `has_marker_gene_kidney`. Currently, there are marker gene to cell type mappings from kidney, heart and liver.
+**Schema Description**: On the left hand side, an `MP` Concept (blue), Code (yellow) and Term (brown) nodes are connected to an `HCOP` Concept node through an `involved_in` relationship. The `HCOP` Code nodes represent mouse genes. The SAB for this mapping dataset is HCOPMP and it is located on the SAB property of the `involved_in` and `inverse_involved_in` relationships. 
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-return * limit 1
-
-match (a:Code {SAB:'AZ'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
-match (b)-[r3 {SAB:'AZ'}]-(e:Concept)-[:CODE]-(f:Code)
-return distinct f.SAB
-```
-
----
-## Protein - Protein Interactions (STRING)
-
-**Source**:  We ingested human protein to protein interaction data from the STRING website. To download the file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
-
-**Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB IDs and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connect `UNIPROTKB` nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB `STRING`  and `evidence_class` which denotes the combined score for the relationship, are both found on these Concept-Concept relationships.
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
-
-**Schema Description**: A `UNIPROTKB` Concept, Code and Term node are connected to another set of `UNIPROTKB` Concept, Code and Term nodes on the right through an `interacts_with` relationship. The SAB property on the edge of this relationship is `STRING`.
-
-```cypher
-// Cypher query to reproduce the schema figure
-match (a:Code {SAB:'UNIPROTKB'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'UNIPROTKB'})
+match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'MP'})
 return * limit 1
 ```
 
@@ -353,44 +365,23 @@ return * limit 1
 ```
 
 ---
-## GlyGen: Computational and Informatics Resources for Glycoscience (GLYGEN)
 
-**Source**: Five datasets from the GlyGen website (https://data.glygen.org) (York et al. 2020)) were chosen based on their relevance to our preliminary use cases. The first two datasets were simply lists of genes that code for glycosyltransferase proteins in the human (https://data.glygen.org/GLY_000004) and mouse (https://data.glygen.org/GLY_000030). The other three datasets contain information on human proteoforms, such as the exact residue on a protein isoform which is glycosylated, the type of glycosylation and the glycans found to bind that amino acid. 
- 
+## STRING
 
-**Preproccessing**: The first two datasets which contain the names of genes that code for glycosyltransferase proteins  modeled by creating a human glycosyltransferase’ Concept node as well as a ‘mouse glycosyltransferase’ Concept node. Then, the Concept nodes for humanthe genes (`HGNC` nodes) and mouse genes (`HCOP` nodes) were connected to their respective glycosyltransferase nodes with a ‘is_glycotransferase’ relationship. To model the next three datasets, which contain data on protein isoform glycosylation, we created relationships between human proteins from UniProtKB (`UNIPROTKB` Concept nodes) (Boutet et al. 2016) and Glycans from the `CHEBI` resource (Hastings et al. 2016). More specifically, we introduced an intermediary ontology of gylcosylation sites derived from the information included in the mentioned dataset. This data added 38,344 protein isoform relationships (type: `has_isoform`, target node SAB: `UNIPROTKB.ISOFROM`), 38,344 gylcosylation_type_site relationships (type: “has_type_site”, target node SAB: `GLY.TYPE.SITE`), 38,344 gylcosylation_type_site relationships (type: `binds_site`, source node SAB: `GLYTOUCAN`), all with SAB: `GLYGEN`.
+**Source**:  We ingested human protein to protein interaction data from the STRING website. To download the file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
 
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/GLYGEN_2.png" alt="drawing" width="800"/>
+**Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB IDs and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connect `UNIPROTKB` nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB `STRING`  and `evidence_class` which denotes the combined score for the relationship, are both found on these Concept-Concept relationships.
 
-**Schema Description**: ... 
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/STRING.png" alt="drawing" width="800"/>
 
-```cypher
-// Cypher query to reproduce the schema figure
-MATCH (o0)<-[:CODE]-(g:Concept)-[:has_gene_product]->(u:Concept)-[:has_isoform]-(i:Concept)-[:has_type_site]-(s:Concept)<-[:binds_site]-(l:Concept),(g)-[:PREF_TERM]->(t1:Term),(u)-[:CODE]->(o2:Code),(u)-[PREF_TERM]->(t2:Term),(s)-[:CODE]->(o3:Code), (l)-[:CODE]->(o4:Code),(i)-[:CODE]->(o5:Code) RETURN * LIMIT 1
-```
-
----
-## Gabriella Miller Kids First (KF) -- phenotypes and variants per gene
-
-**Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts from the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First were also introduced into the graph. 
-
-**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort. Only de novo variants and variants that received a VEP score of HIGH were included.
-  
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
-
-**Schema Description**: The upper left Concept (blue) and Code (yellow) nodes represent a KF patient Concept and Code node, (SAB = `KFPT`). There are 5,006 KF Patient Concept and Code node pairs in Petagraph. The `KFPT` Concept node is connected to one or more Human Phenotype Ontology (`HPO`) Concepts. The `KFPT` Concept node is also connected to its corresponding KF Cohort Concept and Code node (SAB = KFCOHORT) through a `belongs_to_cohort` relationship type. There are 15 distinct KF cohorts the graph. On the right, the KF gene bin Concept and Code node pair (SAB = `KFGENEBIN`) connect to the `KFCOHORT` Concept and an HGNC Concept. The `KFGENEBIN` Code node has a 'value' property which is the number of high risk and de novo variants for that gene for all the patients in that cohort. 
+**Schema Description**: A `UNIPROTKB` Concept, Code and Term node are connected to another set of `UNIPROTKB` Concept, Code and Term nodes on the right through an `interacts_with` relationship. The SAB property on the edge of this relationship is `STRING`.
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (c0:Code {SAB:'KFCOHORT'})-[r0:CODE]-(cui1:Concept)-[r1:belongs_to_cohort]-(cui2:Concept )-[r2:CODE]-(c1:Code {SAB:'KFPT'})
-match (cui2)-[r3:has_phenotype]-(cui3:Concept)-[r4:CODE]-(c2:Code {SAB:'HPO'})
-match (cui1)-[r5:belongs_to_cohort]-(cui4:Concept)-[r6:CODE]-(c3:Code {SAB:'KFGENEBIN'})
-match (cui4)-[r7:gene_has_variants]-(cui5:Concept)-[r8:CODE]-(c4:Code {SAB:'HGNC'})
-return * LIMIT 1
+match (a:Code {SAB:'UNIPROTKB'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'UNIPROTKB'})
+return * limit 1
 ```
-
 ---
-
 
 
 # [BACK TO TOP](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#petagraph-data-source-descriptions-and-schema-reference)
