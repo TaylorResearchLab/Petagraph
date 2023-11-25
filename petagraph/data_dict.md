@@ -17,7 +17,7 @@ For clarity, all schema figures in this document follow this node color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
 
 [4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
-[Azimuth mappings (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
+[Azimuth mappings (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-mappings-az)  
 [ClinVar (CLINVAR)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#clinvar-clinvar)  
 [Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
 [Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
