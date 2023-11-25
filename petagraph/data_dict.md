@@ -15,7 +15,10 @@ Each section contains the following information,
     
 For clarity, all schema figures in this document follow this node color format:
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_key.png" alt="drawing" width="800"/>
-  
+
+[4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
+[Azimuth (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
+
 [GTEx Expression data (GTEXEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-expression-data-gtexexp)  
 [GTEx eQTL data (GTEXEQTL)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-eqtl-data-gtexeqtl)  
 [GTEx Coexpression data (GTEXCOEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#genotype-tissue-expression-portal-coexpression-data-gtexcoexp)  
@@ -29,12 +32,36 @@ For clarity, all schema figures in this document follow this node color format:
 [Connectivity Map (CMAP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#connectivity-map-cmap)  
 [Molecular Signatures Database (MSIGDB)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#molecular-signatures-database-msigdb)  
 [ClinVar (CLINVAR)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#clinvar-clinvar)  
-[Azimuth (AZ)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#azimuth-az)  
 [Protein - Protein Interactions (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#protein---protein-interactions-string)  
 [Single Cell Fetal Heart expression data (ASP2019)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#single-cell-fetal-heart-expression-data-asp2019)  
 [GlyGen (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
 [Gabriella Miller Kids First data (KF)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gabriella-miller-kids-first-kf----phenotypes-and-variants-per-gene)  
-[4D Nucleome Program (4DN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#4d-nucleome-program-4dn)  
+
+
+## 4D Nucleome Program (4DN)
+
+**Source**: 23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. 
+
+**Preproccessing**: The loop files were processed for ingestion by first creating dataset nodes (SAB: `4DND`) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: `4DNF`) with the respective terms containing the file information, loop nodes (SAB: `4DNL`) attached to `HSCLO` nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: `4DNQ`) corresponding to donut q-value of the loops. 
+
+
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN_2.png" alt="drawing" width="800"/>
+
+**Schema Description**: ...
+
+```cypher
+// Cypher query to reproduce the schema figure
+MATCH (loop_concept:Concept)-[r2:loop_us_end {SAB:'4DN'}]->(us_end_concept:Concept)-[:CODE]->(us_end_code:Code)
+MATCH (loop_concept:Concept)-[r3:loop_ds_start {SAB:'4DN'}]->(ds_start_concept:Concept)-[:CODE]->(ds_start_code:Code)
+MATCH (loop_concept:Concept)-[r4:loop_ds_end {SAB:'4DN'}]->(ds_end_concept:Concept)-[:CODE]->(ds_end_code:Code)
+MATCH (loop_code:Code {SAB:'4DNL'})<-[:CODE]-(loop_concept:Concept)-[r5:loop_has_qvalue_bin {SAB:'4DN'}
+]->(qvalue_bin_concept:Concept)-[:CODE]->(qvalue_bin_code:Code {SAB:'4DNQ'})
+MATCH (file_code:Code {SAB:'4DNF'})<-[:CODE]-(file_concept:Concept)-[r6:file_has_loop {SAB:'4DN'}]->(loop_concept:Concept)
+MATCH (dataset_code:Code {SAB:'4DND'})<-[:CODE]-(dataset_concept:Concept)-[r7:dataset_has_file {SAB:'4DN'}]->(file_concept:Concept)
+MATCH (dataset_concept:Concept)-[r8:dataset_involves_cell_type {SAB:'4DN'}]->(cell_type_concept:Concept)-[:PREF_TERM]->(cell_type_term:Term )
+RETURN * LIMIT 1
+```
+
 
 ## Genotype-Tissue Expression Portal, Expression data (GTEXEXP) 
 **Source**: Median transcript per million (TPM) expression levels were ingested from the file `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` located on the GTEx Portal website at **[https://gtexportal.org/home/datasets](https://gtexportal.org/home/datasets)**. This gene expression dataset contains expression profiles 54 tissues and 56,200 transcripts.
@@ -311,7 +338,7 @@ return * limit 1
 
 **Source**: Single cell RNAseq data from human fetal heart tissue was obtained from the Asp et al. 2019 publication "A Spatiotemporal Organ-Wide Gene Expression and Cell Atlas of the Developing Human Heart", which can be found at https://pubmed.ncbi.nlm.nih.gov/31835037/. 
 
-**Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell heart concept nodes were created and connections to cell type nodes (author defined cell types, as many cell types  defined in the paper are not currently part of the Cell Ontology) and `HGNC` nodes connections were made. The Single cell heart Code nodes have an SAB of `ASP2019`  the cell types defined in the paper have an SAB of `ASP2019CLUSTER`.
+**Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell fetal heart concept nodes were created and connections to cell type nodes from the Cell Ontology (CL) and HGNC nodes connections were made. There were also quite a few cell types defined in the Asp et al. paper that do not currently exist in the CL. We created our own cell type Concept nodes for these cell types with an SAB of ‘ASP2019CLUSTER’. The Single cell heart Code nodes have an SAB of `ASP2019`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/SCHEART.png" alt="drawing" width="800"/>
 
@@ -345,9 +372,9 @@ MATCH (o0)<-[:CODE]-(g:Concept)-[:has_gene_product]->(u:Concept)-[:has_isoform]-
 ---
 ## Gabriella Miller Kids First (KF) -- phenotypes and variants per gene
 
-**Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts were also for the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First. 
+**Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts from the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First were also introduced into the graph. 
 
-**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort.
+**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort. Only de novo variants and variants that received a VEP score of HIGH were included.
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
 
@@ -363,29 +390,6 @@ return * LIMIT 1
 ```
 
 ---
-## 4D Nucleome Program (4DN)
-
-**Source**: 23 loop files stored in dot call format were obtained from the 4D nucleome project website https://www.4dnucleome.org. 
-
-**Preproccessing**: The loop files were processed for ingestion by first creating dataset nodes (SAB: `4DND`) with the respective terms containing the dataset information (assay type, lab and cell type involved), file nodes (SAB: `4DNF`) with the respective terms containing the file information, loop nodes (SAB: `4DNL`) attached to `HSCLO` nodes at 1kpb resolution level corresponding to upstream start and end and downstream start and end nodes of the characteristic anchor of the loop and q-value nodes (SAB: `4DNQ`) corresponding to donut q-value of the loops. 
-
-
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/4DN_2.png" alt="drawing" width="800"/>
-
-**Schema Description**: ...
-
-```cypher
-// Cypher query to reproduce the schema figure
-MATCH (loop_concept:Concept)-[r2:loop_us_end {SAB:'4DN'}]->(us_end_concept:Concept)-[:CODE]->(us_end_code:Code)
-MATCH (loop_concept:Concept)-[r3:loop_ds_start {SAB:'4DN'}]->(ds_start_concept:Concept)-[:CODE]->(ds_start_code:Code)
-MATCH (loop_concept:Concept)-[r4:loop_ds_end {SAB:'4DN'}]->(ds_end_concept:Concept)-[:CODE]->(ds_end_code:Code)
-MATCH (loop_code:Code {SAB:'4DNL'})<-[:CODE]-(loop_concept:Concept)-[r5:loop_has_qvalue_bin {SAB:'4DN'}
-]->(qvalue_bin_concept:Concept)-[:CODE]->(qvalue_bin_code:Code {SAB:'4DNQ'})
-MATCH (file_code:Code {SAB:'4DNF'})<-[:CODE]-(file_concept:Concept)-[r6:file_has_loop {SAB:'4DN'}]->(loop_concept:Concept)
-MATCH (dataset_code:Code {SAB:'4DND'})<-[:CODE]-(dataset_concept:Concept)-[r7:dataset_has_file {SAB:'4DN'}]->(file_concept:Concept)
-MATCH (dataset_concept:Concept)-[r8:dataset_involves_cell_type {SAB:'4DN'}]->(cell_type_concept:Concept)-[:PREF_TERM]->(cell_type_term:Term )
-RETURN * LIMIT 1
-```
 
 
 
