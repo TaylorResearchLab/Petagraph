@@ -179,7 +179,7 @@ return * limit 1
 ```
 
 ---
-##  Genotype-Tissue Expression Portal, Coexpression data (GTEXCOEXP)
+## GTEx Coexpression data (GTEXCOEXP)
 **Source**: The source of this data is the `GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct` from the GTEx Expression dataset above.
 
 **Preproccessing**:  Co-expression of genes was computed using Pearson’s correlation. Gene pairs were included if the Pearson correlation coefficient was greater than 0.99. Computing co-expression pairs for all genes in all tissues resulted in many pairs even after filtering for pairs with a score above 0.99. To reduce the size of the data we included only gene co-expression pairs that are highly co-expressed in at least 5 tissues.
