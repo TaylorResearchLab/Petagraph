@@ -218,7 +218,7 @@ return * limit 1
 ## Connectivity Map (CMAP)
 **Source**: Signature perturbations of gene expression profiles as induced by chemical (small molecule) were obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules](https://maayanlab.cloud/Harmonizome/dataset/CMAP+Signatures+of+Differentially+Expressed+Genes+for+Small+Molecules)
 
-**Preproccessing**:  In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the Petagraph `CHEBI` and `HGNC` nodes with types types of `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene` and SAB of `CMAP`.
+**Preproccessing**:  In a similar manner to L1000 data integration discussed above, we obtained the edge lists of the CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset from the Harmonizome database :https://maayanlab.cloud, (Lamb et al. 2006; Rouillard et al. 2016). The data was computed based on an earlier study (Lamb et al. 2006; Rouillard et al. 2016). The dataset added 2,625,336 new relationships (including reverse relationships) connecting the Petagraph `CHEBI` and `HGNC` nodes with types types of `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene` all with a relationship SAB of `CMAP`.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/CMAP.png" alt="drawing" width="800"/>
 
@@ -269,7 +269,7 @@ return * limit 1
 ## Azimuth (AZ)  
 
 
-**Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
+**Source**: Marker genes per cell type mappings were downloaded from the [Azimuth](https://azimuth.hubmapconsortium.org) website which is part of the larger Human Biomolecular Atlas Project [HuBMAP](https://commonfund.nih.gov/HuBMAP)
 
 
 **Preproccessing**: The data for human heart (evidence class: I2), kidney (evidence class: I2) and liver (evidence class: I2) were processed to establish relationships between AZ nodes and HGNC genes.
@@ -292,7 +292,7 @@ return distinct f.SAB
 ---
 ## Protein - Protein Interactions (STRING)
 
-**Source**:  We ingested human protein to protein interaction data from the STRING website.  assertions obtained from STRING database. To download this file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
+**Source**:  We ingested human protein to protein interaction data from the STRING website. To download the file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
 
 **Preproccessing**: We converted human ENSEMBL protein IDs to UNIPROTKB IDs and filtered the dataset for the top 10% of the combined score. The refined dataset contains 459,701 relationships (919,402 including reverse ones) that connect `UNIPROTKB` nodes with the relationship types `interacts_with` and `inverse_interacts_with`. The SAB `STRING`  and `evidence_class` which denotes the combined score for the relationship, are both found on these Concept-Concept relationships.
 
@@ -309,7 +309,7 @@ return * limit 1
 ---
 ## Single Cell Fetal Heart expression data (ASP2019)
 
-**Source**: Single cell Fetal heart data was obtained from the Asp et al. 2019 publication "A Spatiotemporal Organ-Wide Gene Expression and Cell Atlas of the Developing Human Heart", which can be found at https://pubmed.ncbi.nlm.nih.gov/31835037/. 
+**Source**: Single cell RNAseq data from human fetal heart tissue was obtained from the Asp et al. 2019 publication "A Spatiotemporal Organ-Wide Gene Expression and Cell Atlas of the Developing Human Heart", which can be found at https://pubmed.ncbi.nlm.nih.gov/31835037/. 
 
 **Preproccessing**: Average gene expression of each cluster was calculated and used to represent each gene within a cell type cluster. Single cell heart concept nodes were created and connections to cell type nodes (author defined cell types, as many cell types  defined in the paper are not currently part of the Cell Ontology) and `HGNC` nodes connections were made. The Single cell heart Code nodes have an SAB of `ASP2019`  the cell types defined in the paper have an SAB of `ASP2019CLUSTER`.
 
