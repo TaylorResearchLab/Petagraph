@@ -122,7 +122,7 @@ return * limit 1
 
 **Source**: Patient-phenotype mappings were obtained from the Gabriella Miller Kids First (GMKF) data resource center. Variant per gene counts from the Congenital Heart Defects (CHD) Cohort from Gabriella Miller Kids First were also introduced into the graph. 
 
-**Preproccessing**: We added phenotypes from 5,006 patients, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort. Only de novo variants and variants that received a VEP score of HIGH were included.
+**Preproccessing**: Phenotypes from 5,006 patients were added, modeled as Concept nodes with SAB of `KFPT`, for Kids First Patient, and connected them to their respective HPO Concepts in the graph. The variant per gene counts were generated based on VCF files of the patients in the Congenital Heart Defects Cohort. Only de novo variants and variants that received a VEP score of HIGH were included.
   
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/kf.png" alt="drawing" width="800"/>
 
