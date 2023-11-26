@@ -24,18 +24,18 @@ For clarity, all schema figures in this document follow this node color format:
 [GTEx, Expression data (GTEXEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gtex-expression-data-gtexexp
 )  
 [GTEx, eQTL data (GTEXEQTL)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gtex-eqtl-data-gtexeqtl)  
-[GTEx, Coexpression data (GTEXCOEXP)]()  
-[GlyGen selected datasets (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-computational-and-informatics-resources-for-glycoscience-glygen)  
+[GTEx, Coexpression data (GTEXCOEXP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#gtex-coexpression-data-gtexcoexp)  
+[GlyGen selected datasets (GLYGEN)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#glygen-glygen)  
 [Homo Sapiens Chromosomal Location Ontology (HSCLO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#homo-sapiens-chromosomal-location-ontology-hsclo)  
-[Human gene-to-phenotype mappings (HGNCHPO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-gene-phenotype-hgnchpo) 
-[Human-to-mouse ortholog mappings (HGNCHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-mouse-orthologs-hgnchcop)  
-[Human-to-mouse phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-phenotype-ontology-to-mouse-phenotype-mappings-hpomp) 
-[Human-to-rat ENSEMBL mappings (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
+[Human gene-to-phenotype mappings (HGNCHPO)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-gene-to-phenotype-mappings-hgnchpo) 
+[Human-to-mouse ortholog mappings (HGNCHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-to-mouse-ortholog-mappings-hgnchcop)  
+[Human-to-mouse phenotype mappings (HPOMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-to-mouse-phenotype-mappings-hpomp) 
+[Human-to-rat ENSEMBL mappings (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-to-rat-ensembl-mappings-rathcop)  
 [LINCS L1000 (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-lincs)  
-[Molecular Signatures Database (MSIGDB)]()  
+[Molecular Signatures Database (MSIGDB)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#molecular-signatures-database-msigdb)  
 [Mouse gene-to-phenotype mappings (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
 [Single Cell Fetal Heart data (ASP2019)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#single-cell-fetal-heart-expression-data-asp2019)  
-[STRING (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#string)  
+[STRING (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#string-string)  
 
 
 
@@ -365,7 +365,7 @@ return * limit 1
 
 ---
 
-## Single Cell Fetal Heart data (ASP2019)
+## STRING (STRING)
 
 **Source**:  We ingested human protein to protein interaction data from the STRING website. To download the file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
 
