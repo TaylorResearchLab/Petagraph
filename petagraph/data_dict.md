@@ -33,7 +33,7 @@ For clarity, all schema figures in this document follow this node color format:
 [Human-to-rat ENSEMBL mappings (RATHCOP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#human-rat-ensembl-orthology-rathcop)  
 [LINCS L1000 (LINCS)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#lincs-l1000-lincs)  
 [Molecular Signatures Database (MSIGDB)]()  
-[Mouse gene-to-phenotype (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
+[Mouse gene-to-phenotype mappings (HCOPMP)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#mouse-gene-phenotype-hcopmp)  
 [Single Cell Fetal Heart data (ASP2019)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#single-cell-fetal-heart-expression-data-asp2019)  
 [STRING (STRING)](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md#string)  
 
@@ -264,7 +264,7 @@ return * limit 1
 ```
 
 ---
-## Human-to-mouse phenotype mapping (HPOMP)
+## Human-to-mouse phenotype mappings (HPOMP)
 **Source**:  Mappings between the HPO and MP were generated using the PheKnowLator tool,  [https://github.com/callahantiff/PheKnowLator](https://github.com/callahantiff/PheKnowLator) in December 2020.
 
 **Preproccessing**: The mappings that PheKnowLator generated were then checked and edited manually for accuracy. We kept only the highest quality mappings which left us with ~1000 mappings. No other preprocessing was done on this data.
@@ -329,7 +329,7 @@ return * limit 1
 ```
 
 ---
-## Mouse gene-phenotype (HCOPMP)
+## Mouse gene-to-phenotype mappings (HCOPMP)
 **Source**: Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
 
 **Preproccessing**: The datasets from IMPC and MGI were combined to create a master gene-to-phenotype mapping dataset. This master dataset contains 10,380 mammalian phenotype (MP) terms that are mapped to at least one mouse gene and 17,936 mouse genes that are mapped to at least one MP term.
@@ -365,7 +365,7 @@ return * limit 1
 
 ---
 
-## STRING
+## Single Cell Fetal Heart data (ASP2019)
 
 **Source**:  We ingested human protein to protein interaction data from the STRING website. To download the file, navigate to the STRING download page [here](https://string-db.org/cgi/download?sessionId=bhAGIM6ZbBmX) and select Homo Sapiens in the drop down box. Then download the 9606.protein.links.full.v12.0 file.
 
