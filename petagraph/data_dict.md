@@ -297,7 +297,7 @@ return * limit 1
 ```
 
 ---
-### LINCS L1000 Gene-Perturbagen Associations (LINCS)
+### LINCS L1000 (LINCS)
 **Source**: The LINCS L1000 Connectivity Map dataset was obtained from the Ma’ayan Lab Harmonizome portal at [https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000](https://maayanlab.cloud/Harmonizome/search?t=all&q=l1000) (Duan et al. 2014; Rouillard et al. 2016). We introduced gene-small molecule perturbagen relationships to Petagraph based on the LINCS L1000 edge list.
 
 **Preproccessing**: These relationships were summarized from LINCS L1000 CMAP Signatures of Differentially Expressed Genes for Small Molecules dataset. This was done by first finding the corresponding CHEBI Concept nodes for the L1000 small molecules and then establishing the relationship of such nodes to the Petagraph HGNC nodes according to the edge list mentioned above. For that purpose, the relationships were collapsed to exclude the cell line, dosage, and treatment time information but the effect directions were retained in relationship types. This led to 3,198,094 relationships (bidirectional) with `LINCS` as the SAB and the following relationship types: `negatively_correlated_with_gene`, `positively_correlated_with_gene`, `inverse_negatively_correlated_with_gene` and `inverse_positively_correlated_with_gene`.
