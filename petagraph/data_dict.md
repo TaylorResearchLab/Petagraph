@@ -247,7 +247,7 @@ return * limit 1
 ```
 
 ---
-## Human-to-mouse ortholog mappings (HGNCHCOP)  
+## Human-to-mouse ortholog mappings (HCOP)  
 **Source**: Mouse genes were downloaded from HGNC Comparisons of Orthology Predictions (HCOP) [https://www.genenames.org/tools/hcop/](https://www.genenames.org/tools/hcop/) (scroll to the bottom, under Bulk Downloads. Select Human - Mouse ortholog data)
 The human to mouse orthology mapping data were also obtained in April 2023 from the HGNC HCOP tool. 
 
@@ -255,11 +255,11 @@ The human to mouse orthology mapping data were also obtained in April 2023 from 
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HGNCHCOP.png" alt="drawing" width="800"/>
 
-**Schema Description**: An `HGNC` Concept (blue), Code (yellow) and Term (brown) on the left and its corresponding Mouse gene Concept and Code (SAB = `HCOP`) on the right. The SAB for this mapping dataset is `HGNCHCOP` and is located on the SAB property of the `in_1_to_1_relationship_with` and `inverse_in_1_to_1_relationship_with` relationships.
+**Schema Description**: An `HGNC` Concept (blue), Code (yellow) and Term (brown) on the left and its corresponding Mouse gene Concept and Code (SAB = `MGI`) on the right. The SAB for this mapping dataset is `HGNCHCOP` and is located on the SAB property of the `in_1_to_1_relationship_with` and `inverse_in_1_to_1_relationship_with` relationships.
 
 ```cypher
 // Cypher query to reproduce the schema figure
-match (a:Code {SAB:'HCOP'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
+match (a:Code {SAB:'MGI'})-[r0:CODE]-(b:Concept)-[r1]-(c:Concept)-[r2:CODE]-(d:Code {SAB:'HGNC'})
 return * limit 1
 ```
 
@@ -329,14 +329,14 @@ return * limit 1
 ```
 
 ---
-## Mouse gene-to-phenotype mappings (HCOPMP)
-**Source**: Mouse gene-to-phenotype (HCOPMP) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
+## Mouse gene-to-phenotype mappings (MPMGI)
+**Source**: Mouse gene-to-phenotype (MPMGI) data were obtained in January 2021 from multiple datasets from two separate databases. The first set of datasets were obtained from the international mouse phenotyping consortium (IMPC), which includes data from KOMP2, and can be found at http://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/. We used the `genotype-phenotype-assertions-ALL.csv.gz` and the `statistical-results-ALL.csv.gz datasets` from this database. Both datasets contain, among other data, phenotype to gene mappings in the mouse. The second set of datasets were obtained from the mouse genome informatics (MGI) database and can be found at http://www.informatics.jax.org/downloads/reports/index.html#pheno. We used the `MGI_PhenoGenoMP.rpt (Table 5)`,  `MGI_GenePheno.rpt (Table 9)` and `MGI_Geno_DiseaseDO.rpt (Table 10)` datasets. All 3 datasets contain, among other data, mouse phenotype-to-gene mappings. 
 
 **Preproccessing**: The datasets from IMPC and MGI were combined to create a master gene-to-phenotype mapping dataset. This master dataset contains 10,380 mammalian phenotype (MP) terms that are mapped to at least one mouse gene and 17,936 mouse genes that are mapped to at least one MP term.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/publication_figures/schema_figures/HCOPMP.png" alt="drawing" width="800"/>
 
-**Schema Description**: On the left hand side, an `MP` Concept (blue), Code (yellow) and Term (brown) nodes are connected to an `HCOP` Concept node through an `involved_in` relationship. The `HCOP` Code nodes represent mouse genes. The SAB for this mapping dataset is HCOPMP and it is located on the SAB property of the `involved_in` and `inverse_involved_in` relationships. 
+**Schema Description**: On the left hand side, an `MP` Concept (blue), Code (yellow) and Term (brown) nodes are connected to an `MGI` Concept node through an `involved_in` relationship. The `HCOP` Code nodes represent mouse genes. The SAB for this mapping dataset is MPMGI and it is located on the SAB property of the `involved_in` and `inverse_involved_in` relationships. 
 
 ```cypher
 // Cypher query to reproduce the schema figure
