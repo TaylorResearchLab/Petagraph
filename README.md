@@ -7,7 +7,15 @@ Over the past decade, there has been substantial growth in both the quantity and
 | ------------- | ------------- | ------------- |
 
 ## Installing Petagraph
-This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 4.3.23`, `Python3.x`, `git 2.39.3`.
+There are 2 ways to build the Petagraph knowledge graph.
+This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 5.14`, `Python3.x`, `git 2.39.3`.
+
+### Option 1: Build from Neo4j dump file (easy)
+
+#### 1. Download and install `Neo4j Desktop` (https://neo4j.com/download/)
+#### 2. Download the [Petagraph dump file](https://osf.io/download/ujbv3/)
+
+### Option 2: Build from source (harder)
 
 ### Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
