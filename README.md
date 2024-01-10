@@ -14,6 +14,9 @@ This installation process was tested on an Apple MacBook Pro 2023 16GB Memory ru
 
 #### 1. Download and install `Neo4j Desktop` (https://neo4j.com/download/)
 #### 2. Download the [Petagraph dump file](https://osf.io/download/ujbv3/)
+#### 3. Create a new project on Neo4j Desktop and add the Petagraph dump file to the project.
+#### 4. Select `Create new database from dump`.
+
 
 ### Option 2: Build from source (harder)
 
