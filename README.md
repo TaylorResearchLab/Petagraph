@@ -43,7 +43,7 @@ $ bin/neo4j-admin import --verbose  --nodes=Semantic="import/TUIs.csv" --nodes=C
 ```
 The build time will vary but shouldnt take more than 20 min.
 
-### Step 6. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
+#### Step 6. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
 This sets contraints and indices on Node types to speed up query execution time. The last three queries create properties on numerical Code nodes.
 
 ```cypher
