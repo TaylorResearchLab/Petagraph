@@ -7,8 +7,7 @@ Over the past decade, there has been substantial growth in both the quantity and
 | ------------- | ------------- | ------------- |
 
 ## Installing Petagraph
-There are 2 ways to build the Petagraph knowledge graph.
-This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 5.14`, `Python3.x`, `git 2.39.3`.
+There are 2 ways to build the Petagraph knowledge graph, build using the dump file or building from source.
 
 ### Option 1: Build from Neo4j dump file (easy)
 
@@ -16,21 +15,23 @@ This installation process was tested on an Apple MacBook Pro 2023 16GB Memory ru
 #### 2. Download the [Petagraph dump file](https://osf.io/download/ujbv3/).
 
 #### 3. Create a new project on Neo4j Desktop and add the Petagraph dump file to the project.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="500"/>  
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="600"/>  
 
 #### 4. Add the dump file to the new project.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="500"/>  
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="600"/>  
 
 #### 4. Select `Create new database from dump`.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="500"/>  
-#### 5. Enter database name, password and select a Neo4j version to use (5.14 is recommended).
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
+
+#### 5. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
+#### 6. Start the database!
 
 
 
 ### Option 2: Build from source (harder)
 
-### Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
+Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
@@ -67,6 +68,7 @@ The build time will vary but shouldnt take more than 20 min.
 #### Step 6. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
 This sets contraints and indices on Node types to speed up query execution time. The last three queries create properties on numerical Code nodes.
 
+
 ```cypher
 MATCH (n:Term) WHERE size((n)--())=0 DELETE (n);
 CREATE CONSTRAINT ON (n:Semantic) ASSERT n.TUI IS UNIQUE;
@@ -100,6 +102,7 @@ SET  pval_node.upperbound = toFloat(bin[1]);
 ```
 
 
+This installation process was tested on an Apple MacBook Pro 2023 16GB Memory running Ventura macOS 13.6. Software Versions used for testing: `Neo4j Desktop 1.5.7`, `Neo4j 5.14`, `Python3.x`, `git 2.39.3`.
 
 
 
