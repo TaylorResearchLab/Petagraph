@@ -16,13 +16,15 @@ This installation process was tested on an Apple MacBook Pro 2023 16GB Memory ru
 #### 2. Download the [Petagraph dump file](https://osf.io/download/ujbv3/).
 
 #### 3. Create a new project on Neo4j Desktop and add the Petagraph dump file to the project.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="500"/>
-#### 4. Add the dump file to the new project.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="500"/>
-#### 4. Select `Create new database from dump`.
-<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="500"/>
-#### 5. Enter database name, password and select a Neo4j version to use (5.14 is recommended).
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="500"/>  
 
+#### 4. Add the dump file to the new project.
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="500"/>  
+
+#### 4. Select `Create new database from dump`.
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="500"/>  
+#### 5. Enter database name, password and select a Neo4j version to use (5.14 is recommended).
+<img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
 
 
 
