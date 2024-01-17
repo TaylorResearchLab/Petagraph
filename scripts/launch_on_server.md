@@ -31,3 +31,7 @@ The default Python is python3.6, but neo4js python graph data science plugin `gr
 To use a newer version of Python follow these steps:
 5a. Use method 2 from https://tecadmin.net/how-to-install-python-3-11-on-ubuntu/ to d/l Python and PIP.
 5b. Create venv to create new kernel https://saturncloud.io/blog/how-to-add-a-python-3-kernel-to-jupyter-ipython/#step-3-install-the-ipython-kernel-package
+5c.
+#export PATH="/usr/local/lib/python3.11:$PATH"
+#export PATH="/usr/local/lib/python3.11/site-packages:$PATH"
+sudo python3.11 -m pip show graphdatascience
