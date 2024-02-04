@@ -12,7 +12,7 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 ### Option 1: Build from Neo4j dump file (easy)
 
 #### 1. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
-#### 2. Download the [Petagraph dump file](https://osf.io/download/ujbv3/).
+#### 2. Download the [Petagraph dump file](https://osf.io/download/epc84/).
 
 #### 3. Create a new project on Neo4j Desktop.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="600"/>  
