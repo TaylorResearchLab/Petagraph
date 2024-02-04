@@ -3,7 +3,7 @@
 
 Over the past decade, there has been substantial growth in both the quantity and complexity of available biomedical data. In order to harness this extensive data and alleviate the challenges associated with data integration, we developed Petagraph, a biomedical knowledge graph that encompasses over 30 million nodes and 160 million relationships. Petagraph provides a cohesive data environment that enables users to efficiently analyze, annotate, and discern relationships within and across complex multi-omics and other types of biomedical datasets. Constructed with the Unified Biomedical Knowledge Graph (UBKG), Petagraph leverages more than 180 ontologies and standards that support a diversity of genomics data types. We have curated and embedded millions of quantitative genomics data within Petagraph’s ontological scaffold and demonstrate  how  queries on Petagraph can generate meaningful results across various research contexts and use cases.
 
-| [Tutorial](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/user_guide.md)   |  [Dataset Schema Reference](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/dataset_schemas.md)   | [Bioarxiv Preprint](https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf)  |
+| [Tutorial](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/user_guide.md)   |  [Dataset Schema Reference]([https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/dataset_schemas.md](https://github.com/TaylorResearchLab/Petagraph/blob/main/petagraph/data_dict.md))   | [Bioarxiv Preprint](https://www.biorxiv.org/content/biorxiv/early/2023/02/13/2023.02.11.528088.full.pdf)  |
 | ------------- | ------------- | ------------- |
 
 ## Installing Petagraph
