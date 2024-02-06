@@ -20,12 +20,13 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 #### 4. Add the dump file to the new project.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="600"/>  
 
-#### 4. Select `Create new database from dump`.
+#### 5. Select `Create new database from dump`.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
 
-#### 5. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
+#### 6. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
-#### 6. Start the database!
+
+#### 7. Start the database!
 
 
 
