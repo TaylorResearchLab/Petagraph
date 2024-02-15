@@ -9,30 +9,33 @@ Over the past decade, there has been substantial growth in both the quantity and
 ## Installing Petagraph
 There are 2 ways to build the Petagraph knowledge graph, build using the dump file or building from source.
 
-### Option 1: Build from Neo4j dump file (easy)
+### Option 1: Build from Neo4j dump file (preferred)
 
-#### 1. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
-#### 2. Download the [Petagraph dump file](https://osf.io/download/epc84/).
 
-#### 3. Create a new project on Neo4j Desktop.
+#### 1. Obtain a UMLS License if you don't already have one
+#### 2. Contact the authors: 
+#### 3. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
+#### 4. Download the [Petagraph dump file](https://osf.io/download/epc84/).
+
+#### 5. Create a new project on Neo4j Desktop.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="600"/>  
 
-#### 4. Add the dump file to the new project.
+#### 6. Add the dump file to the new project.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="600"/>  
 
-#### 5. Select `Create new database from dump`.
+#### 7. Select `Create new database from dump`.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
 
-#### 6. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
+#### 8. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
 
-#### 7. Start the database!
+#### 9. Start the database!
 
 
 
-### Option 2: Build from source (harder)
+### Option 2: Build from source
 
-Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
+Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Universal Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
