@@ -26,11 +26,11 @@ jobs:
     - name: Download OSF files #osf -p 6jtc9 fetch Datasets/Datasets.zip Datasets.zip; unzip Datasets.zip; 
       run: |        
         echo 'Downloading OSF data...';
-        osf -p 6jtc9 fetch Datasets/Petagraph_datasets.zip Petagraph_datasets.zip; 
-        unzip Petagraph_datasets.zip; rm Petagraph_datasets.zip;
-        osf -p 6jtc9 fetch reduced_csvs_github_actions.zip reduced_csvs_github_actions.zip;
-        unzip reduced_csvs_github_actions.zip; rm reduced_csvs_github_actions.zip;
-        echo 'Finished Downloading and unzipping....';
+        # osf -p 6jtc9 fetch Datasets/Petagraph_datasets.zip Petagraph_datasets.zip; 
+        # unzip Petagraph_datasets.zip; rm Petagraph_datasets.zip;
+        # osf -p 6jtc9 fetch reduced_csvs_github_actions.zip reduced_csvs_github_actions.zip;
+        # unzip reduced_csvs_github_actions.zip; rm reduced_csvs_github_actions.zip;
+        # echo 'Finished Downloading and unzipping....';
         ls data;
     - name: chmod
       run: |
