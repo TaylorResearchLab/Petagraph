@@ -13,23 +13,22 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 
 #### 1. Obtain a UMLS License if you don't already have one
-#### 2. Contact the authors: 
+#### 2. Contact the authors for access to the Petagraph dump file.
 #### 3. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
-#### 4. Download the [Petagraph dump file](https://osf.io/download/epc84/).
 
-#### 5. Create a new project on Neo4j Desktop.
+#### 4. Create a new project on Neo4j Desktop.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_1.png" alt="drawing" width="600"/>  
 
-#### 6. Add the dump file to the new project.
+#### 5. Add the dump file to the new project.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_2.png" alt="drawing" width="600"/>  
 
-#### 7. Select `Create new database from dump`.
+#### 6. Select `Create new database from dump`.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
 
-#### 8. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
+#### 7. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
 
-#### 9. Start the database!
+#### 8. Start the database!
 
 
 
