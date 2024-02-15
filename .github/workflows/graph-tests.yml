@@ -39,12 +39,12 @@ jobs:
         sudo chmod 777 -R /var/log/neo4j/; sudo chmod 777 -R /var/run/neo4j
     - name: Build Petagraph 
       run: |
-        mv reduced_csvs_github_actions/C*.csv  /var/lib/neo4j/import/;
+        # mv reduced_csvs_github_actions/C*.csv  /var/lib/neo4j/import/;
         rm -rf /var/lib/neo4j/data/databases/*
         rm -rf /var/lib/neo4j/data/transactions/*
         cd /var/lib/neo4j/
         export HEAP_SIZE=1G; echo heapsize set to: $HEAP_SIZE; #  --relationships="import/CUI-CUIs.csv"
-        neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
+        # neo4j-admin import --verbose --nodes=Concept="import/CUIs.csv"  --nodes=Code="import/CODEs.csv"    --relationships=CODE="import/CUI-CODEs.csv"  --skip-bad-relationships --skip-duplicate-nodes
     - name: sed Unauth
       run: |
         #sed -i '/dbms.security.auth_enabled=false/s/^#//g' /etc/neo4j/neo4j.conf
