@@ -36,13 +36,16 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Universal Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
 
+#### 1. Obtain a UMLS License if you don't already have one
+
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
-#### 1. Download software: 
+
+#### 2. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`.
-#### 2. Download data:
+#### 3. Download data:
    - Download the Datasets.zip file (250 MB zipped and 2.7GB unzipped) containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
 
      <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png" alt="drawing" width="500"/>
