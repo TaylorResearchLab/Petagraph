@@ -11,7 +11,7 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 ### Option 1: Build from Neo4j dump file (preferred)
 
-#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html)
+#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html).
 #### 2. Contact the authors for access to the Petagraph dump file.
 #### 3. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
 
@@ -24,10 +24,10 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 #### 6. Select `Create new database from dump`.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
 
-#### 7. Enter a database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
+#### 7. Enter a database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes!
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
 
-#### 8. Start the database!
+
 
 
 
@@ -35,21 +35,22 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) and the Unified Biomedical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so (after getting a UMLS License) the first step is to generate the UMLS and UBKG CSVs:
 
-#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html)
+#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html).
 
 
-#### 2. Generate the UMLS CSVs
+#### 2. Generate the UMLS CSVs (the source framework).
 This step consists of downloading the UMLS Metathesaurus and Semantic Network using MetamorphoSys and then moving the data into a database. Then, run a series of SQL queries against the database to extract the nodes and edges needed to build the UMLS CSVs.
 
 Please follow the instructions at the following 2 links:  
 2a) [Download UMLS Data and move it to a database](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/UMLS%20Extraction%20Process.md)  
 2b) [Extract data and build UMLS CSVs](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/CSV-Extracts.md)  
 
-Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
+General Overview of how to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework). 
 
-#### 3. Generate the UBKG CSVs
-This step consists of 
-Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
+#### 3. Generate the UBKG CSVs (the generation framework).
+This step consists of running the ingestion pipeline iteratively for a predefined list of ontologies. The main script, [build_csv.py](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/generation_framework/build_csv.py) calls the ingestion script, [OWLNETS-UMLS-GRAPH-12.py](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/generation_framework/owlnets_umls_graph/OWLNETS-UMLS-GRAPH-12.py), which processes and integrates ontologies on top of the UMLS CSVs. The list of predefined ontologies that will be ingested can be found in this [file](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/generation_framework/ontologies.json).
+
+General Overview of how to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework).
 
 
 
