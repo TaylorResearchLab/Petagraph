@@ -40,11 +40,11 @@ Petagraph is built on top of the Unified Medical Language System ([UMLS](https:/
 
 
 #### 2. Generate the UMLS CSVs
-This step consists of downloading the UMLS Metathesaurus and Semantic Network using MetamorphoSys and then moving the data into a database. Then, run a series of SQL against the database holding the UMLS data to extract the necessary nodes and edges in order to build the UMLS CSVs.
+This step consists of downloading the UMLS Metathesaurus and Semantic Network using MetamorphoSys and then moving the data into a database. Then, run a series of SQL queries against the database to extract the nodes and edges needed to build the UMLS CSVs.
 
-Please follow the instructions here at the following 2 links:
-2a) [Download UMLS Data and move it to a database](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/UMLS%20Extraction%20Process.md)
-2b) [Extract data and build UMLS CSVs](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/CSV-Extracts.md)
+Please follow the instructions at the following 2 links:  
+2a) [Download UMLS Data and move it to a database](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/UMLS%20Extraction%20Process.md)  
+2b) [Extract data and build UMLS CSVs](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/CSV-Extracts.md)  
 
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
