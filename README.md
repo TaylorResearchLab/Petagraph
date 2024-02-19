@@ -25,7 +25,7 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 #### 6. Select `Create new database from dump`.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_3.png" alt="drawing" width="600"/>  
 
-#### 7. Enter database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
+#### 7. Enter a database name, password and select a Neo4j version to use (5.14 is recommended). The build time should take just a few minutes.
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/build_image_4.png" alt="drawing" width="600"/>
 
 #### 8. Start the database!
@@ -38,23 +38,34 @@ Petagraph is built on top of the Unified Medical Language System ([UMLS](https:/
 
 #### 1. Obtain a UMLS License if you don't already have one
 
+
+#### 2. Generate the UMLS CSVs
+This step consists of downloading the UMLS Metathesaurus and Semantic Network using MetamorphoSys and then moving the data into a database. Then, run a series of SQL against the database holding the UMLS data to extract the necessary nodes and edges in order to build the UMLS CSVs.
+
+Please follow the instructions here at the following 2 links:
+2a) [Download UMLS Data and move it to a database](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/UMLS%20Extraction%20Process.md)
+2b) [Extract data and build UMLS CSVs](https://github.com/x-atlas-consortia/ubkg-etl/blob/main/source_framework/CSV-Extracts.md)
+
 Instructions to generate UMLS CSVs: [Build-UMLS](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/source_framework) 
 
+#### 3. Generate the UBKG CSVs
+This step consists of 
 Instructions to generate UBKG CSVs: [Build-UBKG](https://github.com/x-atlas-consortia/ubkg-etl/tree/main/generation_framework)
 
 
-#### 2. Download software: 
+
+#### 4. Download software: 
 - Download and install `Neo4j Desktop` (https://neo4j.com/download/), `Python3` and `git`.
-#### 3. Download data:
+#### 5. Download data:
    - Download the Datasets.zip file (250 MB zipped and 2.7GB unzipped) containing the 20 sets of node and edge files from our OSF project site, https://osf.io/6jtc9/. These nodes and edges files represent the 20 additional datasets we've added to the UBKG.
 
      <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/Screenshot%202023-10-26%20at%209.12.07%20AM.png" alt="drawing" width="500"/>
 
-#### 3. Download and run the `ingest_petagraph.sh` script to ingest the 20 datasets.
+#### 6. Download and run the `ingest_petagraph.sh` script to ingest the 20 datasets.
 The `ingest_petagraph.sh` script is located [here](https://github.com/TaylorResearchLab/Petagraph/blob/main/build_scripts/ingest_petagraph.sh).
 You will need to change 2 directory paths within the `ingest_petagraph.sh` script, one to the location of the UBKG CSVs and the other to the location of the nodes and edges files of the 20 datasets. This script should take a little over an hour to run. Once the `ingest_petagraph.sh` script is done running, the UBKG CSVs are now called the Petagraph CSVs, as the 20 additional datasets have been processed and appended.
  
-#### 4. Create a new, empty database in Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database. 
+#### 7. Create a new, empty database in Neo4j Desktop and move the CSVs you've just produced. into the import directory of your new database. 
 To create a new database, click the Add menu in the upper right hand corner of the Neo4j Desktop Application home screen and select local DBMS. Once the new database has been created, click the 3 little dots to the right of the new database name to bring up the drop down menu, select folders -> import, and place the Petagraph CSVs in the import folder.
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/create_new_dbms.png" alt="drawing" width="500"/>
@@ -63,7 +74,7 @@ Then open up the database drop down menu again and open up the Neo4j terminal to
 
 <img src="https://github.com/TaylorResearchLab/Petagraph/blob/main/figures/main_readme_figures/import_folder.png" alt="drawing" width="500"/>
 
-#### 5. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
+#### 8. Run the following commands from the Neo4j Desktop Terminal in the top level directory of the new database you've just created. 
 ```bash
 $ rm -rf data/databases/*;
 $ rm -rf data/transactions/*;
@@ -71,7 +82,7 @@ $ bin/neo4j-admin import --verbose  --nodes=Semantic="import/TUIs.csv" --nodes=C
 ```
 The build time will vary but shouldnt take more than 20 min.
 
-#### Step 6. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
+#### Step 9. After the database build is finished, start the database, open the Browser and execute this block of Cypher:
 This sets contraints and indices on Node types to speed up query execution time. The last three queries create properties on numerical Code nodes.
 
 
