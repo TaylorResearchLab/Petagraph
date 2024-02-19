@@ -11,8 +11,7 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 ### Option 1: Build from Neo4j dump file (preferred)
 
-
-#### 1. Obtain a UMLS License if you don't already have one
+#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html)
 #### 2. Contact the authors for access to the Petagraph dump file.
 #### 3. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
 
@@ -34,9 +33,9 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 ### Option 2: Build from source
 
-Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) Unified Medical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so the first step is to generate the UMLS and UBKG CSVs:
+Petagraph is built on top of the Unified Medical Language System ([UMLS](https://www.nlm.nih.gov/research/umls/index.html)) and the Unified Biomedical Knowledge Graph ([UBKG](https://github.com/x-atlas-consortia/ubkg-etl)) so (after getting a UMLS License) the first step is to generate the UMLS and UBKG CSVs:
 
-#### 1. Obtain a UMLS License if you don't already have one
+#### 1. Obtain a UMLS License if you don't already have one, instructions can be found [here](https://www.nlm.nih.gov/databases/umls.html)
 
 
 #### 2. Generate the UMLS CSVs
