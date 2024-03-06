@@ -2,9 +2,9 @@
 
 
 #### (Optional) Prerequisites
-a.) Set up ssh keys for password free login
-b.) Install pip on server
-c.) Use virtualenv to create a virtural environment and install python3.11
+a.) Set up ssh keys for password free login  
+b.) Install pip on server  
+c.) Use virtualenv to create a virtural environment and install python3.11  
 
 
 Install packages: jupyter, graphdatascience, neo4j, 
