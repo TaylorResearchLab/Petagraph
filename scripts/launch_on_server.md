@@ -14,9 +14,9 @@ Install packages: jupyter, graphdatascience, neo4j,
 `$ ssh RESLNTAYLORD01.research.chop.edu`
 #### 2. start the database:
 This will start the database in the console. This allows you to see the status and updated logs of the running dataabase right in the terminal.
-`$ neo4j-admin server console`
+`$ sudo neo4j-admin server console`
 #### 3. open a new terminal and ssh into the server again, and show that the database is running:
-`$ neo4j-admin server status`
+`$ sudo neo4j-admin server status`
 
 output should look like this: `Neo4j is running at pid 2514457`.
 You can now invoke the `cypher-shell` tool by doing `$ cypher-shell` and enter cypher statements in the terminal. 
