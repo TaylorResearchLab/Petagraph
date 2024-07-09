@@ -8,25 +8,17 @@
 1. First, aqcuire Petagraph and instantiate it on the cluster. The reformatting of the entire graph requires too much RAM to done on a local computer
 
 2. Then, transform Petagraph by pushing relevant properties to the Concept nodes and then change the labels of any relevant nodes you need for your use case using Cypher. For example, if you want genes and phenotypes as part of your use case, you will need to set gene nodes to be type :Gene and phenotype nodes to be type :Phenotype.
-```cypher
-MATCH
-```
+
 3.  (a) Create a subgraph (should contain only Concept nodes) and then (b) Export this as a dump and then (c) Create a new neo4j database using this dump.
 
 3a. Create a subgraph  
-```cypher
-MATCH
-```
+
 
 3b. Export subgraph as a dump  
-```cypher
-MATCH
-```
+
 
 3c. Create a new neo4j database using this dump  
-```cypher
-MATCH
-```
+
 
 4.  Install Ollama, which will power our LLM application.
 
