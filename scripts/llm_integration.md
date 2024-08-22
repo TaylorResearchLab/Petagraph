@@ -20,7 +20,7 @@
 3c. Create a new neo4j database using this dump  
 
 
-4.  Install Ollama, which will power our LLM application.
+4.  Install Ollama, which will power our LLM application. (Notes for ollama are on the Taylor Server under graph_rag_notebooks/langchain-notebooks/OllamaNotes.ipynb)
 
 5.  Start the Neo4j database and set constraints and indices via the `cypher-shell` or through a Python Neo4j API.
 6.  Execute the rest of the code in the llm-integration jupyter notebook to set up a Graph-RAG application using the subgraph.
