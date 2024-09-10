@@ -9,6 +9,8 @@ pip freeze > requirements.txt
 cat requirements.txt | xargs -n 1 pip install     # this will continue if a package fails to install!
 ```
 
+## Download Ollama
+`curl -fsSL https://ollama.com/install.sh | sh`
 
 ## Download Java
 https://developers.redhat.com/products/openjdk/downloads/rhel
@@ -25,10 +27,6 @@ get tarball: https://neo4j.com/deployment-center/?gdb-selfmanaged
 `tar  -xf neo4j-community-5.23.0-unix.tar`
 
 (Permissions info: https://askubuntu.com/questions/528411/how-do-you-view-file-permissions)
-
-
-## Download Ollama
-curl -fsSL https://ollama.com/install.sh | sh
 
 
 ## Create dump of database
@@ -53,10 +51,14 @@ Send to new server:
 `sudo scp /neo4j/5/data/dumps/neo4j.dump stearb@reslnreslngdb01.research.chop.edu:/home/stearb/`
 
 ## Load new database
-make sure to give proper permissions to the conf file on the new server, `sudo chmod -R 400 /opt/neo4j-community-5.23.0/conf/
-`
+make sure to give proper permissions to the conf file on the new server, `sudo chmod -R 400 /opt/neo4j-community-5.23.0/conf/`
+
 Load database dump:
-**`sudo bin/neo4j-admin database load --expand-commands system --from-path=/home/stearb/neo4j.dump`**
+```
+rm -rf data/databases/*
+rm -rf data/transactions/*
+sudo bin/neo4j-admin database load --expand-commands --overwrite-destination=true neo4j --from-path=/home/stearb/neo4j.dump
+```
 
 
 
