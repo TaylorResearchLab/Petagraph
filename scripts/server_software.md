@@ -22,6 +22,7 @@ Use `openjdk version "17.0.12" 2024-07-16 LTS`
 https://neo4j.com/docs/operations-manual/current/installation/linux/rpm
 
 get tarball: https://neo4j.com/deployment-center/?gdb-selfmanaged
+`tar  -xf neo4j-community-5.23.0-unix.tar`
 
 
 
