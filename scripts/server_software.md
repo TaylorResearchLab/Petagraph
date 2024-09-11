@@ -60,6 +60,24 @@ rm -rf data/transactions/*
 sudo bin/neo4j-admin database load --expand-commands --overwrite-destination=true neo4j --from-path=/home/stearb/neo4j.dump
 ```
 
+## Configure/Start neo4j database
+get plugin jars from taylor server
+
+```
+sudo scp /var/lib/neo4j/plugins/*.jar  stearb@reslnreslngdb01:/home/stearb/projects/
+sudo mv /home/stearb/projects/*.jar /data/neo4j-community-5.23.0/plugins/
+```
+uncomment whitelist in config so apoc and gds work
+`sudo vi conf/neo4j.conf`
+
+use cypher-shell to create new password.
+can try: `bin/neo4j-admin dbms set-initial-password 'new_password'`
+
+get memory recs
+`sudo bin/neo4j-admin server memory-recommendation`
+
+
+
 
 
 
