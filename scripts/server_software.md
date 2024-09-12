@@ -77,6 +77,9 @@ get memory recs
 `sudo bin/neo4j-admin server memory-recommendation`
 
 
+### Neo4j install on the reslnreslngdb01 server is located in `/data/neo4j-community-5.23.0/`.
+
+
 
 
 
