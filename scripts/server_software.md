@@ -48,7 +48,11 @@ Create neo4j dump:
 On the taylor server if you dont specify a path to the save location of the dump it will be `/neo4j/5/data/dumps`
 
 Send to new server:
-`sudo scp /neo4j/5/data/dumps/neo4j.dump stearb@reslnreslngdb01.research.chop.edu:/home/stearb/`
+
+change modifications of dump destinaton: `sudo chmod -R +666 /data/`
+
+`sudo scp /neo4j/5/data/dumps/neo4j.dump stearb@reslngdb01.research.chop.edu:/data`
+
 
 ## Load new database
 make sure to give proper permissions to the conf file on the new server, `sudo chmod -R 400 /opt/neo4j-community-5.23.0/conf/`
