@@ -42,7 +42,7 @@ It should look like:
 sudo ls -lah /etc/neo4j/neo4j-admin.conf 
 -r--------. 1 neo4j neo4j 4.0K Apr 12 04:47 /etc/neo4j/neo4j-admin.conf
 ```
-Create neo4j dump:
+Create neo4j dump on taylor server:
 **`sudo neo4j-admin database dump --expand-commands neo4j`**
 
 On the taylor server if you dont specify a path to the save location of the dump it will be `/neo4j/5/data/dumps`
@@ -55,33 +55,39 @@ change modifications of dump destinaton: `sudo chmod -R +666 /data/`
 
 
 ## Load new database
-make sure to give proper permissions to the conf file on the new server, `sudo chmod -R 400 /opt/neo4j-community-5.23.0/conf/`
+make sure to give proper permissions to the conf file on the new server, `sudo chmod -R 400 /path/to/neo4j.conf`
 
 Load database dump:
 ```
 rm -rf data/databases/*
 rm -rf data/transactions/*
-sudo bin/neo4j-admin database load --expand-commands --overwrite-destination=true neo4j --from-path=/home/stearb/neo4j.dump
+// neo4j.dump is located in /data/  directory
+// MUST LOGIN AS root on the reslngdb01 server by doing sudo su
+neo4j-admin database load --from-path=/data/ --overwrite-destination=true neo4j --verbose
 ```
 
 ## Configure/Start neo4j database
 get plugin jars from taylor server
 
 ```
-sudo scp /var/lib/neo4j/plugins/*.jar  stearb@reslnreslngdb01:/home/stearb/projects/
-sudo mv /home/stearb/projects/*.jar /data/neo4j-community-5.23.0/plugins/
+sudo scp /var/lib/neo4j/plugins/*.jar  stearb@reslngdb01:/home/stearb/graph_ml/
+sudo mv /home/stearb/graph_ml/*.jar  /var/lib/neo4j/plugins
 ```
 uncomment whitelist in config so apoc and gds work
-`sudo vi conf/neo4j.conf`
+`sudo vi /etc/neo4j/neo4j.conf`
 
-use cypher-shell to create new password.
-can try: `bin/neo4j-admin dbms set-initial-password 'new_password'`
+use cypher-shell to create new password, or 
+`bin/neo4j-admin dbms set-initial-password 'new_password'`
 
 get memory recs
-`sudo bin/neo4j-admin server memory-recommendation`
+`sudo neo4j-admin server memory-recommendation`
+
+server.memory.heap.initial_size=3400m
+server.memory.heap.max_size=3400m
+server.memory.pagecache.size=1800m
 
 
-### Neo4j install on the reslnreslngdb01 server is located in `/data/neo4j-community-5.23.0/`.
+
 
 
 
