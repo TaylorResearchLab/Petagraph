@@ -11,8 +11,8 @@ There are 2 ways to build the Petagraph knowledge graph, build using the dump fi
 
 ### Option 1: Build from Neo4j dump file (preferred)
 
-#### 1. Obtain a UMLS License [here](https://www.nlm.nih.gov/databases/umls.html) and generate an API key [here](https://uts.nlm.nih.gov/uts/) (click on `Generate an API Key` under `UTS Profile` in the top right corner).
-#### 2. Enter your UMLS key [here](https://ubkg-downloads.xconsortia.org) and download the Petagraph dump file.
+#### 1. Obtain a UMLS License [here](https://www.nlm.nih.gov/databases/umls.html) and generate a UMLS API key [here](https://uts.nlm.nih.gov/uts/) (click on `Generate an API Key` under `UTS Profile` in the top right corner).
+#### 2. Enter your UMLS API key [here](https://ubkg-downloads.xconsortia.org) and download the Petagraph dump file.
 #### 3. Download and install `Neo4j Desktop` (https://neo4j.com/download/).
 
 #### 4. Create a new project on Neo4j Desktop.
