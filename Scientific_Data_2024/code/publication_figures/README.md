@@ -23,7 +23,7 @@ Tahas heatmaps
 [here](https://github.com/TaylorResearchLab/Petagraph/tree/main/scripts/code)
 
 ##### Figure 6.
-Tahas shortest path -- cypher and code
+
 
 ##### Figure 7.
 Recursive ASD query 
@@ -50,6 +50,14 @@ MATCH (exp_code:Code)-[:CODE]-(exp_cui:Concept)-[:has_expression]-(gtex_cui)-[:`
 RETURN DISTINCT split(gene_symbol.name, ' gene')[0] AS symbol,human_gene.CODE AS hgnc_id, ub_term.name AS tissue, ub_code.CODE AS uberon_CODE, exp_code.CODE AS tpm
 ```
 
+##### Figure 8.
+Shortest Path Lengths in Petagraph. Probability density of associated Concept to Concept node shortest path lengths for 1 million pairwise combinations of human gene Concept nodes in Petagraph.
+```
+MATCH (O1:Code {SAB:'HGNC'})<-[R1:CODE]-(C1:Concept)-[:PREF_TERM]->(T1:Term),
+(T2:Term)<-[:PREF_TERM]-(C2:Concept)-[R2:CODE]->(O2:Code {SAB:'HGNC'}),
+p = shortestpath((C1)-[*]->(C2)) RETURN T1.name AS Gene_1,T2.name AS Gene_2,length(p) AS Shoretest_Path_Length
+```
+
 ##### Figure 9: Query results on heart-defect phenotype-associated glycosylation targets.
 Query results on heart-defect phenotype-associated glycosylation targets.
 Taha - cypher and code
@@ -62,6 +70,38 @@ return * limit 1
 ```
 
 
-##### Figure 11.
-Figure 11: Querying possible drug-tissue interactions for rofecoxib using CMAP, LINCS L1000 and GTEX_EXP datasets. 
-taha cypher and code
+##### Figure 12.
+Contribution of major datasets on link prediction. Impact of dataset removal on global transitivity and degree assortativity in subgraphs around human genes (1 hop) in Petagraph.
+```
+
+```
+
+##### Figure 13.
+Validation with Use Case 1. Comparison of ROC and PRC curves calculated for the link prediction scores vs. the presence or absence of direct links (binary classifier) between Tetralogy of Fallot (HP:0001636) phenotype and human genes in Petagraph. 
+```
+//Total_Neighbors_Algorithm
+MATCH (o1:Code {CODE:"HP:0001636"})<-[:CODE]-(c1:Concept), (t2:Term)<-[:SYN]-(o2:Code {SAB:"HGNC"})<-[:CODE]-(c2:Concept)
+RETURN distinct o2.CODE as HGNC_ID, gds.alpha.linkprediction.totalNeighbors(c1, c2) AS TN_score
+//Preferntial_Attachment_Algorithm
+MATCH (o1:Code {CODE:"HP:0001636"})<-[:CODE]-(c1:Concept), (t2:Term)<-[:SYN]-(o2:Code {SAB:"HGNC"})<-[:CODE]-(c2:Concept)
+RETURN distinct o2.CODE as HGNC_ID, gds.alpha.linkprediction.preferntialAttachment(c1, c2) AS PA_score
+//Common_Neighbors_Algorithm
+MATCH (o1:Code {CODE:"HP:0001636"})<-[:CODE]-(c1:Concept), (t2:Term)<-[:SYN]-(o2:Code {SAB:"HGNC"})<-[:CODE]-(c2:Concept)
+RETURN distinct o2.CODE as HGNC_ID, gds.alpha.linkprediction.commonNeighbors(c1, c2) AS PA_score
+```
+
+##### Figure 14.
+Validation with Use Case 2. Querying possible drug-tissue interactions for rofecoxib using CMAP, LINCS L1000 and GTEX_EXP datasets. 
+```
+WITH 'rofecoxib' AS COMPOUND_NAME, 5 AS MIN_EXP
+MATCH (ChEBITerm:Term {name:COMPOUND_NAME})<-[:PT]-(ChEBICode:Code {SAB:'CHEBI'})<-[:CODE]-(ChEBIconcept:Concept)-[r1{SAB:"LINCS"}]-(hgncConcept:Concept)-[:expresses {SAB:'GTEXEXP'}]->(gtexexp_concept:Concept)<-[:expresses {SAB:'GTEXEXP'}]-(tissue_concept:Concept)-[:PREF_TERM]-(tissue_term:Term)<-[]-(:Code {SAB:'UBERON'}),(gtexexp_concept:Concept)-[:has_expression {SAB:'GTEXEXP'}]->(exp_concept:Concept)-[:CODE]-(exp_code:Code),(hgncConcept)-[:CODE]->(hgncCode:Code{SAB:'HGNC'})-[:SYN]-(hgncTerm:Term) WHERE exp_code.lowerbound > MIN_EXP
+RETURN DISTINCT ChEBITerm.name AS Compound, hgncTerm.name AS GENE, tissue_term.name AS Tissue, exp_code.CODE AS Expression_Level
+```
+
+##### Figure 15.
+S
+```
+
+```
+
+
