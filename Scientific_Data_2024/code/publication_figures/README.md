@@ -15,12 +15,15 @@ Dataset interconnectedness jupyter notebook?
 [here](https://github.com/TaylorResearchLab/Petagraph/tree/main/scripts/code)
 
 ##### Figure 4.
-Tahas mean deviation plot
-[here](https://github.com/TaylorResearchLab/Petagraph/tree/main/scripts/code)
+Mean deviation plot
 
-##### Figure 5.
-Tahas heatmaps
-[here](https://github.com/TaylorResearchLab/Petagraph/tree/main/scripts/code)
+
+##### Figures 5, 6, 7.
+Heatmap representation of relationship statistics of 55 selected semantic types.
+```
+MATCH (s1:Semantic)<-[:STY]-(c1:Concept)-[r]->(c2:Concept)-[:STY]->(s2:Semantic)
+RETURN s1.name as STY1, s2.Name as STY2
+```
 
 ##### Figure 6.
 
