@@ -10,8 +10,7 @@ RETURN *
 ```
 
 ##### Figure 3. 
-Dataset interconnectedness jupyter notebook?
-[here](https://github.com/TaylorResearchLab/Petagraph/tree/main/scripts/code)
+Dataset interconnectedness figure (jupyter notebook)
 
 
 ##### Figure 4.
